@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Environment Variables</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Environment variables required</h1>
+</p>
+<dl>
+<dt> TMPDIR</dt>
+<dd>scratch directory on the master node, on some systems this must be visible to all nodes for the
+wrapper to work correctly
+</dd>
+<dt> COMPILER</dt>
+<dd>which compiler is used
+<ul>
+<li>gfortran (on MacOS, openmpi and Accelerate system library)</li>
+<li>intelmkl (intel compilers, mkl libraries)</li>
+<li>intel (on cori.nersc.gov using the ftn compiler wrapper in the PrgEnv-Intel environment)</li>
+</li>
+</ul>
+</dd>
+<dt> MACH    </dt>
+<dd>Machine type, defined values are:
+<ul>
+<li>apple (Apple macOS 10.12 Sierra)</li>
+<li>apple_10.14_rrl (Apple macOS Mojave)</li>
+<li>cori (cori.nersc.gov - using ftn compiler, NERSC)</li>
+<li>lrc_rrl and lrc (lrc-login.lbl.gov, Lawrencium Cluster)</li>
+</li>
+</ul>
+</dd>
+<dt> pe    </dt>
+<dd>root directory for ePolyScat (e.g. ~lucchese/Applications/ePolyScat )
+</dd>
+</dl>
+
+</body>
+</html>

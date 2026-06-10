@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>test36.gms.inp</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<pre>
+!    CH4    RHF using GAMESS
+!    for ePolyScat test36
+!
+!
+ $CONTRL SCFTYP=RHF RUNTYP=ENERGY ISPHER=1 PLTORB=.TRUE. $END
+ $SYSTEM MWORDS=10 $END
+ $STATPT OPTTOL=1.0E-5  $END
+ $BASIS  GBASIS=ACCQ $END
+ $GUESS  GUESS=HUCKEL $END
+ $SCF NPUNCH=1 $END
+ $DATA
+CH4 aug-cc-pVQZ fixed geometry
+Td
+
+C     6.0 0.0 0.0 0.0
+H     1.0   0.625470104725504 0.625470104725504 0.625470104725504
+ $END
+
+</pre>
+</body>
+</html>

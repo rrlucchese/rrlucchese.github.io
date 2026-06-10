@@ -1,0 +1,216 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>UtilityProgs.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Utility Programs</h1>
+There are a number of utility programs included with ePolyScat that perform a variety of pre- and post-procesing
+functions.  These programs are also created using the command "make all".
+</p>
+<dl>
+<dt> AddDatMatchLab.exe</dt>
+<dd>combines
+<a href ="DataFiles"> .dat data files</a>
+by adding together data which have the same labels
+</dd>
+<dt> BendOrient.exe</dt>
+<dd>This files takes the data written to the <code>OrientData</code> by the
+<a href ="OrientCro"> <code>OrientCro</code></a>
+command and computes the RFPAD about an arbitrary axis.
+</dd>
+<dt> BendOrientDA.exe</dt>
+<dd>This files takes the data written to the <code>OrientData</code> by the
+<a href ="OrientCro"> <code>OrientCro</code></a>
+command and computes the RFPAD averaged over a number of different recoil axes.
+</dd>
+<dt> BendOrientNa.exe</dt>
+<dd>This files takes the data written to the <code>OrientData</code> by the
+<a href ="OrientCro"> <code>OrientCro</code></a>
+command and computes the true MFPAD about an arbitrary axis.  Compared to the other BendOrient
+programs, no average about an azimuthal axis is performmed.
+</dd>
+<dt> BendOrientSC.exe</dt>
+<dd>This files takes the data written to the <code>OrientData</code> by the
+<a href ="OrientCro"> <code>OrientCro</code></a>
+command and computes the true MFPAD about an arbitrary axis.  This code includes the extra terms
+required to treat a molecule with a chiral center.
+</dd>
+<dt> BendONaEnsight.exe</dt>
+<dd> This files takes the data written to the <code>OrientData</code> by the
+<a href ="OrientCro"> <code>OrientCro</code></a>
+command and computes the true MFPAD about an a sequence of arbitrary axes.  This program
+writes out files needed to use the <code>ENSIGHT</code> graphics program to create an animation of the
+averaging of the MFPAD to form the RFPAD.
+</dd>
+<dt> CnvLinFull.exe</dt>
+<dd>Takes the output from
+<a href ="DumpIdy"> <code>DumpIdy</code></a>
+and computes the photoionization differenctial cross section on a grid of points in the molecular
+frame with different values of the polar and azimuthal angles for the direction of emission of
+the photoelectron and field polarization.
+</dd>
+<dt> CnvMath.exe</dt>
+<dd>This program takes the output from BendOrient.exe and writes out an input file for
+<code>MATHEMATICA</code>
+</dd>
+<dt> CnvMathNa.exe</dt>
+<dd>This program takes the output from BendOrientNa.exe and writes out an input file for
+<code>MATHEMATICA</code>
+</dd>
+<dt> CnvMatLab.exe</dt>
+<dd> This program takes the output from BendOrient.exe and writes out an input file for
+<code>MATLAB</code>
+</dd>
+<dt> CnvMatLabNa.exe</dt>
+<dd> This program takes the output from BendOrientNa.exe and writes out an input file for
+<code>MATLAB</code>
+</dd>
+<dt> CnvMatLabSC.exe</dt>
+<dd>This program takes the output from BendOrientSc.exe and writes out an input file for
+<code>MATLAB</code>
+</dd>
+<dt> CompDiff.exe</dt>
+<dd>Program to compare outputs from the standard test jobs
+</dd>
+<dt> CompDiffMax.exe</dt>
+<dd>Program to compare outputs from the standard test jobs, but only write out the line with the
+maximum relative error.
+</dd>
+<dt> CnvLinFull.exe</dt>
+<dd>Program to take the dipole matrix elements which are output from the
+<a href ="DumpIdy"> <code>DumpIdy</code></a>
+command and compute ionization amplitudes for fixed field polarization directions and photoelectron emission
+directions in the molecular frame.
+</dd>
+<dt> Cube2igor.exe</dt>
+<dd>Program to take a Cube output from <code>GAUSSIAN</code> and write it out from plotting using
+<code>IGOR</code>
+</dd>
+<dt> dat2ensight.exe</dt>
+<dd>Program to take 3D data
+<a href ="DataFiles"> in .dat data file format</a>
+and write it out in a format suitable for plotting with <code>ENSIGHT</code>
+</dd>
+<dt> dat2igor.exe</dt>
+<dd>convert
+<a href ="DataFiles"> .dat data files</a>
+to .itx files for input into <code>IGOR</code>
+</dd>
+<dt> dat2igor1.exe</dt>
+<dd>convert
+<a href ="DataFiles"> .dat data files</a>
+to .itx files for input into <code>IGOR</code>. Use the characters in the labels
+to come up with wave names and plot all data on a single plot
+</dd>
+<dt> dat2vtk.exe</dt>
+<dd>convert 2D (for parameteric 3D plots) and 3D (for iso surface plots)
+<a href ="DataFiles"> .dat data files</a>
+to .vtk files for input into <code>ParaView</code> visualization program
+</dd>
+<dt> FindRot.exe</dt>
+<dd>Program takes two different orientations from a <code>GAUSSIAN</code> output and determines the
+rotation connecting them.
+</dd>
+<dt> Gen2DCuts.exe</dt>
+<dd>Program that takes the output from CnvMatLabNa.exe or CnvMatLab.exe
+and generates 2-D cuts in the MFPAD and writes them out in the
+<a href ="DataFiles"> in .dat data file format.</a>
+</dd>
+<dt> GenFLMMP.exe</dt>
+<dd> Program that takes the output from CnvMatLabNa.exe and generates F_L_M_MP functions
+of theta and writes
+them out in the
+<a href ="DataFiles"> in .dat data file format.</a>
+</dd>
+<dt> GetPoints1D.exe</dt>
+<dd>This program takes the output from the command
+<a href ="VibAveN"> <code>VibAveN</code></a>
+and looks for a 1-D
+series of geometries, then it writes out the matirx elements as a function of geometry and writes the
+data out in a form suitable for plotting in a
+<a href ="DataFiles"> .dat data file format.</a>
+</dd>
+<dt> GetPoints2D.exe</dt>
+<dd>This program takes the output from the command
+<a href ="VibAveN"> <code>VibAveN</code></a>
+and looks for a 2-D
+series of geometries, then it writes out the matirx elements as a function of geometry and writes the
+data out in a form suitable for plotting in a
+<a href ="DataFiles"> .dat data file format.</a>
+</dd>
+<dt> MakeGeom4igor.exe</dt>
+<dd>Read the standard orientation from a <code>GAUSSIAN</code> output file and create
+a macro for <code>IGOR</code> that can plot the molecular structure.
+</dd>
+<dt> MakeManual.exe</dt>
+<dd>This program reads files and generates the automatic html files used for the
+online manual of ePolyScat.
+</dd>
+<dt> MakeOverlap.exe</dt>
+<dd>This program takes the output from the
+<a href ="DumpOrb"> <code>DumpOrb</code></a>
+command and performs an approximate overlap calculation assuming that the atomic orbitals
+form an oorthonormal set.  This program is used to detect phase changes in an orbital
+as the geometry changes.
+</dd>
+<dt> MoldenMerge.exe</dt>
+<dd>This program can take two different molden files and create a new molden file with
+with selected orbitals from each of the original files as specified in the input.  This output can then
+be read using the
+<a href ="Convert"> <code>Convert</code></a>
+</dd>
+<dt> NRFPAD.exe</dt>
+<dd>This program takes the output from
+<a href ="OrientNCro"> <code>OrinetNCro</code></a>
+and computes the final observable <var>N</var> photon RFPAD.
+</dd>
+<dt> PartialWave.exe</dt>
+<dd>Program that takes the output from CnvMatLabNa.exe and computes the contributions
+to the cross section by partial wave.
+</dd>
+<dt> SumMFPAD.exe</dt>
+<dd> Program that takes two outputs from CnvMatLabNa.exe and adds them together.
+</dd>
+<dt> TestCul.exe</dt>
+<dd>Program to test CulCC
+</dd>
+<dt> TestDip.exe</dt>
+<dd>Program to test CulCC with fractional angular momenta, used with dipolar potentials
+</dd>
+<dt> TestDipC.exe</dt>
+<dd>Program to test CulCC with complex valued angular momenta, used with dipolar potentials
+</dd>
+<dt> Testmm.exe</dt>
+<dd>Program to compare the speed of matrix multiplication routines:  explicit do loops, dgemm, and MATMUL
+</dd>
+<dt> Vib1DModel.exe</dt>
+<dd>Program to test 1-D vibrational integrals used in
+<a href ="VibAve"> <code>VibAve</code>.</a>
+This can be used to check the range of the 1-D integrations and to determine the Franck-Condon
+factors before running the full ePolyScat program.
+</dd>
+<dt> VibAveOrth.exe</dt>
+<dd>Used to check the orthogonality of polynomials used to interpoplate matrix elements in
+<a href ="VibAveN"> <code>VibAveN</code></a>
+</dd>
+<dt> ViewGeom2igor.exe</dt>
+<dd>Take <code>ViewOrbGeom</code> from
+<a href ="ViewOrb"> <code>ViewOrb</code></a>
+and wirte a file that creates a macro in <code>IGOR</code> that can plot the molecular structure.
+</dd>
+<dt> ViewOrb2ensight.exe</dt>
+<dd>Program to take 3D data
+<a href ="DataFiles"> in .dat data file format</a>
+and the geomtry file, as made by
+<a href ="ViewOrb"> <code>ViewOrb</code>,</a>
+and write it out in a format suitable for plotting with <code>ENSIGHT</code>
+including the structure of the molecule
+</dd>
+</dl>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>test21.inp</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<pre>
+#
+# input file for test21
+#
+# electron scattering from C60
+#
+LMax   25
+EMax   50.0
+EngForm
+  0 0
+FegeEng 7.6      # IP
+VCorr 'PZ'
+LMaxK   6
+ScatContSym 'AG'
+#
+Convert '$pt/test21.g03' 'gaussian'
+GetBlms
+ExpOrb
+GetPot
+Scat 1.0
+</pre>
+</body>
+</html>

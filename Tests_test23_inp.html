@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>test23.inp</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<pre>
+#
+# inpuut file for test23
+#
+# Determine SiF4 normal modes
+#
+LMax   25
+
+Convert '$pt/test23.g03' 'gaussian'
+GetBlms
+SymNormMode
+GeomNormMode 7 0.
+GeomNormMode 7 -1. 1.
+GeomNormMode 8 -1. 1.
+GeomNormMode 9 -1. 1.
+</pre>
+</body>
+</html>

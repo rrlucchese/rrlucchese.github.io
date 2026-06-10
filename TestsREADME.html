@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Sample Jobs</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Sample Jobs</h1>
+</p>
+<p>
+Below is a list of the test scripts that are found in the directory <code>ePolyScatE/tests</code>.
+Required environment variables are discussed
+<a href ="SourceePolyScat_f90#EnvVar"> here.</a>
+</p>
+<p>
+<h2>Test Scripts</h2>
+</p>
+<p>
+Almost of all of the tests have four files associated with them, the .inp
+file contains the input data,
+the .ostnd file which is the standard output of this
+job run, the output from a standard quantum chemistry
+code which is used as input by the scattering codes (eg .g03 or .molden2012), and the job used
+to run the quantum chemistry code (eg .g03.inp or .molpro.inp) Note that there are a changes
+in the format of the molden files produced by Molpro depending on the version.
+</p>
+<dl>
+<dt> Test 01</dt>
+<dd>CH4 using Gaussian 03 output, A1, static exchange+model polarization
+(se+mp) <br />
+<a href ="Tests_test01_inp"> Input Data</a>
+<a href ="Tests_test01_ostnd"> Standard output</a>
+<a href ="Tests_test01_molden2015"> Molden file from Molpro 2015</a>
+<a href ="Tests_test01_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 02</dt>
+<dd>CH4 using Gaussian 03 output, T2, static exchange with orthogonalization <br />
+<a href ="Tests_test02_inp"> Input Data</a>
+<a href ="Tests_test02_ostnd"> Standard output</a>
+<a href ="Tests_test02_g03"> Gaussian 03 output</a>
+<a href ="Tests_test02_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 03</dt>
+<dd>N2, using molden output, DCS using D-inf-h symmetry <br />
+<a href ="Tests_test03_inp"> Input Data</a>
+<a href ="Tests_test03_ostnd"> Standard output</a>
+<a href ="Tests_test03_molden2012"> Molden output Molpro 2012</a>
+<a href ="Tests_test03_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 04</dt>
+<dd>SiH4, Gaussian 03 output, several energies, T-matrix form <br />
+<a href ="Tests_test04_inp"> Input Data</a>
+<a href ="Tests_test04_ostnd"> Standard output</a>
+<a href ="Tests_test04_g09"> Gaussian 09 output</a>
+<a href ="Tests_test04_g09_inp"> Gaussian 09 input</a>
+</dd>
+<dt> Test 05</dt>
+<dd>SF6, Gaussian 03 output, A1G, se+mp <br />
+<a href ="Tests_test05_inp"> Input Data</a>
+<a href ="Tests_test05_ostnd"> Standard output</a>
+<a href ="Tests_test05_g03"> Gaussian 03 output</a>
+<a href ="Tests_test05_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 06</dt>
+<dd>N2, using molden output, several very low energies (0.001 eV)
+SG (sigma-g) symmetry, SECP <br />
+<a href ="Tests_test06_inp"> Input Data</a>
+<a href ="Tests_test06_ostnd"> Standard output</a>
+<a href ="Tests_test06_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test06_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 07</dt>
+<dd>N2, using molden output, static-exchange at an energy in the region of the pi-g shape resonance<br />
+<a href ="Tests_test07_inp"> Input Data</a>
+<a href ="Tests_test07_ostnd"> Standard output</a>
+<a href ="Tests_test07_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test07_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 08</dt>
+<dd>F2-, using molden output, static-exchange photo detachment<br />
+<a href ="Tests_test08_inp"> Input Data</a>
+<a href ="Tests_test08_ostnd"> Standard output</a>
+<a href ="Tests_test08_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test08_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 09</dt>
+<dd>SF6, Gaussian 03 output, expand HOMO and LUMO <br />
+<a href ="Tests_test09_inp"> Input Data</a>
+<a href ="Tests_test09_ostnd"> Standard output</a>
+<a href ="Tests_test09_g03"> Gaussian 03 output</a>
+<a href ="Tests_test09_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 10</dt>
+<dd>N2, using molden output, resonance search for the pi-g shape resonance<br />
+<a href ="Tests_test10_inp"> Input Data</a>
+<a href ="Tests_test10_ostnd"> Standard output</a>
+<a href ="Tests_test10_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test10_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 11</dt>
+<dd>N2, using molden output,(3-sigma-g)^-1 e-ion scattering calculation <br />
+<a href ="Tests_test11_inp"> Input Data</a>
+<a href ="Tests_test11_ostnd"> Standard output</a>
+<a href ="Tests_test11_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test11_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 12</dt>
+<dd>N2, using Gaussian 03 output,(3-sigma-g)^-1 photoionization calculation
+for comparison with test20 in mccin using OpenMolcas <br />
+<a href ="Tests_test12_inp"> Input Data</a>
+<a href ="Tests_test12_ostnd"> Standard output</a>
+<a href ="Tests_test12_molcas_scf_molden"> OpenMolcas molden file</a>
+<a href ="Tests_test12_molcas_inp"> OpenMolcas input</a>
+</dd>
+<dt> Test 13</dt>
+<dd>N2, using molden output, DCS using D-inf-h symmetry and local approximation for higher l partial waves<br />
+<a href ="Tests_test13_inp"> Input Data</a>
+<a href ="Tests_test13_ostnd"> Standard output</a>
+<a href ="Tests_test13_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test13_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 14</dt>
+<dd>SF6, Gaussian 03 output, photoionization out of the S 1s orbital <br />
+<a href ="Tests_test14_inp"> Input Data</a>
+<a href ="Tests_test14_ostnd"> Standard output</a>
+<a href ="Tests_test14_g03"> Gaussian 03 output</a>
+<a href ="Tests_test14_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 15</dt>
+<dd>CH4 using Gaussian 03 output, using a large aug-cc-pVQZ basis set, photoionization <br />
+<a href ="Tests_test15_inp"> Input Data</a>
+<a href ="Tests_test15_ostnd"> Standard output</a>
+<a href ="Tests_test15_g03"> Gaussian 03 output</a>
+<a href ="Tests_test15_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 16</dt>
+<dd>CH4 using Gaussian 03 output, using a large aug-cc-pVQZ basis set,
+scattering using local potential only <br />
+<a href ="Tests_test16_inp"> Input Data</a>
+<a href ="Tests_test16_ostnd"> Standard output</a>
+<a href ="Tests_test16_g03"> Gaussian 03 output</a>
+<a href ="Tests_test16_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 17</dt>
+<dd>C6H6, A1G, SECP <br />
+<a href ="Tests_test17_inp"> Input Data</a>
+<a href ="Tests_test17_ostnd"> Standard output</a>
+<a href ="Tests_test17_g03"> Gaussian 03 output</a>
+<a href ="Tests_test17_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 18</dt>
+<dd>C6F3H3 test single-center expansion in D3h symmetry <br />
+<a href ="Tests_test18_inp"> Input Data</a>
+<a href ="Tests_test18_ostnd"> standard output</a>
+<a href ="Tests_test18_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test18_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 19</dt>
+<dd>electron scattering from C2H6 staggered<br />
+<a href ="Tests_test19_inp"> Input Data</a>
+<a href ="Tests_test19_ostnd"> standard output</a>
+<a href ="Tests_test19_g03"> Gaussian 03 output</a>
+<a href ="Tests_test19_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 20</dt>
+<dd>photoionization of SiF4 in a D2d distorted geometry <br />
+<a href ="Tests_test20_inp"> Input Data</a>
+<a href ="Tests_test20_ostnd"> standard output</a>
+<a href ="Tests_test20_g03"> Gaussian 03 output</a>
+<a href ="Tests_test20_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 21</dt>
+<dd>electron scattering from C60 <br />
+<a href ="Tests_test21_inp"> Input Data</a>
+<a href ="Tests_test21_ostnd"> standard output</a>
+<a href ="Tests_test21_g03"> Gaussian 03 output</a>
+<a href ="Tests_test21_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 22</dt>
+<dd>photoionization of the open shell NO2 molecule <br />
+<a href ="Tests_test22_inp"> Input Data</a>
+<a href ="Tests_test22_ostnd"> standard output</a>
+<a href ="Tests_test22_g03"> Gaussian 03 output</a>
+<a href ="Tests_test22_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 23</dt>
+<dd>SiF4, normal mode analysis<br />
+<a href ="Tests_test23_inp"> Input Data</a>
+<a href ="Tests_test23_ostnd"> standard output</a>
+<a href ="Tests_test23_g03"> Gaussian 03 output</a>
+<a href ="Tests_test23_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 24</dt>
+<dd>SiF6 with orthogonality constraints,compares K and T matrix calculation<br />
+<a href ="Tests_test24_inp"> Input Data</a>
+<a href ="Tests_test24_ostnd"> standard output</a>
+<a href ="Tests_test24_g03"> Gaussian 03 output</a>
+<a href ="Tests_test24_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 25</dt>
+<dd>H2O, Gaussian 03 output, electron scattering from H2O <br />
+<a href ="Tests_test25_inp"> Input Data</a>
+<a href ="Tests_test25_ostnd"> Standard output</a>
+<a href ="Tests_test25_g03"> Gaussian 03 output</a>
+<a href ="Tests_test25_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 26</dt>
+<dd>N2O, molden output, electron scattering <br />
+<a href ="Tests_test26_inp"> Input Data</a>
+<a href ="Tests_test26_ostnd"> Standard output</a>
+<a href ="Tests_test26_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test26_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 27</dt>
+<dd>positron scattering from CH4 using Gaussian 03 output, A1, static+BN polarization <br />
+<a href ="Tests_test27_inp"> Input Data</a>
+<a href ="Tests_test27_ostnd"> Standard output</a>
+<a href ="Tests_test27_g03"> Gaussian 03 output</a>
+<a href ="Tests_test27_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 28</dt>
+<dd>positron scattering from C2H2 using Gaussian 03 output, A1, static+DPM (from T. Gibson) polarization <br />
+<a href ="Tests_test28_inp"> Input Data</a>
+<a href ="Tests_test28_ostnd"> Standard output</a>
+<a href ="Tests_test28_g03"> Gaussian 03 output</a>
+</dd>
+<dt> Test 29</dt>
+<dd>N2, using molden output,(3-sigma-g)^-1 photoionization calculation, resonance search <br />
+<a href ="Tests_test29_inp"> Input Data</a>
+<a href ="Tests_test29_ostnd"> Standard output</a>
+<a href ="Tests_test29_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test29_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 30</dt>
+<dd>N2, using molden output,(3-sigma-g)^-1 resonance calculation with CalcInt <br />
+<a href ="Tests_test30_inp"> Input Data</a>
+<a href ="Tests_test30_ostnd"> Standard output</a>
+<a href ="Tests_test30_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test30_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 31</dt>
+<dd>Ar, using g03 output,(2p)-1 photoionization calculation <br />
+<a href ="Tests_test31_inp"> Input Data</a>
+<a href ="Tests_test31_ostnd"> Standard output</a>
+<a href ="Tests_test31_g03"> Gaussian 03 output</a>
+<a href ="Tests_test31_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 32</dt>
+<dd>Pt, electron scattering from the Pt atom <br />
+<a href ="Tests_test32_inp"> Input Data</a>
+<a href ="Tests_test32_ostnd"> Standard output</a>
+<a href ="Tests_test32_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test32_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 33</dt>
+<dd>BF3 vibrational averaging using VibAveN <br />
+<a href ="Tests_test33_inp"> Input Data</a>
+<a href ="Tests_test33_ostnd"> Standard output</a>
+</dd>
+<dt> Test 34</dt>
+<dd>CH4 (1s)-1 compute rotation state specific dipole matrix elements needed for computing
+RFPADs and AA_RFPADs with rotation before fragmentation <br />
+<a href ="Tests_test34_inp"> Input Data</a>
+<a href ="Tests_test34_ostnd"> Standard output</a>
+<a href ="Tests_test34_dat"> Dipole matrix elements used as input</a>
+<a href ="Tests_test34_g09"> Gaussian 09 output used to get geometry</a>
+</dd>
+<dt> Test 35</dt>
+<dd>CN-, electron scattering from negative ion using Molden output <br />
+<a href ="Tests_test35_inp"> Input Data</a>
+<a href ="Tests_test35_ostnd"> Standard output</a>
+<a href ="Tests_test35_molden2012"> Molden output from Molpro 2012</a>
+<a href ="Tests_test35_molpro_inp"> Molpro input</a>
+</dd>
+<dt> Test 36</dt>
+<dd>CH4 using GAMESS output, using a large aug-cc-pVQZ basis set, photoionization <br />
+<a href ="Tests_test36_inp"> Input Data</a>
+<a href ="Tests_test36_ostnd"> Standard output</a>
+<a href ="Tests_test36_gms_dat"> GAMESS output</a>
+<a href ="Tests_test36_gms_inp"> GAMESS input</a>
+</dd>
+<dt> Test 37</dt>
+<dd>SF6, using C4v symmetry using the FixCharge data record, Gaussian 03 output, A1G, se+mp  <br />
+<a href ="Tests_test37_inp"> Input Data</a>
+<a href ="Tests_test37_ostnd"> Standard output</a>
+<a href ="Tests_test37_g03"> Gaussian 03 output</a>
+<a href ="Tests_test37_g03_inp"> Gaussian 03 input</a>
+</dd>
+<dt> Test 38</dt>
+<dd>N2, using Gaussian 03 output,(3-sigma-g)^-1 photoionization time delay calculation
+for comparison with test28 in mccin <br />
+<a href ="Tests_test38_inp"> Input Data</a>
+<a href ="Tests_test38_ostnd"> Standard output</a>
+<a href ="Tests_test38_g03"> Gaussian 03 output</a>
+<a href ="Tests_test38_g03_inp"> Gaussian 03 input</a>
+</dd>
+</dl>
+
+</body>
+</html>

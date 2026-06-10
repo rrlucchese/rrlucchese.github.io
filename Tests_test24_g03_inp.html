@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>test24.g03.inp</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<pre>
+g03 &lt;&lt;eoi
+# rhf/6-311G(2d,2p) 6D 10F scf=tight Gfinput PUNCH=MO
+
+SF6, Big BASIS.
+
+0 1
+S
+F 1 R
+F 1 R 2 T
+F 1 R 2 T 3 T  1
+F 1 R 2 T 3 T -1
+F 1 R 2 T 4 T  1
+F 1 R 3 T 4 T -1
+
+R 1.5602262
+T 90.0
+
+eoi
+#
+cat fort.7
+</pre>
+</body>
+</html>

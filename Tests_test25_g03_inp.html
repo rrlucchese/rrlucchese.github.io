@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>test25.g03.inp</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<pre>
+g03 &lt;&lt;eoi
+# rhf/aug-cc-pVTZ 6D 10F scf=tight Gfinput PUNCH=MO
+
+H2O
+
+0 1
+H1
+O1 H1 ROH
+H2 O1 ROH H1 AHOH
+
+ROH =  0.956
+AHOH =  105.2
+
+eoi
+cat fort.7
+</pre>
+</body>
+</html>

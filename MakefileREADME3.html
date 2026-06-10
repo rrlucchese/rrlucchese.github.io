@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Makefile Options</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Makefile options</h1>
+</p>
+<p>
+The Makefile (to be used with GNU make, i.e. gmake on some systems) in ePolyScat contians the following commands:
+</p>
+<dl>
+<dt> make all</dt>
+<dd>makes executables and the web manual, needs the environment variables MACH, COMPILER, and TMPDIR to run correctly.
+</dd>
+<dt> make test<var>n</var> </dt>
+<dd>runs test <var>n</var> that is in the <code>tests</code> directory and puts the output in the
+<code>tests/outdir.$MACH</code> directory in file test<var>n</var>.out
+</dd>
+<dt> make o=stdout test<var>n</var> </dt>
+<dd>runs test <var>n</var> that is in the <code>tests</code> directory and puts the output
+on the standard output
+</dd>
+<dt> make t=batch test<var>n</var> </dt>
+<dd>runs test <var>n</var> that is in the <code>tests</code>
+directory using a batch queue facility
+putting the output into the <code>tests/outdir.$MACH</code> directory.
+</dd>
+<dt> make o=<var>file</var> test<var>n</var> </dt>
+<dd>runs test <var>n</var> that is in the <code>tests</code>
+directory and puts the output in <var>file</var>
+</dd>
+<dt> make testall</dt>
+<dd>runs all of the tests in the <code>tests</code> directory and puts the
+output in the <code>tests/outdir.$MACH</code> directory
+</dd>
+<dt> make t=batch testall</dt>
+<dd>runs all of the tests in the <code>tests</code> directory using the batch facility
+and puts the output in the <code>tests/outdir.$MACH</code> directory
+</dd>
+<dt> make manual</dt>
+<dd>creates the web manual and puts it in the <code>manual</code> directory
+</dd>
+<dt> make mpiwrapper</dt>
+<dd>makes a wrapper to set up the inp.dat file and run the correct parallel environment, the
+wrapper is a script with the name ePolyScat in the directory $pe/bin
+</dd>
+<dt> make clean</dt>
+<dd>removes all files created by make
+</dd>
+</dl>
+
+<p>
+The Makefile uses machine files found in the <code>include</code> subdirectory.
+In particular, one must create appropriate versions of the following files:
+</p>
+<dl>
+<dt> $MACH$COMPILER.mk</dt>
+<dd>Makefile definitions for compiling and linking the code
+</dd>
+<dt> $MACH.batch.com</dt>
+<dd>batch script to run the test jobs
+</dd>
+<dt> $MACH$COMPILER.mpiwrapper.gen</dt>
+<dd>script to creat wrapper script to make the codes easier to run.
+</dd>
+</dl>
+
+<p>
+where $MACH is the
+<a href ="SourceREADME2"> environment variable</a>
+the specifies the type of machine and $COMPILER specifies which complier to use.
+</p>
+<p>
+The libraries that are needed are
+<a href ="http://www_open-mpi_org/"> OpenMPI,</a>
+<a href ="http://www_netlib_org/lapack/"> LAPACK,</a>
+and BLAS
+<a href ="http://www_tacc_utexas_edu/resources/software/"> (e.g. Goto BLAS)</a>
+</p>
+<p>
+Note that after running a testall command, one can check all of the tests results against the standard outputs using
+a bash script that is defined in the extras directory
+</p>
+<ol type="1">
+<li><code> . extras/CompDiff.sh  # this defines a few shell functions </code>
+</li>
+<li><code> CompDiffStndAll tests/outdir.$MACH tests  # compares the .out files in the first directory given with the
+.ostnd files in the second directory indicated </code>
+</li>
+</ol>
+
+<p>
+Note that this does a comparision of certain lines of the output for numerical results.  This means e.g. different
+dates will not be flagged as being different, which would occur if a straight diff were performmed.
+</p>
+</body>
+</html>
