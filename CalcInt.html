@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>CalcInt.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>CalcInt</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>CalcInt</code> <var>OrbTypeL</var> <var>OrbUseL</var> <var>OrbTypeR</var> <var>OrbUseR</var> </p>
+</p>
+
+<p>
+This command computes the overlap integral between two functions or sets of functions.
+<var>OrbTypeL</var> <var>OrbUseL</var> define the functions on the left side of the matrix element and
+<var>OrbTypeR</var> <var>OrbUseR</var> define the functions on the right.
+<var>OrbTypeL</var> and <var>OrbTypeR</var> are character strings and <var>OrbUseL</var> and
+<var>OrbUseR</var> are integers.
+If the command
+<a href ="FileName"> FileName</a>
+has been used to define the <code>MatrixElements</code> file,
+then the computed matrix elements are also written to that file.
+</p>
+<ul>
+<li>
+<var>OrbType</var> = <code>'DipoleOp'</code> for computing a matrix element involving the dipole operator.
+<var>OrbUse</var> give which operator, = 1 for length form of first operator, = 2 velocity form of first
+operator.  If more that one dipole operator is present because they have the same symmetry type
+then 3 and 4 would be for the second operator and 5 and 6 would be for the third operator if it is present.
+All six operators would only be present if x, y, and z have the same symmetry type and they are not degenerate,
+e. g. there is no symmetry in the system.
+</li>
+<li>
+<var>OrbType</var> = <code>'ExpOrb'</code> uses an orbital that has been expanded using
+<a href ="ExpOrb"> ExpOrb.</a>
+<var>OrbUse</var> is then which orbital group to use.
+</li>
+<li>
+<var>OrbType</var> = <code>'PlaneWv'</code> is used to compute the overlap with
+partial wave expanded energy normalized plane waves.
+<var>OrbUse</var> is the maximum value of <var>l</var> for which the matrix elements
+are computed.
+</li>
+<li>
+<var>OrbType</var> = <code>'ResWvFun'</code> to use a wave function created by
+<a href ="ResWvFun"> ResWvFun</a>
+<var>OrbUse</var> is not used but needs to be present on the command line.
+</li>
+</ul>
+
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatEng"> ScatEng,</a>
+scattering energy, in eV.  This record or ScatEngN must be present
+if  <var>OrbType</var> = <code>'PlaneWv'</code>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatEngN"> ScatEngN,</a>
+scattering energy, in eV.  This record or ScatEng must be present
+if  <var>OrbType</var> = <code>'PlaneWv'</code>.
+</li>
+</ul>
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#PlaneWvCharge"> PlaneWvCharge,</a>
+This record determines the charge on the molecule when <code>PlaneWv</code>
+type functions are used.  A value of 0 corresponds to palne waves and is the default
+value.  A value of 1 should be used for Coulomb wave when a +1 charge is on the molecule.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test30_inp"> test30</a>
+</li>
+</ul>
+</body>
+</html>

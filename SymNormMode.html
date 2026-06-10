@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>SymNormMode.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>SymNormMode</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p><code>SymNormMode</code></p>
+</p>
+<p>
+The is used to computed the symmetry adapted normal modes that correspond to the symmetries
+obtained using GetBlms.  It assumes that in the Quantum Chemistry output the normal modes
+were computed.  For Gaussian that is done using the "Freq=HPModes" option.
+</p>
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#FreqToler"> FreqToler,</a>
+tolernace use to determine if vibrational frequency eigenvalues are
+degenerate (in units of cm-1).
+Default value is 1.0e-4.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test23_inp"> test23</a>
+</li>
+</ul>
+</body>
+</html>

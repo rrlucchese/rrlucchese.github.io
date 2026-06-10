@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>GetDPot.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>GetDPot</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>GetDPot</code></p>
+</p>
+<p>
+or
+</p>
+<p>
+<p><code>GetDPotPos</code></p>
+</p>
+<p>
+This command computes the adibatic potential used in resonance searches.  The potential is
+computed out to <var>RMax</var>.  The form <code>GetDPotPos</code> is for positron scattering.
+If the <code>PlotData</code> file has been defined then the potential is also written to that file.
+If the potential is written out, the units are Angstroms for the distance and eV for the energy.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxA"> LMaxA,</a>
+used to control the number of radial adiabatic potentials computed.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatContSym"> ScatContSym,</a>
+the IR for which the adiabatic potential is computed.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RMax"> RMax,</a>
+maximum value of <ver>r</var> (in Amgstroms) in the adiabatic potential.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#DPotEng"> DPotEng,</a>
+energy in eV at which to calculate the local exchange potential.
+</li>
+</ul>
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used it the text written to <code>PlotData</code>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#DPotL"> DPotL</a>
+This is an integer that specifies the value of <l> that is used in selecting the partial waves
+when an atom is being considered.  When studying an atom, DPot requires
+the atom to be at the origin.  The default value is the value of <var>l</var> found in the lowest
+partial wave of the symmetry being considered.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#DPotM"> DPotM</a>
+This is an integer that specifies the value of <var>m</var> that is used in selecting the partial waves
+when a linear molecule or an atom is being considered.  When studying a linear molecule, DPot requires
+that the molecular axis coincides with the z axis.  The default value is the value of <var>m</var>
+found in the lowest partial wave of the symmetry being considered.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#FegeScale"> FegeScale,</a>
+Optional value used to scale the local exchange potential.  This can be used
+to curcumvent singularities in the interative procedure.
+Default value is 1.0.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#PlotDataGrid"> PlotDataGrid,</a>
+controls the radial grid that is used to write the adibatic potential.  If present then
+the full radial grid is used, otherwise a more limited number of points are written.
+</li>
+</ul>
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test10_inp"> test10</a>
+</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>MFTimeDelay.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>MFTimeDelay</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>MFTimeDelay</code>  <var>File-1</var> <var>File-2</var> ...</p>
+</p>
+<p>
+or
+</p>
+<p>
+<p><code>MFTimeDelay</code>  <var>Energy</var> <var>File-1</var> <var>File-2</var> ...</p>
+</p>
+<p>
+This command computes the molecular frame amplitudes and the photoionization time delay from
+the energy derivative of the phases.
+</p>
+<p>
+if the variable <var>Energy</var> is present then the results are written for only one photoelectron
+kinetic energy.
+If the variables <var>File-n</var> are present, then the dynamical coefficients in
+those files are processed.  Otherwise, the program uses the automatically generated
+scratch file as described in the definition of the command
+<a href ="PhIon"> PhIon.</a>
+</p>
+<p>
+Data that are just a function of the energy are written to <code>PlotData</code>
+if more than one energy is computed
+as defined in the <code>FileName</code> command, and
+data of two variables, e.g. energy and one angle, are written to <code>PlotData2D</code>.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#IPot"> IPot,</a>
+the ionization potential in eV.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#MFTimeDelayAngles"> MFTimeDelayAngles,</a>
+gives the angles over which the time delays are to be computed and averaged
+</li>
+</ul>
+
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used in the text written to <code>PlotData</code> or <code>PlotData2D</code>
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TargCompSel"> TargCompSel,</a>
+for a degenerate target state, do only one of the components.  The default
+average over all components.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TestOut"> TestOut,</a>
+if present then annotate important output using "Test2Re" at the begining of the important results.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RotateFormIdy"> RotateFormIdy,</a>
+Formula for rotation of photoionization matrix elements before computing cross section.
+Yields the same results as using the corresponding
+<a href ="SourceGetDataRecordDef_f90#RotateForm"> RotateForm</a>
+before computing the cross sections.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test38_inp"> test38</a>
+</li>
+</ul>
+</body>
+</html>

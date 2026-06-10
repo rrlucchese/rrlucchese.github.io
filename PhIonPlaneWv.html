@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>PhIonPlaneWv.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>PhIonPlaneWv</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p><code>PhIonPlaneWv</code>  <var>Energy-1</var> <var>Energy-2</var> ... </p>
+</p>
+<p>
+or
+</p>
+<p>
+<p><code>PhIonPlaneWvN</code>  <var>Energy-Start</var> <var>Energy-Step</var> <var>Number-of-Energies</var>  </p>
+</p>
+<p>
+This command computes the photoionization or photodetachment dipole matrix elements plane waves
+or Coulomb waves.
+The <code>PhIonPlaneWv</code> form does the calculation at
+a list of scattering energies (in eV).  If no energies are present then the energies are
+taken from the
+<a href ="SourceGetDataRecordDef_f90#ScatEng"> ScatEng,</a>
+or
+<a href ="SourceGetDataRecordDef_f90#ScatEngN"> ScatEngN,</a>
+data record.
+The <code>PhIonPlaneWvN</code> form does the calculation at
+a sequence of scattering energies with fixed spacing (in eV).
+The symmetry of the plane waves is assumed to be the same as in the current orbital
+which has been computed by the
+<a href ="DipoleOp,html"> DipoleOp</a>
+command.
+If the command
+<a href ="FileName"> FileName</a>
+has been used to define the <code>MatrixElements</code> file,
+then the final dipole matrix elements
+are written to that file.  Otherwise, the matrix elements
+are written to a scratch file.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatEng"> ScatEng,</a>
+photoelectron energy, in eV.  This data record is not used if
+<var>Energy</var> is defined in the command.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatEngN"> ScatEngN,</a>
+photoelectron energy, in eV.  This data record is not used if
+<var>Energy</var> is defined in the command.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#DirProdOvlp"> DirProdOvlp,</a>
+transformation matrix from symmetry adapted wave functions to direct product wave functions.
+This can be created using the
+<a href ="GenFormPhIon"> GenFormPhIon</a>
+or
+<a href ="GenFormScat"> GenFormScat</a>
+commands.
+</li>
+</ul>
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxK"> LMaxK,</a>
+the maximum <var>l</var> used in the expansion of the
+homogeneous scattering solution.  This is then the maximum <var>l</var> for which
+dipole matrix elements are computed.  Note that this should be greater than or equal to
+LMaxA.  Default value is LMaxA-2.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Orthog"> Orthog,</a>
+this data record controls which orbital groups the continuum function is constrained to be
+orthogonal to.  If it is not present then no orthogonalization is performmed.
+If it is present with no integers present, then orthogonalization
+will be performmed with respect to all orbital groups.  If a sequence of zeros and ones
+are present, then orthogonalization will be performed with respect to the orbital groups
+for which the value is one.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#PlaneWvCharge"> PlaneWvCharge,</a>
+if this record is present then it is used to specify the charge on the molecule
+used to compute the plane wave or Coulomb waves.  If it is absent, the the default
+value of 0 is assumed, i.e. plane waves are used.
+</li>
+</ul>
+
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<p>
+<li>
+<a href ="Tests_test08_inp"> test08</a>
+photodetachemnt cross sections for F2- using the plane wave approximation
+</p>
+<ul>
+</ul>
+</body>
+</html>

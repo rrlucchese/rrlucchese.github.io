@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>GetPot.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>GetPot</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>GetPot</code> </p>
+</p>
+<p>
+This comand computes the electron density, the static potential, and the correlation-polarization
+potential, <var>V</var><sub>(CP)</sub>.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#EngForm"> EngForm,</a>
+potential energy formula.
+This data record can be created using the
+<a href ="GenFormPhIon"> GenFormPhIon</a>
+or
+<a href ="GenFormScat"> GenFormScat</a>
+commands.
+</li>
+</ul>
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#VCorr"> VCorr,</a>
+the type of correlation potential.  If this record is not present, then no
+correlation-polarization potential is computed.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#AsyPol"> AsyPol,</a>
+definition of the asymptotic potential.  If not present, then the
+corrlelation-polarization potential is not corrected to agree with the polarization
+potential due to the static polarizability of the molecule.
+</li>
+</ul>
+<p>
+<h2>Data records created</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TotalAsymp"> TotalAsymp,</a>
+the total asymptotic polarizability.
+This record is created by
+<a href ="Source_asypol_f90"> asypol.</a>
+</li>
+</ul>
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test01_inp"> test01</a>
+</li>
+</ul>
+</body>
+</html>

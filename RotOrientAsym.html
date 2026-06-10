@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>RotOrientAsym.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Command <code>RotOrientAsym</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p><code>RotOrientAsym</code> <var>Energy</var> <var>File-1</var> <var>File-2</var> ...</p>
+</p>
+<p>
+This command computes the differential cross section for an oriented, i.e. fixed in space,
+non-linear molecule from the dynamical coefficients including the effects of rotation before fragmentation.
+See J. A. Lopez-Dominguez and R. R. Lucchese, Phys. Rev. A 93, 033421 (2016).
+The value of <var>Energy</var> (in eV)
+selects which photoelectron kinetic energy to consider.
+</p>
+<p>
+If the variables <var>File-n</var> are present, then the dynamical coefficients in those files
+are processed.  Otherwise, the program uses the automatically generated scratch files as
+described in the definition of the command
+<a href ="PhIon"> PhIon.</a>
+</p>
+<p>
+If the <code>OrientAsymData</code> file has been defined then the data is also written to that file.
+</p>
+<p>
+If the <code>OrientAsymGeom</code> file has been defined then the geometry data is written to that file
+if that data is available.
+</p>
+<p>
+If the <code>OrientAsymEig</code> file has been defined then the eigenvalues of the rotational
+Hamiltonian are written to that file
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#JMax"> JMax,</a>
+The values of the rotational quantum numbers <var>J</var> and <var>J'</var> to be used
+to compute the final state asymetric-rotor rotational wave function for the non linear molecule studied.
+If not defined then default value is JPPMax + LMax + 1.  Note that either JMax or JPPMax must be defined.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#JPPMax"> JPPMax,</a>
+Maximum value of initial state J, the default is to include all possible values, JMax + LMax + 1
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#IPot"> IPot,</a>
+the ionization potential in eV.
+</li>
+</ul>
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used in the text written to <code>PlotData</code>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RotConstants"> RotConstants,</a>
+if given, are the three rotational constants A B C in cm^-1.  If
+not given, their value is computed.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TargCompSel"> TargCompSel,</a>
+for a degenerate target state, do only one of the components.  The default
+is to sum all components.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TestOut"> TestOut,</a>
+If present then extra output for unit testing will be written.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxK"> LMaxK,</a>
+the maximum <var>l</var> in the dipole matrix elements used.  Default value is
+the maximum <var>l</var> found in the matrix elements, i.e. use all matrix elements.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test34_inp"> test034,</a>
+Example of CH4 C1s ionization using precalculated dipole matrix elements
+</li>
+</ul>
+</body>
+</html>

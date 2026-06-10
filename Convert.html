@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Convert.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Command <code>Convert</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p><code>Convert</code> <var>Source</var> <var>Type</var> [<var>WhichVectors</var>]</p>
+</p>
+<p>
+Where <var>Source</var> is the output file from the Quantum Chemistry
+program and <var>Type</var> as described below,
+<var>WhichVectors</var> is used in the Mesa conversion to indicate which vectors to read from the
+output
+</p>
+<p>
+<h3><var>Type</var></h3>
+</p>
+<dl>
+<dt> Gaussian</dt>
+<dd>Gaussian 03, Gaussian 09, or Gaussian 16.
+In Gaussian one should use the "6D 10F Gfinput PUNCH=MO" options
+with "cat fort.7" run after Gaussian program finishes.
+</dd>
+<dt> Molden  </dt>
+<dd>for molden data file from Molpro or OpenMolcas.  In OpenMolcas use "cartesian all" with the
+"Native input" mode so that the Molden file is in terms of cartesian Gaussian functions.
+</dd>
+<dt> Gamess</dt>
+<dd>read .dat file from GAMESS with the PLTORB=.TRUE. output option, also use NPUNCH=1 in the
+in the SCF data set to only produce the occupied orbitals
+</dd>
+<dt> Mesa</dt>
+<dd>read output from MESA from m101 for geometry and basis set, m401 for the orbitals from the checkpoint
+file, <var>WhichVectors</var>, if present, posssible values are
+BeforeSchmidt, AfterSchmidt, or Final, and if not present
+the default is BeforeSchmidt
+</dd>
+<dt> QChem</dt>
+<dd>Read the Molden data from a QChem output, where the PRINT_ORBITALS and MOLDEN_FORMAT are true and
+PURECART is 2222 to ensure that Cartesian Gaussian functions are used. QChem does not explicitly
+construct symmetry orbitals.  However, ePolyScat assumes that the orbitals belong
+to the irreducible representations of the point group describing the
+molecular geometry.  Thus when QChem molecular orbitals have broken symmetry, for correct
+results one should run ePolyScat using the
+<a href ="SourceGetDataRecordDef_f90#NoSym"> NoSym</a>
+option.  Alternatively, if the orbitals only appear to be symmetry broken due to the lack of
+convergence of the SCF in QChem, then the orbitals can be improved by tightening the convergence
+criterion, e.g. using "SCF_CONVERGENCE 11".
+</dd>
+</dl>
+
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ECenter"> ECenter,</a>
+the location of the center of expansion.
+Default value is (0, 0, 0)
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#NECenter"> NECenter,</a>
+the index of the nucleus at which the center of expansion should be located.
+Default expansion center is (0, 0, 0).
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#CnvOrbSel"> CnvOrbSel</a>
+this specifies which orbitals to use from the Quantum
+Chemistry program output.
+Default value is all of the occupied orbitals.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RotateForm"> RotateForm</a>
+if present then do the specified rotation and translation on the molecule.
+These transformations are performed after the molecule has been moved by applying
+<a href ="SourceGetDataRecordDef_f90#ECenter"> ECenter</a>
+or
+<a href ="SourceGetDataRecordDef_f90#NECenter"> NECenter,</a>
+if they are present.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#FixCharge"> FixCharge</a>
+if present then change the nuclear charges used to compute the potential or
+those used to determine the symmetry of the system
+</li>
+</ul>
+
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test01_inp"> test01,</a>
+g03
+</li>
+<li>
+<a href ="Tests_test26_inp"> test26,</a>
+molden2012
+</li>
+</ul>
+</body>
+</html>

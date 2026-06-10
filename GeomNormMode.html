@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>GeomNormMode.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>GeomNormMode</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p><code>GeomNormMode</code> <var>iMode</var>,<var>xMode1</var> <var>xMode2</var> ... </p>
+</p>
+<p>
+or
+</p>
+<p>
+<p><code>GeomNormModeN</code>  <var>NMode</var>  <var>iMode</var>(1:<var>NMode</var>)
+<var>xMode1</var>(1:<var>NMode</var>) <var>xMode2</var>(1:<var>NMode</var>) ...</p>
+</p>
+<p>
+Used to generate geometries at different values of the normal coordiantes as determined
+using
+<a href ="SymNormMode"> SymNormMode.</a>
+<var>iMode</var> indicates the normal mode and <var>xModei</var> indicates
+the extension in units of the displacement at the classical turning point in the ground vibrational
+state.  If defined, <var>NMode</var> indicates the number of modes which are simultaneously
+displaced.
+</p>
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#AltEqGeom"> AltEqGeom,</a>
+an alternate equilibrium geometry used to generate the geometries
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test23_inp"> test23</a>
+</li>
+</ul>
+</body>
+</html>

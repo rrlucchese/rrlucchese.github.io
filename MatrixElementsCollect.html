@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>MatrixElementsCollect.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>MatrixElementsCollect</code> and <code>MatrixElementsCombine</code> </h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>MatrixElementsCollect</code> <var>File-1</var> <var>File-2</var> ...</p>
+<p><code>MatrixElementsCombine</code> <var>File-1</var> <var>File-2</var> ...</p>
+</p>
+
+<p>
+The command <code>MatrixElementsCollect</code> reads T-matrix elements from
+an external file and puts them into an internal data structure.
+The command <code>MatrixElementsCombine</code> reads T-matrix elements from
+an external file and combines them with matrix elements that have already read in for the same symmetry
+and energies.  This is used to replace the low partial wave matrix elements with more accurate values.
+If the variables <var>File-n</var> are present, then the T-matrix elements in
+those files are processed.  Otherwise, the program uses the automatically generated
+scratch file as described in the definition of the command
+<a href ="Scat"> Scat.</a>
+</p>
+
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test13_inp"> test13</a>
+</li>
+</ul>
+</body>
+</html>

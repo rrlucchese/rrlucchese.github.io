@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>GetCro.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>GetCro</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>GetCro</code> <var>File-1</var> <var>File-2</var> ...</p>
+</p>
+<p>
+This command computes the total cross section and photoelectron asymmetry
+parameters from the dynamical coefficients.
+</p>
+<p>
+If the variables <var>File-n</var> are present, then the dynamical coefficients in
+those files are processed.  Otherwise, the program use the automatically generated
+scratch file as described in the definition of the command
+<a href ="PhIon"> PhIon.</a>
+If the <code>PlotData</code> file has been defined then the data is also written to that file.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#IPot"> IPot,</a>
+the ionization potential in eV.
+</li>
+</ul>
+
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used in the text written to <code>PlotData</code>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#PolSel"> PolSel,</a>
+Used to indicate which polarization direction of linrarly polarized light to
+include in the photoionization calculation, 0 for all directions (default),
+1 for x, 2 for y, and 3 for z.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RotateFormIdy"> RotateFormIdy,</a>
+Formula for rotation of photoionization matrix elements before computing cross section.
+Yields the same results as using the corresponding
+<a href ="SourceGetDataRecordDef_f90#RotateForm"> RotateForm</a>
+before computing the cross sections.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#CroByPartialWave"> CroByPartialWave,</a>
+If this resord is present then the cross section is computed as a function of <var>l</var>.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test12_inp"> test12</a>
+</li>
+<li>
+<a href ="Tests_test14_inp"> test14</a>
+</li>
+<li>
+<a href ="Tests_test15_inp"> test15</a>
+</li>
+</ul>
+</body>
+</html>

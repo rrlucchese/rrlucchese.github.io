@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>DipoleOp.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>DipoleOp</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>DipoleOp</code></p>
+</p>
+<p>
+This command computes the result of the dipole operator operating on
+a molecular orbital.  The current code assume that the initial (unionized)
+state does not have spatial degeneracy, e.g. that it does not have an
+E or T symmetry.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#DipOpForm"> DipOpForm,</a>
+This record contains the formula for constructing the
+dipole operator.  This is usually created using the
+command
+<a href ="GenFormPhIon"> <code>GenFormPhIon</code></a>
+although it can be constructed by hand.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test15_inp"> test15</a>
+</li>
+</ul>
+</body>
+</html>

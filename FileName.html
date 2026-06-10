@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>FileName.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Command <code>FileName</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p><code>FileName</code> <var>File-Type</var> <var>File-Name</var> <var>Position</var>
+</p>
+</p>
+<p>
+The parameter <var>File-Type</var> specifies which output file, with name <var>File-Name</var>,
+is being defined.
+The input
+parameter <var>Position</var> is optional and if peresent it specifies the value of the
+<code>POSITION</code> parameter in the FORTRAN <code>OPEN</code> statement.
+Two possible values are <code>REWIND</code> and <code>APPEND</code>.
+The default value is <code>REWIND</code>.
+</p>
+<p>
+<h3> Possible values for <var>File-Type</var></h3>
+</p>
+<dl>
+<dt> <code>AWaveFun</code></dt>
+<dd>this is the file where adiabatic resonance wave functions are put in
+<a href ="DataFiles"> .dat file format</a>
+</dd>
+<dt> <code>DebugOut</code></dt>
+<dd>this is used as the stem of a file for debugging output where each processor
+writes the output to a different file.
+</dd>
+<dt> <code>DumpOrbBasis</code></dt>
+<dd>this is the file where data from
+<a href ="DumpOrb"> DumpOrb</a>
+and
+<a href ="DumpBasis"> DumpBasis</a>
+is written
+</dd>
+<dt> <code>DumpOut</code></dt>
+<dd>this is the file where data from
+<a href ="DumpIdy"> DumpIdy</a>
+is written
+</dd>
+<dt> <code>MatrixElements</code></dt>
+<dd>this specifies where variational matrix elements are put.  For electron
+scattering this is where the T-matrix elements are stored.  For
+photoionizaiton this is where the idynamical coefficients are stored.
+</dd>
+<dt> <code>MFDCSGeom</code></dt>
+<dd>this is the file where geometry information is written for single orientation calculations
+of the MFDCS
+</dd>
+<dt> <code>MFDCS</code></dt>
+<dd>the file is where the 2-dimensional differential cross sections are written in .dat format
+</dd>
+<dt> <code>MFDCSFull</code></dt>
+<dd>the file where the full list differential cross sections are written
+using a RThType = 3 type run of MFDCS
+</dd>
+<dt> <code>OrientAsymData</code></dt>
+<dd>this is the file where molecular frame data after rotation from
+<a href ="RotOrientAsym"> RotOrientAsym</a>
+is written
+</dd>
+<dt> <code>OrientAsymEig</code></dt>
+<dd>this is the file where eigenvalues of the rotational Hamiltonian
+<a href ="RotOrientAsym"> RotOrientAsym</a>
+are written
+</dd>
+<dt> <code>OrientAsymGeom</code></dt>
+<dd>this is the file where geometry information compatible with the data from
+<a href ="RotOrientAsym"> RotOrientAsym</a>
+is written
+</dd>
+<dt> <code>OrientData</code></dt>
+<dd>this is the file where molecular frame data from
+<a href ="OrientCro"> OrientCro</a>
+is written
+</dd>
+<dt> <code>OrientGeom</code></dt>
+<dd>this is the file where geometry information compatible with the data from
+<a href ="OrientCro"> OrientCro</a>
+is written
+</dd>
+<dt> <code>PlotData</code></dt>
+<dd>this is the file where data of one variable suitable for plotting are written in
+<a href ="DataFiles"> .dat file format</a>
+</dd>
+<dt> <code>PlotData2D</code></dt>
+<dd>this is the file where data of two variables suitable for plotting are written in
+<a href ="DataFiles"> .dat file format</a>
+</dd>
+<dt> <code>SWaveFun</code></dt>
+<dd>this is the file where spherical resonance wave functions are put in
+<a href ="DataFiles"> .dat file format</a>
+</dd>
+<dt> <code>VibAveIdy</code></dt>
+<dd>this is the file where the vibrationally averaged dipole matrix elements
+that are computed in
+<a href ="VibAveN"> VibAveN</a>
+are written.  The output format is the same as used in
+<a href ="DumpIdy"> DumpIdy.</a>
+</dd>
+<dt> <code>ViewOrb</code></dt>
+<dd>this is the file where orbitals expanded using
+<a href ="ViewOrb"> ViewOrb</a>
+are written in
+<a href ="DataFiles"> .dat file format</a>
+</dd>
+<dt> <code>ViewOrbFlux</code></dt>
+<dd>this is the file where the flux and its divergence for the orbitals expanded using
+<a href ="ViewOrb"> ViewOrb</a>
+are written in
+<a href ="DataFiles"> .dat file format</a>
+</dd>
+<dt> <code>ViewOrbGeom</code></dt>
+<dd>this is the file where geometry information needed to intrepret the output from
+<a href ="ViewOrb"> ViewOrb</a>
+is written
+</dd>
+</dl>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test13_inp"> test13</a>
+used to combine high and low partial wave calculations
+</li>
+<li>
+<a href ="Tests_test14_inp"> test14,</a>
+used to save data to a file suitable for plotting.
+</li>
+<li>
+<a href ="Tests_test15_inp"> test15,</a>
+used to combine photoionizaiton calculations from several different
+symmetries.
+</li>
+<li>
+<a href ="Tests_test20_inp"> test20,</a>
+used to do both scattering and photoionizaiton calculations in the same run
+</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>GenFormPhIon.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>GenFormPhIon</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>GenFormPhIon</code></p>
+</p>
+<p>
+This command computes the dipole operator formulas and energy experssions
+for photoionization
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#OrbOcc"> OrbOcc,</a>
+orbital group occupations of the target state.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatContSym"> ScatContSym,</a>
+IR of the continuum orbital.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatSym"> ScatSym,</a>
+IR of the total scattering state.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#SpinDeg"> SpinDeg,</a>
+spin degeracy of the total scattering state.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TargSym"> TargSym,</a>
+IR of the target state.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TargSpinDeg"> TargSpinDeg,</a>
+the spin degeneracy of the target state.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#InitSym"> InitSym,</a>
+IR of the initial state.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#InitSpinDeg"> InitSpinDeg,</a>
+the spin degeneracy of the initial state.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#OrbOccInit"> OrbOccInit,</a>
+orbital group occupations of the initial state.
+</li>
+</ul>
+
+<p>
+<h2>Data records created</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#EngForm"> EngForm,</a>
+contains the expression for the interaction potential.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#DirProdOvlp"> DirProdOvlp,</a>
+contains the matrix that transforms the direct product function into the symmetrized
+functions.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#DipOpForm"> DipOpForm,</a>
+contains the information needed to construct the correct dipole matrix
+elements.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test15_inp"> test15</a>
+</li>
+</ul>
+</body>
+</html>

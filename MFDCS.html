@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>MFDCS.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>MFDCS</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>MFDCS</code> <var>Energy-1</var> <var>Energy-2</var> ...
+</p>
+
+<p>
+This command computes to elastic differential scattering cross section in the molecular frame without including
+any correction for dipole scattering.
+If any <var>Energy-n</var> are present, then the MFDCS is computed at these energies.
+Otherwise the MFDCS is computed at all energies for which T-matrices for all symmetries have been computed.
+The T-matrices are obtained from the internal data structure for the T-matrix elements
+created using the
+<a href ="MatrixElementsCollect"> <code>MatrixElementsCollect</code> and <code>MatrixElementsCombine</code></a>
+commands.
+If the internal data structure is not present, then the T-matrix elements are taken from
+the scratch file used for the output from <code>Scat</code>.
+If the <code>PlotData</code> file has been defined then the computed DCS are also written to that file.
+</p>
+<p>
+The command
+<a href ="FileName"> FileName</a>
+is used to select what is written out and where it is put.
+</p>
+<ul>
+<li>
+The file <code>MFDCSGeom</code> is where geometry information is written for single orientation calculations
+</li>
+<li>
+The file <code>MFDCS</code> is where the 2-dimensional differential cross sections are written in .dat format
+</li>
+<li>
+The file <code>MFDCSFull</code> is where the full list differential cross sections are written
+using a RThType = 3 type run
+</li>
+</ul>
+
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#MFDCSInp"> MFDCSInp,</a>
+Information needed to compute the MFDCS
+</li>
+</ul>
+
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used it the text written to <code>PlotData</code>.
+</li>
+</ul>
+
+</body>
+</html>

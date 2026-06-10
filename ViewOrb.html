@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>ViewOrb.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>ViewOrb</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>ViewOrb</code> <code>'ExpOrb'</code> <var>OrbUse</var> [<var>OrbComponent</var>]</p>
+</p>
+<p>
+<p>or</p>
+</p>
+<p>
+<p><code>ViewOrb</code> <code>'ResWvFun'</code> [<var>OrbComponent</var>]</p>
+</p>
+<p>
+<p>or</p>
+</p>
+<p>
+<p><code>ViewOrb</code> <code>'DPot'</code>
+</p>
+<p>
+<p>or</p>
+</p>
+<p>
+<p><code>ViewOrb</code> <code>'DPotPos'</code>
+</p>
+<p>
+This command takes a computed molecular orbital or resonance wave function and writes it out in
+a form that can be plotted.  The output can be either on a Cartesian grid using the data record
+<a href ="SourceGetDataRecordDef_f90#ViewOrbGrid"> ViewOrbGrid,</a>
+in spherical polar coordinates using the data record
+<a href ="SourceGetDataRecordDef_f90#ViewOrbGridSph"> ViewOrbGridSph,</a>
+or as partial waves using
+<a href ="SourceGetDataRecordDef_f90#ViewOrbPartialWave"> ViewOrbPartialWave</a>
+</p>
+<ul>
+<li>
+The form with <code>'ExpOrb'</code> yields an orbital that has been expanded using
+<a href ="ExpOrb"> ExpOrb.</a>
+The orbital group written out is indicated by <var>OrbUse</var>, and specific component that is written
+out is controlled by the optional parameter <var>OrbComponent</var>.  The default value of
+<var>OrbComponent</var> is 1.
+</li>
+<li>
+The form with <code>'ResWvFun'</code> writes out an orbital that has been created using the
+<a href ="ResWvFun"> ResWvFun</a>
+comamnd.  The component of the symmetry type written out is controlled by the optional parameter
+<var>OrbComponent</var> which has a default value of 1.
+</li>
+<li>
+The form with <code>'DPot'</code> writes out the local approximation to the scattering potential
+including the local exchange in units of eV.  One needs to run the steps like a normal scattering
+calculation including
+<a href ="GetPot"> GetPot</a>
+and also define the data record
+<a href ="SourceGetDataRecordDef_f90#DPotEng"> DPotEng</a>
+which gives the energy used to construct the local approximation to the exchange potential
+</li>
+<li>
+The form with <code>'DPotPos'</code> writes out the interaction poteintial for positron scattering
+in units of eV.
+</li>
+</ul>
+
+<p>
+The command
+<a href ="FileName"> FileName</a>
+is used to select what is written out and where it is put.
+</p>
+<ul>
+<li>
+The file <code>ViewOrb</code> is where the orbital or potential is written.
+</li>
+<li>
+The file <code>ViewOrbFlux</code> is where the flux and divergence are written.
+</li>
+<li>
+The file <code>ViewOrbGeom</code> is where geometry and grid information are written.
+</li>
+</ul>
+
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ViewOrbGrid"> ViewOrbGrid</a>
+defines the Cartesian grid on which the orbital is expanded
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ViewOrbGridSph"> ViewOrbGridSph</a>
+defines the spherical polar coordinateson which the orbital is expanded.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ViewOrbPartialWave"> ViewOrbPartialWave</a>
+defines the partial wave expansion and radial grid to use
+for writting out the functions by partial waves.  All partial waves
+with non-zero parts are written out.  The partial waves
+are defined in terms of the real harmonics with negative vallues of m corresponding
+to the sine(|m|*phi) like functions and the non-negative values of m corresponding
+to the cosine(m*phi) like functions.
+</li>
+<li>One of
+<a href ="SourceGetDataRecordDef_f90#ViewOrbGridSph"> ViewOrbGridSph</a>
+or
+<a href ="SourceGetDataRecordDef_f90#ViewOrbGrid"> ViewOrbGrid</a>
+or
+<a href ="SourceGetDataRecordDef_f90#ViewOrbPartialWave"> ViewOrbPartialWave</a>
+must be present
+</li>
+</ul>
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#FegeScale"> FegeScale,</a>
+Optional value used to scale the local exchange potential.  This can be used to turn off the
+Fege potential with a value of 0.0
+Default value is 1.0.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ViewOrbLVal"> ViewOrbLVal,</a>
+If this record is present then plot out the sum of the contributions from only this <var>l</var>
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test09_inp"> test09</a>
+expand an orbital from <code>ExpOrb</code>
+</li>
+<li>
+<a href ="Tests_test10_inp"> test10</a>
+expand an orbital from <code>ResWvFun</code>
+and write the local static potential
+</li>
+</ul>
+</body>
+</html>

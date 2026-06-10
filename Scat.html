@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Scat.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>Scat</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+
+<p>
+<p><code>Scat</code>  <var>Energy-1</var> <var>Energy-2</var> ... </p>
+</p>
+<p>
+or
+</p>
+<p>
+<p><code>ScatN</code>  <var>Energy-Start</var> <var>Energy-Step</var> <var>Number-of-Energies</var>  </p>
+</p>
+<p>
+This command computes the <var>K</var> or <var>T</var> scattering matrix
+for electron-molecule scattering.
+The <code>Scat</code> form does the calculation at
+a list of scattering energies (in eV). If no energies are present then the energies are
+taken from the
+<a href ="SourceGetDataRecordDef_f90#ScatEng"> ScatEng,</a>
+or
+<a href ="SourceGetDataRecordDef_f90#ScatEngN"> ScatEngN,</a>
+data records.
+The <code>ScatN</code> form does the calculation at
+a sequence of scattering energies with fixed spacing (in eV).
+If the command
+<a href ="FileName"> FileName</a>
+has been used to define the <code>MatrixElements</code> file,
+then the final <var>K</var> or <var>T</var> matrix elements
+are written to the file specified there.  Otherwise, the matrix elements
+are written to a scratch file.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#FegeEng"> FegeEng,</a>
+this is the value of the energy parameter (in eV) needed to compute the FEGE local exchange potential.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatEng"> ScatEng,</a>
+scattering energy, in eV.  This data record is not used if
+<var>Energy</var> is defined in the Scat command.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatEngN"> ScatEngN,</a>
+scattering energy, in eV.  This data record is not used if
+<var>Energy</var> is defined in the Scat command.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ScatContSym"> ScatContSym,</a>
+the IR of the continuum orbital.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#EngForm"> EngForm,</a>
+potential energy formula.
+</li>
+</ul>
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#FegeScale"> FegeScale,</a>
+Optional value used to scale the local exchange potential.  This can be used
+to curcumvent singularities in the interative procedure.
+Default value is 1.0.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#GrnType"> GrnType,</a>
+Optional, the type of the scattering matrix (1, 0, or -1).
+Default value is 0 for a <var>T</var> matrix calculation.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#IterMax"> IterMax,</a>
+Optional.
+Maximum number of iterations allowed in the Pade approximant
+corrections of the scattering matrix elements.
+Default value is 15.  A value of -1 is used for a static only calculation.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxEx"> LMaxEx,</a>
+Optional. maximum <var>l</var> used in the expansion of <code>1/r_12</code>
+in the exchange terms.
+Default value is -1, which inclludes all exchange terms.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#NIntReg"> NIntReg,</a>
+number of regions used in stabilization.
+Default value is 40.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#CnvgKMat"> CnvgKMat,</a>
+parameter that controls the convergence of the iterative procedure.
+Default value is 1.0e-6.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#EpsAsym"> EpsAsym,</a>
+this data record controls where the asymptotic integration is truncated.
+The default is to stop the integration when the asymptotic potential is less than
+CnvgKMat/10 times the asymptotic electron kinetic energy.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TotalAsymp"> TotalAsymp,</a>
+controls the form of the asymptotic potential.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Orthog"> Orthog,</a>
+this data record controls which orbital groups the continuum function is constrained to be
+orthogonal to.  This overides the orthogonality constraints specified in EngForm.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RungeKuttaFac"> RungeKuttaFac</a>
+this integer controls the step size used in the differential equation integrator.
+Higher values yields smaller step sizes.
+Default value is 4..
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#HFacWaveAsym"> HFacWaveAsym,</a>
+a real number that is used to generate the asymptotic radial grid.  The higher the value the
+more dense the grid will be between for <var>r</var> greater than <var>RMax</var>.
+Default value is the value of HFacWave used to generate the grid, the default value
+for that parameter is 10.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#EpsIntError"> EpsIntError,</a>
+this is used as an estimate of the error in the numerical integrations.  It is
+used to control the convergenc of the iterative procedure.
+Default value is 1.0e-8.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxHomo"> LMaxHomo,</a>
+contains
+an integer that specifies the truncation of the partial wave expansion
+in the homogeneous solution of the static potential scattering.
+The default value is <code>MAX(LMaxA, LMax/2)</code>
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxK"> LMaxK,</a>
+the maximum <var>l</var> used in the expansion of the
+homogeneous scattering solution.  This is thus the dimension of the scattering matrix.
+Note that this should be greater than or equal to
+LMaxA.  Default value is LMaxA-2.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#NAsymLRange"> NAsymLRange,</a>
+the range of the functions on the left of the variational expression that should be
+computed.  The default value is to use the full range up to NAsymL.
+</li>
+</ul>
+
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test01_inp"> test01</a>
+<var>K</var> matrix form.
+</li>
+<li>
+<a href ="Tests_test04_inp"> test04,</a>
+<var>T</var> matrix form.
+</li>
+<li>
+<a href ="Tests_test11_inp"> test11,</a>
+compare <var>K</var> matrix and <var>T</var> matrix forms.
+</li>
+<li>
+<a href ="Tests_test16_inp"> test16,</a>
+scattering from local potential only.  Also compare different local exchange potentials.
+</li>
+</ul>
+</body>
+</html>

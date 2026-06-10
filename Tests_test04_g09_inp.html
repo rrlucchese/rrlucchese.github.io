@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>test04.g09.inp</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<pre>
+g09 &lt;&lt;eoi
+%mem=16gb
+%nprocshared=8
+# rhf/6-311G(2d,2p) 6D 10F scf=tight Gfinput PUNCH=MO
+
+SiH4 triple zeta	
+
+0 1
+ SI
+ H     1     R
+ H     1     R         2     T
+ H     1     R         2     T         3     T         1
+ H     1     R         2     T         3     T         -1
+       Variables:
+  R                     1.462
+  T                   109.47122
+
+eoi
+#
+cat fort.7
+</pre>
+</body>
+</html>

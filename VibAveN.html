@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>VibAveN.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>VibAveN</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>VibAveN</code></p>
+</p>
+<p>
+This command performs a vibrational average of matrix elements in one dimension.
+The method of using rays to fit the matrix element is described in
+Molec. Phys. 108,1055 (2010).
+If the command
+<a href ="FileName"> FileName</a>
+has been used to define the <code>VibAveIdy</code> file,
+then the vibrationally averaged  matrix elements
+are written to the file specified there.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#VibAveNInp"> VibAveNInp</a>
+defines how the average is performed
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#IPot"> IPot,</a>
+the ionization potential in eV.
+</li>
+</ul>
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used in the text written to <code>PlotData</code>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxK"> LMaxK,</a>
+the maximum <var>l</var> used in the matrix elements.  This can
+be used to limit the matrix elements that are used in the vibrational averaging.
+Without this record, all matrix elements found in the source files are used.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test33_inp"> test33</a>
+Vibrational averging example using precalculated dipole matrix elements for BF3
+</li>
+</ul>
+
+</body>
+</html>

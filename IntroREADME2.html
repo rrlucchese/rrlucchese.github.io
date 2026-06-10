@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Introduction</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Introduction</h1>
+</p>
+<p>
+ePolyScat is a suite of FORTRAN 90 programs and libraries
+that can be used to study
+electron-molecule scattering processes.  The codes runs on distributed
+memory parallel computers using the MPI message passing library.
+The program can be used to study both scattering of electrons from
+neutral and ionic molecules and molecular photoionization.  The current version of the
+codes only treats single electronic states using several different optical potentials
+to represent the interaction between the electron and the molecule.  The primary potential is
+the static-exchange correlation-polarization (SECP) potential.  The program can also treat
+positron-molecule scattering using a selection of model local potentials.
+</p>
+<p>
+The code does not compute molecular orbitals but gets them from the output of a standard quantum
+chemistry program.  Currently, we use the output from GAUSSIAN, MOLPRO (from the molden file),
+or GAMESS (US version).
+</p>
+<p>
+Note that the current version can compute sattering from open-shell targets.  However, the
+energy formulas that are computed using the
+<a href ="GenFormPhIon"> GenFormPhIon</a>
+and
+<a href ="GenFormScat"> GenFormScat</a>
+commands
+are only correct if the continuum is constrained to be orthogonal to all of the bound orbitals.
+This is not a restriction for photoionization from a closed-shell Hartree-Fock target since the
+continuum is naturally orthogonal to the orbital describing the hole state.
+</p>
+<p>
+The codes have been developed as a collaboration of the groups of Lucchese and Gianturco
+beginning in 1993.  The primary references for the development of the numerical methods used are given below
+in the bibliography.
+</p>
+<p>
+A given calculation uses a series of major subroutines
+that exchange information through memory.  There is only limited I/O to disk from the
+master node.
+The input file contains data records and commands.  The data records are labeled
+and the different data records are defined
+<a href ="SourceGetDataRecordDef_f90"> elsewhere.</a>
+The programs are set up to run under a UNIX like environment which requires a few
+<a href ="SourceREADME2"> environment variables</a>
+to be defined.
+Finally, there are a number of
+<a href ="TestsREADME"> sample jobs</a>
+which illustrate how the ePolyScat suite can be run.
+</p>
+<p>
+There are also some
+<a href ="DiffE3to2020"> notes</a>
+on important commands and data records that have been added to the program since the E3 distribution.
+</p>
+<p>
+Please cite the following two papers when reporting results obtained with this program:
+</p>
+<p>
+F. A. Gianturco, R. R. Lucchese, and N. Sanna, J. Chem. Phys. 100, 6464 (1994).
+</p>
+<p>
+A. P. P. Natalense and R. R. Lucchese, J. Chem. Phys. 111, 5344 (1999).
+</p>
+<p>
+<h1>Additional details</h1>
+</p>
+<p>
+This program makes use of single-center expansions.  The truncation of the single-center expansion is
+controlled by the LMax input parameter.  For publication quality results, we usually take LMax to be
+at least large enough so that all orbital normalization integrals, as given by ExpOrb, are at least 0.99.
+In the limit of infinite expansions, the normalization integrals would have the value of 1.0000.
+Looking at the normalization integrals is also a good way to check that ePolyScat has correctly read
+in the basis sets, geometry, and orbital expansion coefficients from the quantum chemistry code.
+</p>
+<p>
+EMax controls two internal parameters.  First is the density of the radial grid.
+Thus larger values of EMax lead to more radial points.
+In general, at higher energies a more dense grid is needed.
+The formula used in the program is somewhat conservative, so that the radial integrals will
+not deteriorate too quickly as EMax is exceeded.  The second use for EMax is the selection
+of the value of LMaxA, which by default is the value of LMaxK.  LMaxA is the maximum L in
+the asymptotic region.  As higher kinetic energies are considered, the same impact parameters
+lead to higher angular momenta.   LMaxK controls the maximum partial wave used in the homogeneous
+solutions of the scattering equations.  For a given molecule, the larger the value of EMax
+the larger LMaxK needs to be to obtain converged cross sections.  The one downside, is that
+when you compute low energy solutions, e.g. below 1 eV, the solution method that is used
+to compute scattering functions can fail when LMaxK is large.  Thus if you want to do both
+very low energy and high energy (> 40 eV), you should probably use different values of EMax
+for low and high energy calculations.
+</p>
+<p>
+The source code is in FORTRAN90 and requires the MPI and LAPACK libraries.
+To compile the codes, you run "make" in the main directory.
+</p>
+<p>
+Note that in the usual wrapper scripts, the execution directory is set to a scratch
+directory different from the working directory at the time of the invocation of the wrapper.
+Thus any file names given as input to the program should have the full path, and not depend
+on the location of the working directory.
+</p>
+<p>
+The number of cores that ePolyScat uses is set by the mpiwrapper that you are using where
+the mpirun command is invoked.  For example in lrc_rrl.mpiwrapper.gen, there are two cases:
+If the program is being run interactively, the defalut value is 4 nodes, but this can be changed
+using the -nodes switch.  If the program is being run in a SLURM queue, it is assumed that the
+queuing system interacts with mpirun and tells it how many nodes to use.  Thus you need to find
+out how to run mpirun on your system when the job is being run either interactively or in the
+queueing system.
+</p>
+<p>
+FegeEng is used in the calculation of the free electron gas approximation to the exchange potential.
+This model local exchange potential is used to obtain a first, iteration 0, guess for the scattering
+state.  Subsequent iterations correct for errors in this approximation and lead to a result that is
+independent of the value of FegeEng that is used.  Sometimes the iterative solution does not converge.
+In such cases, one trick to obtain convergence is to try different values of FegeEng.
+</p>
+<p>
+One major limitation of the current ePolyScat program is that the target states of the
+molecule must be represented by single configuration state functions (CSFs). Thus you can
+compute the cross section for photoionization of a closed shell molecule from its ground
+state to one of the simple Koopmans' Theorem type simple hole ion state.  Ionization from
+excited states is also possible but only using the one CSF approximation for the ion state.
+</p>
+<p>
+Additionally, the initial state in a photoionization calculation cannot have spatial degeneracy.
+</p>
+<p>
+Finally, in photoionization if there are nearly degenerate ion states, and a shape resonance is
+located above threshold, the single channel approximation used in ePolyScat can break down because it
+neglects the interaction between the resonance states in the two channels.  This can lead to the shape resonance
+being shifted by several eV.  If the degeneracy is due to the point group symmetry of the molecule,
+e.g. in D3 symmetry,  then the ePolyScat will correctly include the coupling by using symmetry
+adapted scattering states, when the calculation is done using the full symmetry.  However,
+if a no symmetry is used, i.e. using the NoSym flag, then the calculation again will not include the
+inter-channel coupling and the resonance will appear at the wrong energy. For an example see [U. Jacovella,
+D. M. Holland, S. Boye-Peronne, B. Gans, N. de Oliveira, K. Ito, D. Joyeux, L. E. Archer, R. R. Lucchese,
+H. Xu, and S. T. Pratt, J Phys Chem A 119, 12339 (2015).].
+</p>
+<p>
+<hr>
+<h2>Program directories</h2>
+</p>
+<p>
+In the root directory of the ePolyScat programs are the following
+subdirectors:
+</p>
+<dl>
+<dt> <code>bin</code></dt>
+<dd>contains the executable files
+</dd>
+<dt> <code>extras</code></dt>
+<dd>some useful postprocessing scripts
+</dd>
+<dt> <code>include</code></dt>
+<dd>contains machine specific files for the make command
+</dd>
+<dt> <code>manual</code></dt>
+<dd>contains html files for the online manual
+</dd>
+<dt> <code>src</code></dt>
+<dd> contains fortran source files
+</dd>
+<dt> <code>tests</code></dt>
+<dd>contains standard tests
+</dd>
+</dl>
+
+<p>
+<hr>
+<h2>Terms</h2>
+The following terms are are used repeatedly in the pages of this manual and are defined
+for the purposes of these programs as follows:
+</p>
+<dl>
+<dt> <var>b</var><sub><var>lm</var></sub></dt>
+<dd>the expansion coefficients of the symmetry adapted
+harmonics in the basis set of the
+real harmonics.  These are described in detail in
+S. L. Altmann, "On the symmetries of spherical harmonics,"
+<i>Proc. Cambridge Phil. Soc.</i> <b>53</b> (Part 2),
+343-367 (1957).
+</dd>
+<dt> Component of an IR</dt>
+<dd>the basis function of the irreducible representation,
+This is represented by an integer.
+</dd>
+<dt> Data record</dt>
+<dd>a single group of data that are given a symbolic label.
+These recodrs are processed using unformatted FORTRAN reads.
+</dd>
+<dt> Initial state</dt>
+<dd>in a photoionization calculation, the initial state is the
+unionized bound state.
+</dd>
+<dt> IR</dt>
+<dd>irreducible representation, for each point group the various IRs are
+represented by either an integer or a
+<a href ="SymmetryLabels"> character string</a>
+(up to five characters long).
+</dd>
+<dt> Orbital group</dt>
+<dd>consists of the a set of degenerate molecular orbitals.  If
+an orbital is nondegenerate then its orbital group just contains
+one orbital.  For degenerate orbitals, the number of orbitals in the
+group is the dimension of the IR which the orbitals transform as.
+The members of the group are then indexed the the same manner as the
+components of the IR.  All of the input in the program are in terms of
+orbital groups.  For example, one specifies the number of orbital groups
+and the occupations of each orbital group.
+</dd>
+<dt> Spin degeneracy</dt>
+<dd>an integer that gives the spin degeneracy of a particular state, i.e.
+1 for a singlet, 2 for a doublet, etc.
+</dd>
+<dt> Symmetry type</dt>
+<dd>the full specification of the symmetry of an object including the IR it transforms
+as and the component of that IR.  This is represented as either a character string
+<code>(LEN = 7)</code> with the five character symmetry name and two characters for the component,
+or and an integer which indexes the IR and component in a single
+list containing all IRs and their components.
+</dd>
+<dt> Target state</dt>
+<dd>the bound state that the electron scatters from.
+In a photoionization calculation of a neutral molecule, this is
+the ionized state after the photoelectron has left the system.
+</dd>
+<dt> Total scattering state</dt>
+<dd>the combined scattering state including the target
+state and the continuum electron.
+</dd>
+</dl>
+
+<p>
+<hr>
+<h2>Bibliography</h2>
+</p>
+<ol type="1">
+<li>F. A. Gianturco, R. R. Lucchese, N. Sanna, and A. Talamo, A Generalized
+Single Center Approach for Treating Electron Scattering from Polyatomic
+Molecules, in <i>Electron Collisions with Molecules, Clusters, and Surfaces,</i>
+edited by H. Ehrhardt and L. A. Morgan, (Plenum, New York, 1994) pp. 71-86.
+</li>
+<li>F. A. Gianturco, R. R. Lucchese, and N. Sanna, On the Scattering of Low-Energy
+Electrons by Sulphur Hexafluoride, <i>J. Chem. Phys.</i> <b>102</b>, 5743-5751 (1995).
+</li>
+<li>Robert R. Lucchese and F. A. Gianturco, One-Electron Resonances in
+Electron Scattering from Polyatomic Molecules, <i>Intern. Rev. Phys. Chem.</i> <b>15</b>, 429-466 (1996).
+</li>
+<li>F. A. Gianturco and Robert R. Lucchese, One-Electron
+Resonances and Computed Cross Sections in Electron Scattering
+from the Benzene Molecule, <i>J. Chem. Phys.</i> <b>108</b>, 6144-6159 (1998).
+</li>
+<li>F. A. Gianturco, R. R. Lucchese, and N. Sanna, Computed
+elastic cross sections and angular distributions of
+low-energy electron scattering from gas phase C60 fullerene,
+<i>J. Phys. B</i> <b>32</b>, 2181-2193 (1999).
+</li>
+<li>Alexandra P. P. Natalense and Robert R. Lucchese,
+Cross section and asymmetry parameter calculation for
+sulfur 1s photoionization of SF6,
+<i>J. Chem. Phys.</i> <b>111</b>, 5344-5348 (1999); Erratum, <i>J. Chem. Phys.</i> <b>112</b>, 501 (2000).
+</li>
+<li>F. A. Gianturco and Robert R. Lucchese, One-particle resonances in low-energy
+electron scattering from C60, <i>J. Chem. Phys.</i> <b>111</b>, 6769-6786 (1999).
+</li>
+<li>F. A. Gianturco and Robert R. Lucchese, A computational
+investigation of positron scattering from C60, <i>Phys. Rev. A</i> <b>60</b>, 4567-4576 (1999).
+</li>
+<li>F. A. Gianturco and R. R. Lucchese, Electron scattering from
+gaseous SF6: Comparing calculations with experiments, <i>J. Chem. Phys.</i> <b>114</b>, 3429-3439 (2001).
+</li>
+</ol>
+</body>
+</html>

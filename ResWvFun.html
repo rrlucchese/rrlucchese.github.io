@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>ResWvFun.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>ResWvFun</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>ResWvFun</code></p>
+</p>
+<p>
+<p>or</p>
+</p>
+<p>
+<p><code>ResWvFun</code> <var>Branch</var> <var>E<sub>R</sub></var> <var>E<sub>I</sub></var></p>
+</p>
+<p>
+<p>or</p>
+</p>
+<p>
+<p><code>ResWvFun</code> <var>NResonance</var></p>
+</p>
+<p>
+This command computes the wave function for scattering from a local potential in the
+adiabatic form.
+The form of the command without any parameters computes
+the wave functions at all of the selected energies from an earlier run of the command
+<a href ="ResSearch"> ResSearch.</a>
+The form of the command with one integer parameter computes
+the wave functions at the <var>NResonance</var>th of the selected energies from an earlier run of the command
+<a href ="ResSearch"> ResSearch.</a>
+The form with three parameters computes the wave function at the specified complex energy, where
+<var>Branch</var> is an integer that indicates the asymptotic boundary conditions.
+Use <var>Branch</var> <code>= 0</code> for bound states and <var>Branch</var> <code>= 1</code> for
+virtual and resonant scattering states, and where
+<var>E<sub>R</sub></var> and <var>E<sub>I</sub></var>
+are real numbers that are the real and imaginary parts of the
+energy in eV at which the wave function is desired.
+The computed wave function can be plotted using three methods.
+If the command
+<a href ="FileName"> FileName</a>
+has been used to define the <code>AWaveFun</code> file,
+then the adibatic radial functions are written there.
+If the command
+<a href ="FileName"> FileName</a>
+has been used to define the <code>SWaveFun</code> file,
+then the spherical radial functions are written there.
+the comand
+<a href ="ViewOrb"> ViewOrb</a>
+can also be used to create 2D and 3D plots of the last resonant state specified.
+This command uses the adiabatic potential computed with the
+<a href ="GetDPot"> GetDPot</a>
+command.
+</p>
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test10_inp"> test10</a>
+</li>
+<li>
+<a href ="Tests_test30_inp"> test30</a>
+</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,3165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Data Records</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<a name="top">
+<h1>Data Records</h1>
+</p>
+<p>
+Any input record that is not recognized as command is considered to be a data record.
+In a data record, all character data must be specified in single quotes, e. g. 'Character Data', so
+that it can be read using unformatted FORTRAN reads.  Any unquoted entry is taken to be the begining
+of a new command or data record.  In the case of a data record, the unquoted character string is the
+label for the data record.  The pound symbol '#' is the begining of a comment and all characters after
+the '#' symbol are ignored.
+</p>
+<p>
+<h2>Definition of data records</h2>
+<a href ="SourceGetDataRecordDef_f90#A"> A</a>
+<a href ="SourceGetDataRecordDef_f90#B"> B</a>
+<a href ="SourceGetDataRecordDef_f90#C"> C</a>
+<a href ="SourceGetDataRecordDef_f90#D"> D</a>
+<a href ="SourceGetDataRecordDef_f90#E"> E</a>
+<a href ="SourceGetDataRecordDef_f90#F"> F</a>
+<a href ="SourceGetDataRecordDef_f90#G"> G</a>
+<a href ="SourceGetDataRecordDef_f90#H"> H</a>
+<a href ="SourceGetDataRecordDef_f90#I"> I</a>
+<a href ="SourceGetDataRecordDef_f90#J"> J</a>
+<a href ="SourceGetDataRecordDef_f90#K"> K</a>
+<a href ="SourceGetDataRecordDef_f90#L"> L</a>
+<a href ="SourceGetDataRecordDef_f90#M"> M</a>
+<a href ="SourceGetDataRecordDef_f90#N"> N</a>
+<a href ="SourceGetDataRecordDef_f90#O"> O</a>
+<a href ="SourceGetDataRecordDef_f90#P"> P</a>
+<a href ="SourceGetDataRecordDef_f90#Q"> Q</a>
+<a href ="SourceGetDataRecordDef_f90#R"> R</a>
+<a href ="SourceGetDataRecordDef_f90#S"> S</a>
+<a href ="SourceGetDataRecordDef_f90#T"> T</a>
+<a href ="SourceGetDataRecordDef_f90#U"> U</a>
+<a href ="SourceGetDataRecordDef_f90#V"> V</a>
+<a href ="SourceGetDataRecordDef_f90#W"> W</a>
+<a href ="SourceGetDataRecordDef_f90#X"> X</a>
+<a href ="SourceGetDataRecordDef_f90#Y"> Y</a>
+<a href ="SourceGetDataRecordDef_f90#Z"> Z</a>
+</p>
+<p>
+<hr>
+<a name="A">
+<h2><a name="AbSym">AbSym</h2>
+If this data record is present, then the symmetry used will be the largest abelian
+subgroup. Used by
+<a href ="GetBlms"> <code>GetBlms</code>.</a>
+The default value is to use the full group for this geometry.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="AddCenterMesa">AddCenterMesa</h2>
+</p>
+<p>
+This record contains three real numbers in a single read <br /><br />
+<code>x</code>, <code>y</code>, <code>z</code><br /><br />
+which give the location of an additional center to add for
+<a href ="DumpMesa"> <code>DumpMesa</code>.</a>
+When the geometry for the expandedd basis set definition is being written out, then
+this extra center is written to there, otherwise it is added to the main
+geometry data.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="AltEqGeom">AltEqGeom</h2>
+</p>
+<p>
+This data record gives an alternative equilibrium geometry used when
+generating new geometries using normal modes with the
+<a href ="GeomNormMode"> <code>GeomNormMode</code> or <code>GeomNormModeN</code></a>
+commands
+or when analyzing geometries
+in terms of normal modes using the
+<a href ="FindQ"> <code>FindQ</code></a>
+command
+</p>
+<p>
+<h3>Data record format</h3>
+For <code>i = 1</code> to <code>NAtom</code>
+</p>
+<ol type="1">
+<li><code>vec(1:3, i)</code>
+</li>
+</ol>
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>vec(1:3, i)</code></dt>
+<dd>real, vector of the cartesian coordinates of atom <code>i</code>
+in Angstroms
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="AsyPol">AsyPol</h2>
+</p>
+<p>
+This data record contains the information needed to construct the asymptotic part of the
+<var>V</var><sub>CP</sub> potential.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>SwitchD</code>
+</li>
+<li><code>nterm</code>
+</li>
+<li>For <code>iterm = 1</code> to <code>nterm</code>
+<ol type="A">
+<li><code>itcen</code>
+</li>
+<li>if <code>itcen</code> equal to <code>0</code> then read</br>
+<code>pcen(1:3, iterm)</code>
+</li>
+<li><code>ittyp</code>
+</li>
+<li>if <code>ittyp</code> equal to <code>1</code> then read</br>
+<code>apolsph(iterm)</code>
+</li>
+<li>if <code>ittyp</code> equal to <code>2</code> then read</br>
+<code>    apol(1, 1, iterm), apol(2, 2, iterm),
+apol(3, 3, iterm), apol(1, 2, iterm),
+apol(1, 3, iterm), apol(2, 3, iterm)</code>
+</li>
+</ol>
+</li>
+<li><code>icrtyp</code>
+</li>
+<li>if <code>icrtyp</code> equal to <code>2</code> then read</br>
+<code>rmatch</code>
+</li>
+<li>if <code>icrtyp</code> not equal to <code>2</code> then read</br>
+<code>ilntyp</code>
+</li>
+<li>if <code>icrtyp</code> not equal to <code>2</code> and
+<code>ilntyp &lt; 0</code> then read</br>
+<code>xln(1:3)</code>
+</li>
+</ol>
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>SwitchD</code></dt>
+<dd>real, distance (in Angstroms) which describes the range of the
+switching functions used to connect the short-range correlation and the
+long range polarization potential.  A typical value is 0.15 Angs.
+</dd>
+<dt> <code>nterm</code></dt>
+<dd>integer, number of distributed polarization centers which are used to describe the
+distributed polarization potential.
+</dd>
+<dt> <code>itcen</code></dt>
+<dd>integer, flag for the type of polarization center
+<ul>
+<li><code>= 0</code>, then explicitly read in the location of the center
+</li>
+<li><code>= 1</code>, through the number of atoms in the molecule, then use atom
+<code>itcen</code> for the polarization center.
+</li>
+</ul>
+</dd>
+<dt> <code>pcen(1:3, iterm)</code></dt>
+<dd>real, <code>(x,y,z)</code> of this polarization center
+in Angstroms.
+</dd>
+<dt> <code>ittyp</code></dt>
+<dd>integer, flag for type of polarization center
+<ul>
+<li><code> = 1</code>, for only spherically symmetrical polarizability so that
+<code>xx=yy=zz</code> and <code>xy=xz=yz=0</code> only the
+<code>xx</code> term is read in.
+</li>
+<li><code> = 2</code>, read in all 6 terms, <code>xx, yy, zz, xy, xz, yz</code>.
+A common case is if the <code>a0</code> and <code>a2</code>
+terms are known then the
+potential has the form<br />
+<pre>
+                       a        a
+                        0        2
+          V   (R) = - ----  -  ----  P (cos theta)
+           pol           4        4   2
+                       2R       2R
+</pre>
+where<br />
+<pre>
+                          2
+          P (u) = (1/2)(3u  - 1)
+           2
+</pre>
+In this case<br />
+<pre>
+          a  = a   = (a  - (1/2)a )  and a   = (a  + a )
+           xx   yy     0         2        zz     0    2
+</pre>
+with the other terms being zero.
+</li>
+</ul>
+</dd>
+<dt> <code>apolsph(iterm)</code></dt>
+<dd>real, polarizability (in atomic units) for the case of an
+isotropic polarizability tensor.
+</dd>
+<dt> <code>apol(i, j, iterm)</code></dt>
+<dd>real, elements of the polarizability tensor (in atomic units)
+</dd>
+<dt> <code>icrtyp</code></dt>
+<dd>integer, flag to indicate how to obtain the matching radius from the
+from the behavior of the correlation and polarization potentials
+on either a ray from the center of expansion or from the behavior of
+the <var>l</var> = 0 component of the corresponding potentials.
+<ul>
+<li><code>= 0</code>, use second crossing coming in form the asymptotic region.
+</li>
+<li><code>= 1</code>, use first crossing coming in from the asymptotic region.
+</li>
+<li><code>= 2</code>, read in a fixed matching <var>r</var>.
+</li>
+<li><code>= 3</code>, use second crossing or nearest relative approach (i. e. switch
+when <var>V<sub>pol</sub>/>V<sub>corr</sub></var> is closest
+to 1.0)
+</li>
+<li><code>= 4</code>, use first crossing or nearest relative approach.
+</li>
+</ul>
+</dd>
+<dt> <code>rmatch</code></dt>
+<dd>real, fixed matching <var>r</var> in atomic units.
+</dd>
+<dt> <code>ilntyp</code></dt>
+<dd>integer, type of matching line which is searched to find the
+crossing points.
+<ul>
+<li><code>= 0</code> use the <var>l</var>=0 partial wave.
+</li>
+<li><code>= 1-natom</code> use the line from the origin passing through one
+of the atomic centers.
+</li>
+<li><code>= -1</code> use a line from the origin passing through an inputed
+point.
+</li>
+</ul>
+</dd>
+<dt> <code>xln(1:3)</code></dt>
+<dd>real, location of the point (in Angstroms)
+through which the search line passes.  This
+vector is read in only if <code>ilntyp = -1</code>.
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="AtomSym">AtomSym</h2>
+This data record contains a string that indicates which symmetry to use for an atom. Used by
+<a href ="GetBlms"> <code>GetBlms</code>.</a>
+Two possible values are 'Ih' and 'Oh'.  The default value is 'Ih'
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="B">
+<a name="C">
+<h2><a name="CnvgKMat">CnvgKMat</h2>
+This data record contains a real number that is used in the convergence criterion for the Pade correction
+of the matrix element in the ScatStab.
+The calculation is deemed to have converged when the root-mean-square difference of the matrix elements
+divided by the maximum matrix element is less than the number found in the CnvgKMat data record.
+Default value is 1.0e-6.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="CnvOrbSel">CnvOrbSel</h2>
+</p>
+<p>
+This record specifies which orbitals to use from the Quantum
+Chemistry program, the form is specific to the program being used.<br /> <br />
+</p>
+<p>
+In G03Cnv and MoldenCnv there is a single read of the form <br /><br />
+<code>nmos</code>, <code>nmoe</code><br />
+or <br />
+<code>-nmor</code>, <code>(nmos(i), nmoe(i), i = 1, nmor)</code><br /><br />
+<code>nmos</code> is the start of a series of orbitals to use and <code>nmoe</code> is the
+corresponding end of a sequence.  If <code>nmos > 0</code> and <code>nmoe <0</code>
+then read in all orbitals starting from <code>nmos</code> and assuming the number of orbitals
+is the same as the number of basis functions.  In a molden file, this will only be true if the
+cartesian basis set rather than the spherical basis set is used.
+If the first number is negative
+then a series of such numbers are read in.  This option can also be used
+to reorder the orbitals.  This reordering is sometime required when a set of degenerate core orbitals
+are ordered such that groups of orbitals that are degnerate by symmetry (e. g. pi-x and pi-y orbitals)
+are not contiguous as is required in the RotOrb. If <code> nmoe(i) <= 0</code> then read in the orbitals up
+to the end of the basis set.
+This is an optional data record.  <br /> <br />
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="CroByPartialWave">CroByPartialWave</h2>
+</p>
+<p>
+If this record is present then when the
+<a href ="GetCro"> <code>GetCro</code></a>
+is run the cross section will be computed
+for each partial wave, with partial waves with the same value of <var>l</var> being summed together.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="D">
+<h2><a name="DipOpForm">DipOpForm</h2>
+</p>
+<p>
+This data record contains the information needed to construct the correct dipole matrix
+elements.
+This data record is usually created using the command
+<a href ="GenFormPhIon"> <code>GenFormPhIon</code></a>
+although it can be constructed by hand.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>NumOrbFrm</code>
+</li>
+<li><code>OrbDegn(1:NumOrbFrm)</code>
+</li>
+<li><code>SymCont, SymTotal, SymInit, SymTarg</code>
+</li>
+<li><code>NumRec</code>
+</li>
+<li>For <code>i = 1</code> to <code>NumRec</code>
+<ol type="A">
+<li><code>ContComp(i), iOrbSelgrp(i), iOrbSelcomp(i), CoefOrbSel(i)</code>
+</li>
+</ol>
+</li>
+</ol>
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>NumOrbFrm</code></dt>
+<dd>integer, number of bound orbital groups used to define the potential and dipole
+matrix elements.
+</dd>
+<dt> <code>OrbDegn(1:NumOrbFrm)</code></dt>
+<dd>integer vector, spatial degeneracy of each orbital group.
+</dd>
+<dt> <code>SymCont</code></dt>
+<dd>integer, IR of the continuum orbital
+</dd>
+<dt> <code>SymTotal</code></dt>
+<dd>integer, IR of the total scattering state.
+</dd>
+<dt> <code>SymInit</code></dt>
+<dd>integer, IR of the initial state.
+</dd>
+<dt> <code>SymTarg</code></dt>
+<dd>integer, IR of the ionized target state.
+</dd>
+<dt> <code>NumRec</code></dt>
+<dd>integer, number of formulas needed to define the dipole matrix element.
+</dd>
+<dt> <code>ContComp(i)</code></dt>
+<dd>integer, component of the IR of the
+continuum orbital used in this formula.
+</dd>
+<dt> <code>OrbSelgrp(i)</code></dt>
+<dd>integer, the orbital group of bound orbital in this formula.
+</dd>
+<dt> <code>OrbSelcomp(i)</code></dt>
+<dd>integer, the component of the orbital group <code>OrbSelgrp</code>
+to use in this formula.
+</dd>
+<dt> <code>CoefOrbSel(i)</code></dt>
+<dd>real number, the coefficient for this formula.
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="DirProdOvlp">DirProdOvlp</h2>
+</p>
+<p>
+This data record contains the matrix that transforms the direct product FUNCTION into the symmetrized
+functions.
+This record is usually created automatically by the command
+<a href ="GenFormPhIon"> <code>GenFormPhIon</code></a>
+using the program MatEle.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>SymCont, SymTarg, SymTotal</code>
+</li>
+<li><code>nrdimCont, nrdimTarg, nrdimTotal</code>
+</li>
+<li><code>ProdOvlp(1:nrdimCont,1:nrdimTarg,1:nrdimTotal)</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>SymCont</code></dt>
+<dd>integer, IR of the continuum orbital.
+</dd>
+<dt> <code>SymTotal</code></dt>
+<dd>integer, IR of the total scattering state.
+</dd>
+<dt> <code>SymTarg</code></dt>
+<dd>integer, IR of the target state.
+</dd>
+<dt> <code>nrdimCont</code></dt>
+<dd>integer, dimensionality of the IR of the continuum orbital.
+</dd>
+<dt> <code>nrdimTarg</code></dt>
+<dd>integer, dimensionality of the IR of the target state.
+</dd>
+<dt> <code>nrdimTotal</code></dt>
+<dd>integer, dimensionality of the total state.
+</dd>
+<dt> <code>ProdOvlp(i,j,k)</code></dt>
+<dd>real number, overlap of the direct product state constructed
+from the <var>i</var>th component of the continuum orbital and the
+<var>j</var>th component of the target state with the <var>k</var>th
+component of the total scattering state.
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="DPotEng">DPotEng</h2>
+This data record contains the energy at which to compute the local potential.  The local potential
+is energy dependent because of the energy dependence of the model exchange potentials used.
+This data record has the same format as the data record
+<a href ="SourceGetDataRecordDef_f90#ScatEng"> ScatEng.</a>
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><var>Energy</var>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <var>Energy</var></dt>
+<dd> electron (or photoelectron) kinetic energy
+in eV at which to compute the local exchange potential
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="DPotL">DPotL</h2>
+This data record contains an integer that specifies the value of <var>l</var>
+that is used in selecting the partial waves
+when an atom is being considered using the DPot program.
+When studying a atoms, DPot requires
+that the atom be at the origin.  The default value is the value of <var>l</var> found in the lowest
+partial wave of the symmetry being considered.
+</p>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="DPotM">DPotM</h2>
+This data record contains an integer that specifies the value of <var>m</var>
+that is used in selecting the partial waves
+when a linear molecule or an atom is being considered using the DPot program.
+When studying a linear molecule, DPot requires
+that the molecular axis coincide with the z axis.  The default value is the value of <var>m</var>
+found in the lowest partial wave of the symmetry being considered.
+</p>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="E">
+<h2><a name="ECenter">ECenter</h2>
+</p>
+<p>
+This record contains three real numbers in a single read <br /><br />
+<code>x</code>, <code>y</code>, <code>z</code><br /><br />
+which give the center for the single-center expansion in units of Angstroms. ECenter is optional
+for those program which use it.  The default value is (0.0, 0.0, 0.0)
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="EMax">EMax</h2>
+</p>
+<p>
+This record contains a real number that specifies the maximum value of the electron kinetic energy (in eV)
+that will be used in the calculations.
+This is used by GenGrid
+to control the step size in the asymptotic
+part of the radial grid.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="EngForm">EngForm</h2>
+</p>
+<p>
+This data record contains the expression for the interaction potential, in term of <var>J</var>
+and <var>K</var> operators.
+This record can be created automatically by the command
+<a href ="GenFormPhIon"> GenFormPhIon</a>
+using the program MatEle.
+</p>
+<p>
+<h3>Data record format</h3>
+There are four formats for reading in the formulas:
+<br />
+</p>
+<ol type="1">
+<li>For <code>iPotFrmType = 0</code>, no orhtogonality constraints are imposed and the
+potential is assumed to have the form 2<var>J</var>-<var>K</var> for each occupied orbital
+(2<var>J</var> for positron scattering).
+The record has the format:
+<ol type="A">
+<li><code>iChrgMolec, iPotFrmType</code>
+</li>
+</ol>
+<br />
+</li>
+<li>For <code>iPotFrmType = 1</code>, no orthogonality constraints are imposed and the
+potential is assumed to have only diagional terms, i. e. the <var>J</var> and <var>K</var>
+operators only involve one bound orbital.  The record has the format:
+<ol type="A">
+<li><code>iChrgMolec, iPotFrmType</code>
+</li>
+<li><code>NumOrbFrm</code>
+</li>
+<li>For <code>i = 1</code> to <code>NumOrbFrm</code> read:
+<ol type="a">
+<li><code>OrbOccFrm(i), CoefK(i)</code>
+</li>
+</ol>
+</li>
+</ol>
+<br />
+</li>
+<li>For <code>iPotFrmType = 2</code>, individual orhtogonality constraints are read in, and the
+potential is assumed to have only diagional terms, i. e. the <var>J</var> and <var>K</var>
+operators only involve one bound orbital.    The record has the format:
+<ol type="A">
+<li><code>iChrgMolec, iPotFrmType</code>
+</li>
+<li><code>NumOrbFrm</code>
+</li>
+<li>For <code>i = 1</code> to <code>NumOrbFrm</code> read:
+<ol type="a">
+<li><code>OrbOccFrm(i), CoefK(i), iOrthOrb(i)</code>
+</li>
+</ol>
+</li>
+</ol>
+<br />
+</li>
+<li>For <code>iPotFrmType = 3</code>, the continuum orbital is forced to be orthogonal to
+all of the bound orbitals.  The record has the format:
+<ol type="A">
+<li><code>iChrgMolec, iPotFrmType</code>
+</li>
+<li><code>NumOrbFrm</code>
+</li>
+<li><code>OrbDegn(1:NumOrbFrm)</code>
+</li>
+<li><code>SymCont, SymTotal</code>
+</li>
+<li><code>OrbOccFrm(1:NumOrbFrm)</code>
+</li>
+<li><code>NCoefKInt</code>
+</li>
+<li><code>CoefKInt(1:NCoefKInt)</code>
+</li>
+</ol>
+</li>
+</ol>
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>iChrgMolec</code></dt>
+<dd>integer, charge on the target (1 for a positive charge of 1).
+</dd>
+<dt> <code>iPotFrmType</code></dt>
+<dd>integer, potential formula type.  This integer can have the values
+of 0 through 3.
+</dd>
+<dt> <code>NumOrbFrm</code></dt>
+<dd>integer, number of bound orbital groups used to define the potential.
+</dd>
+<dt> <code>OrbDegn(1:NumOrbFrm)</code></dt>
+<dd>integer vector, spatial degeneracy of each orbital group.
+</dd>
+<dt> <code>SymCont</code></dt>
+<dd>integer, IR of the continuum orbital.
+</dd>
+<dt> <code>SymTotal</code></dt>
+<dd>integer, IR of the total scattering state.
+</dd>
+<dt> <code>OrbOccFrm(i)</code></dt>
+<dd>real, orbital occupancy of each orbital group of
+the target state.  This number is used to determine the appropriate
+coefficient for the <var>J</var> operators.
+</dd>
+<dt> <code>NCoefKInt</code></dt>
+<dd>integer, number of <var>K</var> type operators.
+</dd>
+<dt> <code>CoefK(i)</code></dt>
+<dd>real, coefficient in front of the <var>K</var> operators constructed
+from the orbitals of a particular orbital group.
+</dd>
+<dt> <code>iOrthOrb(i)</code></dt>
+<dd>integer, flag for orthogonalization:
+<ul>
+<li>= 0 for no orthogonalization
+to the orbitals of this orbital group
+</li>
+<li>= 1 for forced orthogonalization
+to the orbitals of this orbital group.
+</li>
+</ul>
+</dd>
+<dt> <code>CoefKInt(1:NCoefKInt)</code></dt>
+<dd>PotFrm data type, formula for each <var>K</var> operator.
+</dd>
+</dl>
+
+<p>
+<h3>PotFrm input</h3>
+The PotFrm data type is read in using the following form
+<br />
+<code>SymL, SymR, Type, OrbG, OrbCL, OrbCR, Coef</code>
+<br />
+</p>
+<dl>
+<dt> <code>SymL</code></dt>
+<dd>integer, IR component of the continuum orbital on the left sidel of the potential.
+</dd>
+<dt> <code>SymR</code></dt>
+<dd>integer, IR component of the continuum orbital on the right sidel of the potential.
+</dd>
+<dt> <code>Type</code></dt>
+<dd>integer, type of potential formula term,<code> = 1</code> for <var>J</var>
+type term, <code>= 2</code> for <var>K</var> type term.
+</dd>
+<dt> <code>OrbG</code></dt>
+<dd>integer, orbital group of the bound orbital.
+</dd>
+<dt> <code>OrbCL</code></dt>
+<dd>integer, IR component of the bound orbital on the left side of the potential term.
+</dd>
+<dt> <code>OrbCR</code></dt>
+<dd>integer, IR component of the bound orbital on the right side of the potential term.
+</dd>
+<dt> <code>Coef</code></dt>
+<dd>real, coefficient for this operator.
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="EpsAsym">EpsAsym</h2>
+This data record contains parameters which determine where the asymptotic potential is truncated in
+the scattering calculations in ScatStab.
+if this record is not present, then the program
+takes <code>iAsymCond = 1</code> and <code>EpsAsym = CnvgKMat/10.0</code>.
+</p>
+
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>iAsymCond, EpsAsym</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>iAsymCond</code></dt>
+<dd>integer, that controls the interpretation of the value of <code>EpsAsym</code>
+<ul>
+<li>if <code>iAsymCond = 1</code> then STOP when <code>|V|/E &lt; EpsAsym</code>
+</li>
+<li>if <code>iAsymCond = 2</code> then STOP when <code> |V| &lt; EpsAsym</code>.  In this case <code>EpsAsym</code>
+has units of eV
+</li>
+<li>if <code>iAsymCond = 3</code> then STOP at <code>r = EpsAsym</code>.  In this case <code>EpsAsym</code> has
+units of Angstroms
+</li>
+</ul>
+</dd>
+<dt> <code>EpsAsym</code></dt>
+<dd>real, parameter that controls the limits fo the asymptotic radial integration.
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="EpsIntError">EpsIntError</h2>
+This data record contains a parameter which gives an estimate of the accuracy of the numerical
+integrals computed in ScatStab.
+Default value is 1.0e-8.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="ExpOrbSel">ExpOrbSel</h2>
+</p>
+<p>
+This data record defines a range of orbitals groups that ExpOrb
+should expand.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>mofr, moto</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>mofr</code></dt>
+<dd>integer, first orbital group to expand
+</dd>
+<dt> <code>moto</code></dt>
+<dd>integer, last orbital group to expand
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="F">
+<h2><a name="FegeEng">FegeEng</h2>
+</p>
+<p>
+This data record contains a single real number that
+is the value of the energy parameter (in eV).  It
+is usually taken to be the ionization potential of the molecule.
+FegeEng is used in the calculation of the free electron gas (FEGE) approximation to the
+exchange potential.  In a static-exchange calculation this model local exchange potential
+is used to obtain a first, iteration 0, guess for the scattering state.
+Subsequent iterations correct for errors in this approximation and lead to a result
+that is independent of the value of FegeEng that is used.  However, sometimes the
+iterative solution does not converge.  In such cases, one trick to obtain convergence
+is to try different values of FegeEng.
+This data record is only needed if the fege potential is being used.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="FegeScale">FegeScale</h2>
+</p>
+<p>
+This data record contains a single real number that
+is used to scale the local exchange potential.  This can be used
+to curcumvent singularities in the interative procedure.
+Default value is 1.0.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="FixCharge">FixCharge</h2>
+</p>
+<p>
+This data record specifies which nuclear centers should have their charge adjusted
+either for the purpose of computing the potenital or for the purpose of changing the
+symmetry used in the calculation.  Chaging the charge for the potential calculation
+could be used when the quantum chemistry calculation is an equivalent
+core calculation for a core ionization problem.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>ChgCenter, ChgCharge, ChgType</code>
+</li>
+<li>[<code>ChgCenter, ChgCharge, ChgType</code> .......(repeat as many times as needed)]
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>ChgCenter</code></dt>
+<dd>integer, which nuclear center needs to be adjusted
+</dd>
+<dt> <code>ChgCharge</code></dt>
+<dd>integer, the new value of the charge
+</dd>
+<dt> <code>ChgType</code></dt>
+<dd>character (LEN = 3), 'sym' to change charge for the symmetry determination,
+'pot' to change the charge used in the calculation but not in the symmetry determination
+'potsym' to change the charge used in the potential calculation and in the symmetry determination
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="FreqToler">FreqToler</h2>
+</p>
+<p>
+This data record contains the
+tolernace use to determine if vibrational frequency eigenvalues are
+degenerate (in units of cm-1).  Used in the SymNormMode command.
+Default value is 1.0e-4.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="G">
+<h2><a name="GridFac">GridFac</h2>
+</p>
+<p>
+This data record contains a single positive integer that controls the grid density.  This can be
+used to systematically check the convergence of the grid.  This is an optional
+data record. The default value is 1.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="GrnType">GrnType</h2>
+</p>
+<p>
+This data record contains a single integer that controls the type of Green function
+that is used.
+</p>
+<ul>
+<li>GrnType = 0 to use the principal valued Grees function (<var>G</var><sup>(P)</sup>) which yields
+the <var>K</var> matrix.
+</li>
+<li>GrnType = 1 to use the outgoing scatterd wave Greens function (<var>G</var><sup>(+)</sup>)
+which yields
+the <var>T</var> matrix.
+</li>
+</ul>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="H">
+<h2><a name="HFacGauss">HFacGauss</h2>
+</p>
+<p>
+This data record a real number that is used to generate the radial grid.  The higher the value the
+more dense the grid will be around the nuclei.  The default value is 10.0.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="HFacWave">HFacWave</h2>
+</p>
+<p>
+This data record a real number that is used to generate the radial grid.  The higher the value the
+more dense the grid will between the nuclei and at larger R.  The default value is 10.0.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="HFacWaveAsym">HFacWaveAsym</h2>
+</p>
+<p>
+This data record a real number that is used to generate the radial grid in the
+asymptotic region, i. e. for <var>r</var> beyond <var>RMax</var>.  The higher the value the
+more dense the grid will between the nuclei and at larger R.  The default value is the
+value of
+<a href ="SourceGetDataRecordDef_f90#HFacWave"> HFacWave</a>
+used to generate the grid.  The default value for HFacWave is 10.0.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="I">
+<h2><a name="InitSpinDeg">InitSpinDeg</h2>
+</p>
+<p>
+This data record contains an interger that is the spin degeneracy of the initial state.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="InitSym">InitSym</h2>
+</p>
+<p>
+This data record contains a character string <code>(LEN = 5)</code> that indicates
+the
+<a href ="SymmetryLabels"> IR of the initial state.</a>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="IPot">IPot</h2>
+This data record contains a real number that is the ionization potential (in eV) of the molecule.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="IterMax">IterMax</h2>
+This data record contains an integer that is the maximum number of iterations that will be
+attempted to converge
+the variational corrections to static-exchange matrix elements in ScatStab.
+If IterMax &lt; 0 then only use the local potential.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="JMax">JMax</h2>
+This data record contains an integer that corresponds to the rotational quantum numbers
+<var>J</var> and <var>J'</var> of the final states, to be used to compute the
+rotational wave function.  This data record is used by the command
+<a href ="RotOrientAsym"> RotOrientAsym .</a>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="JPPMax">JPPMax</h2>
+This data record contains an integer that corresponds to the rotational quantum numbers
+<var>J</var> and <var>J'</var> of the initial state, to be used to compute the
+rotational wave function.  This data record is used by the command
+<a href ="RotOrientAsym"> RotOrientAsym .</a>
+Default value to include all possible values, <var>JMax + LMax + 1</var>.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="J">
+<a name="K">
+<a name="L">
+<h2><a name="Label">Label</h2>
+Character string used in the output to file <code>PlotData</code>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="LFTimeDelayAngles">LFTimeDelayAngles</h2>
+</p>
+<p>
+This record contains the angles and other parameters needed to
+describe the desired time delay calculation.
+The Euler angles, <code>(alpha, beta, gamma)</code>, given for the orientation of the molecule, are the angles
+defined in Appendix C of Messiah "Quantum Mechanics".
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>iLVGet, Mu0</code>
+</li>
+<li><code>ThetaNK_num, ThetaNK_start, Theta_NK_end</code>
+</li>
+<li><code>alpha_num, alpha_start, alpha_end</code>
+</li>
+<li><code>beta_num, beta_start, beta_end</code>
+</li>
+<li><code>gamma_num, gamma_start, gamme_end</code>
+</li>
+</ol>
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>iLVGet</code></dt>
+<dd>integer, if equal to 1 the use the length form, if equal to 2
+the use the velocity form of the dipole matrix elements
+</dd>
+<dt> <code>Mu0</code></dt>
+<dd>integer, describes the polarization of the light, 0 for linearly polarized,
++/- 1 for circularly polarized light helicity
+</dd>
+<dt> <code>ThetaNK_num, ThetaNK_start, ThetaNK_end</code></dt>
+<dd>(integer, real, real)
+information on the output grid used
+for the laboratory electron emission direction  giving the number of points, the first point
+and the last point, respectively.
+</dd>
+<dt> <code>alpha_num, alpha_start, alpha_end</code></dt>
+<dd>(integer, real, real) information for
+the <code>alpha</code>
+Euler angle that describes the orinetation of the molecule in the laboratory frame.
+</dd>
+<dt> <code>beta_num, beta_start, beta_end</code></dt>
+<dd>(integer, real, real) information for the
+<code>beta</code> Euler angle.
+</dd>
+<dt> <code>gamma_num, gamma_start, gamma_end</code></dt>
+<dd>(integer, real, real) information for the
+<code>gamma</code> Euler angle.
+</dd>
+</dl>
+
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="LMax">LMax</h2>
+This is a single integer which is the
+maximum <var>l</var> to be used for wave functions.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="LMaxA">LMaxA</h2>
+</p>
+<p>
+This optional record contains
+an integer that specifies the truncation of the partial wave expansion at large <var>r</var>.
+Thus outside the nuclei, the partial wave expansion goes up to at least the value of
+<code>LMaxA</code>.
+Default value is (RAMax+2 Angs)*sqrt(2*Max(EMax, 27.2 eV)) converted into atomic units, where
+RAMax is the maximum distance of an atom from the center of expansion.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="LMaxEx">LMaxEx</h2>
+This data record contains an integer that is the maximum <var>l</var> used in the
+expansion of <code>1/r_12</code>
+in the exchange terms in ScatStab.
+If the value of the maximum is set to -1, then all possible terms are retained, i. e. <code>2*LMax</code>.
+Default value is -1, which inclludes all exchange terms.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="LMaxHomo">LMaxHomo</h2>
+</p>
+<p>
+This record contains
+an integer that specifies the truncation of the partial wave expansion
+in the homogeneous solution of the static potential scattering.
+The default value is <code>MAX(LMaxA, LMax/2)</code>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="LMaxI">LMaxI</h2>
+</p>
+<p>
+This record contains an integer that is the effective maximum <var>l</var> used in numerical integrations.
+This variable controls the number of grid points used in the angular integrations.
+It is usually taken to be at least twice the value of <code>LMax</code>.
+Default value is 2 times LMax.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="LMaxK">LMaxK</h2>
+This is a single integer which is the
+maximum <var>l</var> used in the asymptotic expansion
+of the homogeneous solution.  Default value is LMaxA.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="LogLogInterp">LogLogInterp</h2>
+If this data record is present then the total cross section program
+will interpolate the partial cross sections and energies in a given symmetry
+using log-log interpolation.  If this record is not present, then the interpolation is
+linear-linear.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="M">
+<h2><a name="MaxStep">MaxStep</h2>
+</p>
+<p>
+This record contains a real number that
+controls the maximum step size in the inner region when the
+<a href ="SourceGetDataRecordDef_f90#AsyPol"> AsyPol</a>
+data record is present.
+Default value is 0.02.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="MinExpFac">MinExpFac</h2>
+</p>
+<p>
+This record contains a real number such that
+the effective exponent on each center will be at least equal to Z*Z*MinExpFac.
+The default value is 300.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="MFTimeDelayAngles">MFTimeDelayAngles</h2>
+</p>
+<p>
+This record contains the angles and other parameters needed to
+describe the desired time delay calculation
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>iLVGet, Mu0</code>
+</li>
+<li><code>NThetaEle, ThetaEleStart, ThetaEleEnd</code>
+</li>
+<li><code>NPhiEle, PhiEleStart, PhiEleEnd</code>
+</li>
+<li><code>NThetaField, ThetaFieldStart, ThetaFieldEnd</code>
+</li>
+<li><code>NPhiField, PhiFieldStart, PhiFieldEnd</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>iLVGet</code></dt>
+<dd>integer, if equal to 1 the use the length form, if equal to 2
+the use the velocity form of the dipole matrix elements
+</dd>
+<dt> <code>Mu0</code></dt>
+<dd>integer, describes the polarization of the light, 0 for linearly polarized,
++/- 1 for circularly polarized light helicity
+</dd>
+<dt> <code>NThetaEle, NPhiEle, NThetaField, NPhiField</code></dt>
+<dd>integers, give the number of
+angular points in each angular direction in the molecular frame, where "Ele" is for electron
+and "Field" is for th light field, and where "Theta" and "Phi" are for the polar and
+and azimuthal angles, respectively, in the spherical-polar coordinates of the molecular frame.
+These quantities need to be odd for the Simpson's rule integration used.
+</dd>
+<dt> <code>ThetaEleStart,  PhiEleStart, ThetaFieldStart, PhiFieldStart</code></dt>
+<dd>reals, first
+in the indicated direction of the evenly spaced grid
+</dd>
+<dt> <code>ThetaEleStart,  PhiEleStart, ThetaFieldStart, PhiFieldStart</code></dt>
+<dd>reals, last point in the
+indicated directions of the evenly spaced grid
+</dd>
+</dl>
+
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="MFDCSInp">MFDCSInp</h2>
+</p>
+<p>
+This record contains input needed to define the molecular frame DCS calculation
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="MMax">MMax</h2>
+</p>
+<p>
+This record contains an integer which is the
+maximum value of <var>m</var> to use in expanded functions
+about each unique axis for high partial waves.
+A default value is <var>MMax</var> = 3.
+A value of -1 leads to no m truncation.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="MMaxAbFlag">MMaxAbFlag</h2>
+</p>
+<p>
+This record contains an integer
+that controls how the m values for the abelian subgroup are chosen.
+<code>MMAxAbFlag = 1</code> to include all m values.
+<code>MMaxAbFlag = 2</code> to use MMax to constrain the m values for the abelian subgroup.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="N">
+<h2><a name="NAng">NAng</h2>
+</p>
+<p>
+This record defines the number of angles that a differential cross section is computed at.
+Default value is 181 for scattering calculations.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="NAsymLRange">NAsymLRange</h2>
+</p>
+<p>
+This record defines the range of the functions on the left of the variational expression that should be
+computed.  The default value is to use the full range up to NAsymL.
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>NAsymLF, NAsymLL</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>NAsymLF</code></dt>
+<dd>integer, first solution computed
+</dd>
+<dt> <code>NAsymLL</code></dt>
+<dd>integer, last solution computed
+</dd>
+</dl>
+
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="NECenter">NECenter</h2>
+</p>
+<p>
+This record contains an integer that indicates the nucleus at which the single center expansion
+should occur.  NECenter is optional
+for those program which use it.  The default expansion point is (0.0, 0.0, 0.0).
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="NIntReg">NIntReg</h2>
+</p>
+<p>
+This record contains an integer that is the number regions the radial grid is divided into
+for integration.  In the usual scattering program the boundaries of these regions
+are where the solutions are stabilized.  In the piecewise diabatic calculations
+these regions are the diabatic regions.  In general, more regions are better, although the
+calculations become slower.
+Default value is 40 for scattering calculations.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="NoExchange">NoExchange</h2>
+</p>
+<p>
+If this data record is present, then no exchange potentials will be included in the scattering potential.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="NoCoulPhase">NoCoulPhase</h2>
+</p>
+<p>
+If this data record is present, then do not inlude Coulomb Phase in the matrix elements written out by
+<a href ="DumpIdy"> <code>DumpIdy</code> or <code>DumpIdyAll</code></a>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="NoSym">NoSym</h2>
+</p>
+<p>
+If this data record is present, solve problem using no symmetry, i.e. C1 symmetry
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="O">
+<h2><a name="OrbOcc">OrbOcc</h2>
+</p>
+<p>
+This data record contains an integer vector of the orbital group occupations of the
+target state.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="OrbOccInit">OrbOccInit</h2>
+</p>
+<p>
+This data record contains an integer vector of the orbital group occupations of the
+initial state.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="OrientAverage">OrientAverage</h2>
+</p>
+<p>
+This data record contains an integer flag (=0 for false /=0 for true) that determines if
+an average over the azimuthal angle should be performmed in the fixed-in-space
+differential cross section calculation.  The default value is 0 for not performing the average.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="OrientNSymPhi">OrientNSymPhi</h2>
+</p>
+<p>
+This data record contains a real number that
+gives the angle in degrees of a reflection plane of symmetry
+containing the <var>z</var> axis that should be used as the
+zero of the azimuthal angles in the molecular frame.
+The default value is 0.0, i.e. use the same refrence frame as the matrix elements.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="Orthog">Orthog</h2>
+</p>
+<p>
+This data record contains an integer vector that specifies for
+each orbital group if the continuum should be constrained to be
+orthogonal to that group
+(=1) or not (=0).  For
+<a href ="PhIonPlaneWv"> <code>PhIonPlaneWv</code></a>
+calculations, the absence of this record indicates the no orthogonalization
+should be performmed.  When this record is present then orthogonalization
+is performmed with respect to all orbitals.  With integers persent, then this record
+controls orthogonalization as in a regular photoionization calculation.
+</p>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="P">
+<h2><a name="PCutM">PCutM</h2>
+</p>
+<p>
+This record contains
+a real number that is used to determine the value of <var>m</var> to use about each unique
+axis with high partial wave expansions.  The maximum <var>m</var> is limited by the value of
+<a href ="SourceGetDataRecordDef_f90#MMax"> <var>MMax</var>.</a>
+The default value is <code>1.0e-8</code>.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PCutRd">PCutRd</h2>
+</p>
+<p>
+This record contains
+a real number that is used to determine at what value of <var>r</var> each radial grid is
+truncated.  The default value is <code>1.0e-8</code>.  Smaller values will cause the grids
+for each <var>l</var> to be extended further into the asymptotic region and towards
+the origin.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PlaneWvCharge">PlaneWvCharge</h2>
+</p>
+<p>
+This record contains an integer the determines the charge on the molecule used in the
+<a href ="CalcInt"> <code>CalcInt</code></a>
+command with function type <code>PlaneWv</code>
+or in a
+<a href ="PhIonPlaneWv"> <code>PhIonPlaneWv</code></a>
+command.
+The default value is zero corresponding to plane waves.  A value of 1 would be to use Coulomb waves
+with a +1 charge on the molecule.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PlotDataGrid">PlotDataGrid</h2>
+</p>
+<p>
+This record controls the density of the radial grid that is put into the PlotData
+grid.  If this record is present, then the full grid will be plotted, otherwise the grid is
+sampled at a subset of the available points.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PosFile">PosFile</h2>
+This is a string containing the name of the file for
+Gibson's positron polarization potential. The default name is <code>vpol.dat</code>.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PolSel">PolSel</h2>
+This data optional record contains a single interger that selects which polarization directions of
+linearly polarized light are included in
+the photoionization calculation.  Use 0 for including all direction (default value) and
+1 for x, 2, for y, and 3 for z.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PosFitL">PosFitL</h2>
+This is a single integer which is the
+maximum <var>l</var> used in the fitting of Gibson's
+positron polarization potential.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PosGridTol">PosGridTol</h2>
+This is a real number specifying the tolerance
+to be used in order to distinguish different coordinates
+when reading Gibson's positron polarization potential data. The default value is <code>1.0e-06</code>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PosPlot">PosPlot</h2>
+This record is used to plot the fitted Gibson's
+positron polarization potential.
+The plots data are dumped to the file <code>posplot.dat</code>
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>nplots</code>
+</li>
+<li>For <code>i = 1</code> to <code>nplots</code>
+<ol type="A">
+<li><code>theta(i), phi(i)</code>
+</li>
+</ol>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>nplots</code></dt>
+<dd>integer, number of plots requested.
+</dd>
+<dt> <code>theta(i)</code></dt>
+<dd>real, value of the angle <var>Theta</var> for the direction to plot along (degrees)
+</dd>
+<dt> <code>phi(i)</code></dt>
+<dd>real, value of the angle <var>Phi</var> for the direction to plot along (degrees)
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PrintBlm">PrintBlm</h2>
+</p>
+<p>
+This data record contains a single integer that controls if the Blms are printed out and if so
+the value of the maximum L printed.
+Default value is -1, i.e. do not print out and Blm expansions.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="PrintFlag">PrintFlag</h2>
+</p>
+<p>
+This data record contains a single integer that controls the amount of output that is sent to the
+standard output. Set equal to zero for minimal print and set  &gt; 0 for additional information.
+Default value is 0.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="Q">
+<a name="R">
+<h2><a name="ResSearchEng">ResSearchEng</h2>
+</p>
+<p>
+This record contains the range of energies in the complex plane that are examined in
+the search for poles of the <var>S</var> matrix
+in the command
+<a href ="ResSearch"> <code>ResSearch</code>.</a>
+These poles then correspond to scattering resonances.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>nengrb</code>
+</li>
+<li>For <code>i = 1</code> to <code>ABS(nengrb)</code>
+<ol type="A">
+<li><code>engrb(i), estprb(i)</code>
+</li>
+</ol>
+</li>
+<li><code>engrb(ABS(nengrb)+1), eendzi, estpzi</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>nengrb</code></dt>
+<dd>integer, number of energy regions to search in.  if negative then use a
+geometric progression for real parts of the energies in each region.
+</dd>
+<dt> <code>engrb(i)</code></dt>
+<dd>real, starting energy (in eV) for the <code>i</code>'th region.
+</dd>
+<dt> <code>estprb(i)</code></dt>
+<dd>real, energy step size (in eV) for
+the <code>i</code>'th region.
+</dd>
+<dt> <code>engrb(ABS(nengrb)+1)</code></dt>
+<dd>real, ending energy (in eV) in the last region.
+</dd>
+<dt> <code>eendzi</code></dt>
+<dd>real, maximum value of the imaginary part (in eV) to search.
+The search then goes over imaginary parts ranging from <code>0</code>
+to <code>eendzi</code>.
+</dd>
+<dt> <code>estpzi</code></dt>
+<dd>real, step size (in eV) for the imaginary part of the energy
+in the search grid.
+</dd>
+</dl>
+
+
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="ResSearchType">ResSearchType</h2>
+</p>
+<p>
+This record contains an integer that controls the resonance search.
+The default value is 0.
+</p>
+<ul>
+<li>if <code>ResSearchType</code> = 0 then do a single pass search using only the initial extimates of the
+poles in each sub region.
+</li>
+<li>if <code>ResSearchType</code> = 1 then do a single pass serach but include the locations of any found poles
+in the call to muller as they become available.
+</li>
+<li>if <code>ResSearchType</code> = 2 then do an exhaustive search in each region until no further poles
+are found in that region.  At each stage previously found poles are included in both the initial pole estimation
+and in the final muller search.
+</li>
+</ul>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="RMax">RMax</h2>
+</p>
+<p>
+This record contains a real number specifing the maximum value of <var>r</var> (in Angstroms)
+in the radial grid.  The default value is determined by RMaxEps
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="RMaxEps">RMaxEps</h2>
+</p>
+<p>
+This record contains a real number that is used to determine RMax.  RMax is chosen so that
+MAXVAL(ABS(Orb(RMax, Theta, Phi)*RMax**2)) < RMaxEps.
+Default value is 1.0e-6.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="RotateForm">RotateForm</h2>
+</p>
+<p>
+This optional record contains the specification of a series of rotations and translations
+to perform on the molecular geometry.  The translations is performed before the rotation.
+</p>
+
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>NumRot, (IAxis(i), RotAngle(i), i = 1, NumRot)</code>
+</li>
+<li><code>(Translate(i), i = 1, 3)</code> <br /> <br />
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>NumRot</code></dt>
+<dd>an integer that specifies the number of rotations to perform.
+</dd>
+<dt> <code>IAxis(i)</code></dt>
+<dd>an integer that specifies the axis for a rotation,
+1 for x axis,  2 for y axis, and 3 for z axis.
+</dd>
+<dt> <code>RotAngle(i)</code></dt>
+<dd>a real number that specifies
+the angle of rotation (in degrees) to perform about the axis specified by
+IAxis(i).
+</dd>
+<dt> <code>Translate(i)</code></dt>
+<dd>real numbers that specify a translation of
+the molecule (in Angstroms).
+</dd>
+</dl>
+
+<p>
+The translation is performed first, then the rotations are performed in the order given.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="RotateFormIdy">RotateFormIdy</h2>
+</p>
+<p>
+This optional record contains the specification of a series of rotations and translations
+to perform on the molecular geometry that is used in the transformation of dynamical
+coefficients in the cross section calculation.
+</p>
+
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>NumRot, (IAxis(i), RotAngle(i), i = 1, NumRot)</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>NumRot</code></dt>
+<dd>an integer that specifies the number of rotations to perform.
+</dd>
+<dt> <code>IAxis(i)</code></dt>
+<dd>an integer that specifies the axis for a rotation,
+1 for x axis,  2 for y axis, and 3 for z axis.
+</dd>
+<dt> <code>RotAngle(i)</code></dt>
+<dd>a real number that specifies
+the angle of rotation (in degrees) to perform about the axis specified by
+IAxis(i).
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="RotConstants">RotConstants</h2>
+</p>
+<p>
+This optional record contains the three rotational constants given in
+cm^-1 to be used in order to calculate the asymmetric top eigenfunctions and
+eigenvalues (if different, should be given in descending order).  If not given,
+computed values XZ = h/(8*PI^2*I_X) are used.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="RungeKuttaFac">RungeKuttaFac</h2>
+This data record contains the number of RungeKutta intervals between each grid point in the
+Radial integrations in ScatStab
+Default value is 4.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="S">
+<h2><a name="ScatContSym">ScatContSym</h2>
+</p>
+<p>
+This data record contains a character string <code>(LEN = 5)</code> that indicates
+the
+<a href ="SymmetryLabels"> IR of the continuum orbital.</a>
+</p>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="ScatEng">ScatEng</h2>
+This data record contains the electron energies for a scattering calculation performed by
+<a href ="PhIon"> PhIon</a>
+and
+<a href ="Scat"> Scat.</a>
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><var>Energy</var>-1 <var>Energy</var>-2 <var>Energy</var>-3 ...
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <var>Energy</var>-<var>n</var></dt>
+<dd>a list of electron (or photoelectron) kinetic energy
+in eV for the scattering calculation.
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<html>
+<hr>
+<h2><a name="ScatEngN">ScatEngN</h2>
+This data record contains a sequence of electron energies for a scattering calculations performed by PhIonN and
+<a href ="PhIonN"> PhIonN</a>
+and
+<a href ="ScatN"> ScatN,</a>
+with a fixed energy spacing.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><var>Energy-Start</var> <var>Energy-Step</var> <var>Number-of-Energies</var>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <var>Energy-Start</var></dt>
+<dd>First energy in the lis, in eV
+</dd>
+<dt> <var>Energy-Step</var></dt>
+<dd>spacing between computed energies in eV
+</dd>
+<dt> <var>Number-of-Energies</var></dt>
+<dd>number of energies computed including the first energy
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<html>
+<hr>
+<h2><a name="ScatSym">ScatSym</h2>
+</p>
+<p>
+This data record contains a character string <code>(LEN = 5)</code> that indicates
+the
+<a href ="SymmetryLabels"> IR of the total scattering state</a>
+including both the target state and the continuum orbital.
+</p>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="SpinDeg">SpinDeg</h2>
+</p>
+<p>
+This data record contains an interger that is the spin degeneracy of the total scattering state.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="SymToler">SymToler</h2>
+</p>
+<p>
+This data record the tolernace in the atomic position used to determine the symmetry operations.
+Used in the command GetBlms.
+Default value is 1.0e-05
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="T">
+<h2><a name="TargSpinDeg">TargSpinDeg</h2>
+</p>
+<p>
+This data record contains an interger that is the spin degeneracy of the target state.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="TargCompSel">TargCompSel</h2>
+</p>
+<p>
+This is an optional data record that contains an integer and is used in
+<a href ="OrientCro"> <code>OrientCro</code>.</a>
+For a degenerate target state, the integer will indicate which component to include.  The default
+is to sum all components.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="TargSym">TargSym</h2>
+</p>
+<p>
+This data record contains a character string <code>(LEN = 5)</code> that indicates
+the
+<a href ="SymmetryLabels"> IR of the target state.</a>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="TestOut">TestOut</h2>
+</p>
+<p>
+If this record is present, then the program writes out data to the standard output where lines
+to be compared between the old and new outputs begin with a special code.
+For example, "Test2Re" indicates that each line contains two real numbers.
+This will allow for automated unit testing of standard output.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="TotalAsymp">TotalAsymp</h2>
+</p>
+<p>
+This data record contains a real number which is the static polarizability of the molecule
+(in atomic units).
+If this data record is present, then the asymptotic polarization potential is forced to match
+this static polarizability in a scattering calculation.
+This record is usually created automatically by the command
+<a href ="GetPot"> GetPot.</a>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="U">
+<a name="V">
+<h2><a name="VCorr">VCorr</h2>
+</p>
+<p>
+This data record contains a single character string with optional real number,
+that indicates which correlation potential to use.
+If the calculation does not use
+a correlation potential then this variable can either be not present on the data file
+or it can have the value of 'None'.
+<h3>Data record format</h3>
+<code>PotTyp, PotFac</code><br />
+or<br />
+<code>PotType</code>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>PotTyp</code></dt>
+<dd>which can be one of the following:
+<dl>
+<dt> 'None'</dt>
+<dd>do not do correlation potential.
+</dd>
+<dt> 'PZ'</dt>
+<dd>use the Perdew-Zunger correlation potential.
+</dd>
+<dt> 'PN'</dt>
+<dd>use the Padial-Norcross correlation potential.
+</dd>
+<dt> 'BN'</dt>
+<dd>use the Boronski-Nieminen correlation potential.
+This is a potential which was designed to reresent the correlation between a positron
+and the bound electrons of a molecule.
+</dd>
+<dt> 'POS-FIT'</dt>
+<dd>use the Gibson's positron polarization potential by fitting a set of values
+computed on a cartesian grid.
+</dd>
+</dl>
+</dd>
+<dt> <code>PotFac</code></dt>
+<dd>Optional parameter for 'PZ' which scales the potential by this factor. If not present then
+the potential is scaled by 1.0.
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="VibAveInp">VibAveInp</h2>
+</p>
+<p>
+This data record defines the input used in the vibrational averaging calculation with the command
+<a href ="VibAve"> VibAve</a>
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>NumXV</code>
+</li>
+<li><code>XV(1:NumXV)</code>
+</li>
+<li><code>XtoQDef, OmegaQDef</code>
+</li>
+<li><code>XEIni, OmegaIni</code>
+</li>
+<li><code>XEIon, OmegaIon</code>
+</li>
+<li><code> Nv_Ini, Nv_Ion</code>
+</li>
+<li>If <code>Nv_Ini</code> greater than <code>0</code> and <code>Nv_Ion</code> greater than <code>0</code>
+then
+<ol type="A">
+<li><code>v_Ini(1:Nv_Ini)</code>
+</li>
+<li><code>v_Ion(1:Nv_Ion)</code>
+</li>
+</ol>
+</li>
+<li><code>X_n, X_f, X_l</code>
+</li>
+<li>For <code>i = 1</code> to <code>NumXV</code>
+<ol type="A">
+<li><code>FileNames(i), PhaseFix(i), NumRot(i),(IAxis(j, i), RotAngle(j, i), j = 1, NumRot(i))</code>
+</li>
+</ol>
+</li>
+<li><code> NFitStep</code>
+</li>
+<li>If <code>NFitStep</code> greater than 0 then
+<ol type="A">
+<li><code>NTermFitExpr(1:NFitStep)</code>
+</li>
+<li>For <code>i = 1</code> to <code>NTermFitExpr(NFitStep)</code> then
+<ol type="a">
+<li><code>FitExpr(i)%nn, FitExpr(i)%nd</code>
+</li>
+<li>For <code>j = 1</code> to <code>FitExpr(i)%nn</code> then
+<ol type="i">
+<li><code>FitExpr(i)%n(j)%e, FitExpr(i)%n(j)%x1, FitExpr(i)%n(j)%vary</code>
+</li>
+</ol>
+</li>
+<li>For <code>j = 1</code> to <code>FitExpr(i)%nd</code> then
+<ol type="i">
+<li><code>FitExpr(i)%d(j)%e, FitExpr(i)%d(j)%x1, FitExpr(i)%d(j)%vary</code>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>For <code>i = 1</code> to <code>SUM(FitExpr(:)%nn)+SUM(FitExpr(:)%nd)</code> then
+<ol type="a">
+<li><code>InitFitFactors(i)</code>
+</li>
+</ol>
+</li>
+<li><code>NFuncX1, NFuncEeV</code>
+</li>
+</ol>
+</li>
+<li>If <code>NEngOut</code> greater than <code>0</code> then read
+<ol type="A">
+<li><code>NEngOut, EngOutF, EngOutL</code></br>
+</li>
+</ol>
+</li>
+<li>Else if <code>NEngOut</code> less than <code>0</code> then read
+<ol type="A">
+<li><code>NEngOut, EngOutv(1:-NEngOut)</code>
+</li>
+</ol>
+</li>
+<li>Else if <code>NEngOut</code> is equal to <code>0</code> then read
+<ol type="A">
+<li><code>NEngOut</code>
+</li>
+</ol>
+</li>
+<li><code>InterpType, OrderX, OrderE, EpsNLFit</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>NumXV</code></dt>
+<dd>integer, number of points at which the matrix elements have been computed
+</dd>
+<dt> <code>XV(1:NumXV)</code></dt>
+<dd>real, input coordinates at which the matrix elements have been computed
+</dd>
+<dt> <code>XtoQDef</code></dt>
+<dd>real, factor to multiply the input coordinate to obtain the defined
+normal mode <var>Q</var>
+such that <var>Q(Def)</var> = 1 corresponds to the classical turning point of the lowest vibrational
+state with frequency <code>OmegaQDef</code>
+</dd>
+<dt> <code>OmegaQDef</code></dt>
+<dd>real, frequency used to define normal coordinates Q(Def) state in wavenumbers
+</dd>
+<dt> <code>XEIni</code></dt>
+<dd>real, value of the input coordinate at the equilibrium of the initial state
+</dd>
+<dt> <code>OmegaIni</code></dt>
+<dd>real, frequency of the initial state in wavenumbers
+</dd>
+<dt> <code>XEIon</code></dt>
+<dd> real, value of the input coordinate at the equilibrium of the final (ion) state
+</dd>
+<dt> <code>OmegaIon</code></dt>
+<dd> real, frequency of the final (ion) state in wavenumbers
+</dd>
+<dt> <code>Nv_Ini</code></dt>
+<dd>integer, number of vibrational states to condsider in the electronic initial state
+</dd>
+<dt> <code>Nv_Ion</code></dt>
+<dd>integer, number of vibrational states to condsider in the electronic final (ion) state
+</dd>
+<dt> <code>v_Ini(1:Nv_Ini)</code></dt>
+<dd>integers, values of the vibrational quantum numbers (0, 1, 2, 3, ...)
+to condsider in the electronic initial state. v_Ini = 0 is for the ground state.
+</dd>
+<dt> <code>v_Ion(1:Nv_Ion)</code></dt>
+<dd> integers, values of the vibrational quantum numbers (0, 1, 2, 3, ....)
+to condsider in the electronic final (ion) state. v_Ion = 0 is for the ground state.
+</dd>
+<dt> <code>X_n</code></dt>
+<dd>real, number of values of the input coordinate at which the matrix elements will be
+interpolated.
+Note that if either <code>Nv_Ini</code> or <code>Nv_Ion</code> are less than zero, then only
+will be performed and the resulting cross secitons will be computed at the interpolated points.
+Otherwise this grid of points will be used for the integration over the vibration mode
+to obtain the vibrationally specific cross sections.
+</dd>
+<dt> <code>X_f</code></dt>
+<dd> real, first value of the input coordinate for interpolation
+</dd>
+<dt> <code>X_l</code></dt>
+<dd>real, last value of the input coordinate for interpolation
+</dd>
+<dt> <code>FileNames(i)</code></dt>
+<dd>character string, file which contains the matrix elements at the
+point <code>XV(i)</code>
+</dd>
+<dt> <code>PhaseFix(i)</code></dt>
+<dd>real, relative phase of the matrix elements coputed at the point <code>XV(i)</code>
+</dd>
+<dt> <code>NumRot(i)</code></dt>
+<dd>integer, number of rotations to perform on the matrix elements.  These are in the
+same format as in the
+<a href ="SourceGetDataRecordDef_f90#RotateFormIdy"> RotateFormIdy</a>
+data record.
+</dd>
+<dt> <code>IAxis(i)</code></dt>
+<dd>an integer that specifies the axis for a rotation,
+1 for x axis,  2 for y axis, and 3 for z axis.
+</dd>
+<dt> <code>RotAngle(i)</code></dt>
+<dd>a real number that specifies
+the angle of rotation (in degrees) to perform about the axis specified by
+IAxis(i).
+</dd>
+<dt> <code> NFitStep</code></dt>
+<dd>integer, number of steps in the non-linear global fitting procedure
+using a sum of rational
+fractions.
+</dd>
+<dt> <code>NTermFitExpr(1:NFitStep)</code></dt>
+<dd>integers, number of rational fractions that will be included at each step
+</dd>
+<dt> <code>FitExpr(i)%nn</code></dt>
+<dd>integer, number of terms in the numerator of the <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%nd</code></dt>
+<dd>integer, number of terms in the denominator of the <code>i</code>th
+rational fraction
+</dd>
+<dt> <code>FitExpr(i)%n(j)%e</code></dt>
+<dd>integer, value of the exponent on the energy of the <code>j</code>th term in the
+numerator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%n(j)%x1</code></dt>
+<dd>integer, value of the exponent on the coordinate of the
+<code>j</code>th term in the
+numerator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%n(j)%vary</code></dt>
+<dd>integer, the first fitting step at which to allow the
+<code>j</code>th term in the
+numerator of the <code>i</code>th rational fraction to vary, if equal to 0 then do not vary
+</dd>
+<dt> <code>FitExpr(i)%d(j)%e</code></dt>
+<dd>integer, value of the exponent on the energy of the <code>j</code>th term in the
+denominator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%d(j)%x1</code></dt>
+<dd>integer, value of the exponent on the coordinate of the
+<code>j</code>th term in the
+denominator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%d(j)%vary</code></dt>
+<dd>integer, the first fitting step at which to allow the
+<code>j</code>th term in the
+denominator of the <code>i</code>th rational fraction to vary, if equal to 0 then do not vary
+</dd>
+<dt> <code>InitFitFactors(i)</code></dt>
+<dd>complex, initial value of the nonlinear fitting parameters given in the
+order that the exponents have been previously given
+</dd>
+<dt> <code>NFuncX1</code></dt>
+<dd>integer, in additional to the rational fractions, the nonlinear fit has a
+linear part constructed
+from direct product of polynomials in the coordinate and energy,
+this is the number of polynomial terms in the
+input coordinate
+</dd>
+<dt> <code>NFuncEeV</code></dt>
+<dd>integer, number of energy polynomials in the linear part of the non-linear fit
+</dd>
+<dt> <code>NEngOut</code></dt>
+<dd>integer, number of energies at which to interpolate the energy
+<ul>
+<li><code>NEngOut</code>
+greater than zero then generate the list of energies using <code>EngOutF</code> and
+<code>EngOutL</code>
+</li>
+<li><code>NEngOut</code> less than zero then read in a list of
+<code>NEngOut</code> energies
+</li>
+<li><code>NEngOut</code> equal to zero then use the energies
+at which the original matrix were computed.
+</li>
+</ul>
+</dd>
+<dt> <code>EngOutF</code></dt>
+<dd>real, eV, first energy in the computed list of energies
+</dd>
+<dt> <code>EngOutL</code></dt>
+<dd>real , eV, last energy in the computed list of energies
+</dd>
+<dt> <code>EngOutv(1:-NEngOut)</code></dt>
+<dd>real, eV, explicit list of energies
+</dd>
+<dt> <code>InterpType</code></dt>
+<dd>integer, interpolation type for the final local interpolation
+<ul>
+<li><code>= 0</code> no final local interpolation, thus only the global
+non-linear interpolation is done
+</li>
+<li><code>= 1</code> do a polynmial interpolation
+</li>
+<li><code>= 2</code> use cubic spline interpolation
+</li>
+</ul>
+</dd>
+<dt> <code>OrderX</code></dt>
+<dd>integer, order of the polynomial to use for the coordinate direction, not used for
+splines
+</dd>
+<dt> <code>OrderE</code></dt>
+<dd>integer, order of the polynomial or spline to use for the energy direction,
+not used for splines
+</dd>
+<dt> <code>EpsNLFit</code></dt>
+<dd>real, cutoff used in the non-linear interpolation, if the root mean square relative error
+of a particular matrix element over the values of the coordinate and energy
+in the input is less than this value in after a step of the non-linear fit, then
+no further steps are considered.  This can be made larger to suppress unpysical
+oscillations which can occur in the global fit when too many fitting
+parameters are included. Not used when there is no non-linear interpolation.
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<html>
+<hr>
+<h2><a name="VibAveNInp">VibAveNInp</h2>
+</p>
+<p>
+This data record defines the input use in the vibrational averaging calculation for more
+than one dimension using the command
+<a href ="VibAveN"> VibAveN</a>
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>DimModes, VibType</code>
+</li>
+<li><code>NumXV(1:DimModes)</code>
+</li>
+<li><code>(XV(1:NumXV(i), i), i = 1, DimModes)</code>
+</li>
+<li><code>XtoQDef(1:DimModes,1:DimModes), OmegaQDef(1:DimModes)</code>
+</li>
+<li><code>XEIni(1:DimModes), OmegaIni(1:DimModes)</code>
+</li>
+<li><code>XEIon(1:DimModes), OmegaIon(1:DimModes)</code>
+</li>
+<li>If <code>VibType</code> is equal to <code>2</code> then
+<ol type="A">
+<li><code>VMax_Ini(1:DimModes), VMax_Ion(1:DimModes)</code
+</li>
+</ol>
+</li>
+<li><code> Nv_Ini_Out, Nv_Ion_Out</code>
+</li>
+<li>If <code>VibType</code> is equal to <code>1</code> and
+<code>Nv_Ini_Out</code> greater than <code>0</code> and <code>Nv_Ion_Out</code> greater than <code>0</code>
+then
+<ol type="A">
+<li><code>v_Ini(1:DimModes,1:Nv_Ini_Out)</code>
+</li>
+<li><code>v_Ion(1:DimModes,1:Nv_Ion_Out)</code>
+</li>
+</ol>
+</li>
+<li>If <code>VibType</code> is equal to <code>2</code> then
+<ol type="A">
+<li><code>MorsePot_Ini%n</code>
+</li>
+<li><code>MorsePot_Ini%beta(1:DimModes)</code>
+</li>
+<li><code>MorsePot_Ini%x0(1:DimModes)</code>
+</li>
+<li><code>(MorsePot_Ini%c(i), MorsePot_Ini%p(1:DimModes,i), i = 1, MorsePot_Ini%n)</code>
+</li>
+<li><code>MorsePot_Ion%n</code>
+</li>
+<li><code>MorsePot_Ion%beta(1:MorsePot_Ion%n)</code>
+</li>
+<li><code>MorsePot_Ion%x0(1:MorsePot_Ion%n)</code>
+</li>
+<li><code>(MorsePot_Ion%c(i), MorsePot_Ion%p(1:DimModes,i), i = 1, MorsePot_Ion%n)</code>
+</li>
+<li><code>(X_n_Vib(i), X_f_Vib(i), X_l_Vib(i), i = 1, DimModes), alpha</code>
+</li>
+</ol>
+</li>
+<li><code>NumXVTotal</code>
+</li>
+<li>If <code>NumXVTotal</code> greater than <code>0</code>
+<ol type="A">
+<li><code>indXV(1:DimModes,1:NumXVTotal)</code>
+</li>
+</ol>
+If <code>NumXVTotal</code> is read in as <code>-1</code> then
+inside the program it is reset to <code>NumXV(1)*...*NumXV(DimModes)</code>
+</li>
+<li><code>X_nType</code>
+</li>
+<li>If <code>X_nType</code> equal to <code>4</code> then read
+<ol type="A">
+<li><code>NXRays</code>
+</li>
+<li><code>DirXRays(1:DimModes,1:NXRays)</code>
+</li>
+</ol>
+</li>
+<li>If <code>X_nType</code> equal to <code>5</code> then read
+<ol type="A">
+<li><code>NXRays</code>
+</li>
+<li><code>(DirXOrigin(1:DimModes,k), DirXEnd(1:DimModes, k), X_n(k), k = 1, NXRays)</code>
+</li>
+</ol>
+</li>
+<li>If <code>X_nType</code> not equal to <code>5</code> and <code>X_nType</code> greater than <code>0</code>
+then read
+<ol type="A">
+<li><code>(X_n(i), X_f(i), X_l(i), i = 1, DimModes)</code>
+</li>
+</ol>
+</li>
+<li>If <code>X_nType</code> equal to <code>0</code> then read
+<ol type="A">
+<li><code>X_nTotal, XI_n(1:DimModes,1:X_nTotal)</code>
+</li>
+</ol>
+</li>
+<li>If <code>NumXVTotal</code> not equal to <code>0</code> then
+</li>
+<li>For <code>i = 0</code> to <code>NumXVTotal</code>
+<ol type="A">
+<li><code>FileNames(i), PhaseFix(i), NumRot(i),(IAxis(j, i), RotAngle(j, i), j = 1, NumRot(i)) </code>
+</li>
+</ol>
+</li>
+<li>If <code>NFitStep</code> equal to <code>0</code>
+<ol type="A">
+<li><code> NFitStep</code>
+</li>
+</ol>
+If <code>NFitStep</code> not equal to <code>0</code>
+<ol type="A">
+<li><code> NFitStep, NLIterMax, WeightsNLFlag, WeightsIdyFlag, WeightsEnergyFlag</code>
+</li>
+</ol>
+</li>
+<li>If <code>NFitStep</code> not equal to <code>0</code> then
+<ol type="A">
+<li>If <code>WeightNLFlag</code> is not equal to <code>0</code> then read
+<ol type="a">
+<li><code>WeightsNL(1:NumXVTotal)</code>
+</li>
+</ol>
+</li>
+<li>If <code>WeightsIdyFlag</code> is not equal to zero then read
+<ol type="a">
+<li><code>(WeightsIdyPoint(i), WeightsIdyVal(i), i = 1, WeightsIdyFlag)</code>
+</li>
+</ol>
+</li>
+<li>If <code>WeightsEnergyFlag</code> not equal to <code>0</code> then read
+<ol type="a">
+<li><code>(WeightsEnergyEVal(i), WeightsEnergyVal(i), i = 1, WeightsEnergyFlag)</code>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>If <code>NFitStep</code> greater than <code>0</code> then read
+<ol type="A">
+<li><code>NTermFitExpr(1:NFitStep)</code>
+</li>
+<li>For <code>i = 1</code> to <code>NTermFitExpr(NFitStep)</code> read
+<ol type="a">
+<li><code>FitExpr(i)%nn, FitExpr(i)%nd</code>
+</li>
+<li>For <code>j = 1</code> to <code>FitExpr(i)%nn</code> then
+<ol type="i">
+<li><code>FitExpr(i)%n(j)%n, FitExpr(i)%n(j)%p, (FitExpr(i)%n(j)%c(k), FitExpr(i)%n(j)%e(k),
+FitExpr(i)%n(j)%x(1:DimModes,k), k = 1, FitExpr(i)%n(j)%n), FitExpr(i)%n(j)%vary</code>
+</li>
+</ol>
+</li>
+<li>For <code>j = 1</code> to <code>FitExpr(i)%nd</code> then
+<ol type="i">
+<li>If <code>FitExpr(i)%d(j)%vary</code> is greater or equal to <code>0</code> then read
+<ol type="1">
+<li><code>FitExpr(i)%d(j)%n, FitExpr(i)%d(j)%p, (FitExpr(i)%d(j)%c(k), FitExpr(i)%d(j)%e(k),
+FitExpr(i)%d(j)%x(1:DimModes,k), k = 1, FitExpr(i)%d(j)%n), FitExpr(i)%d(j)%vary</code>
+</li>
+</ol>
+If <code>FitExpr(i)%d(j)%vary</code> is less than <code>0</code> then read
+<ol type="1">
+<li><code>FitExpr(i)%d(j)%n, FitExpr(i)%d(j)%p, (FitExpr(i)%d(j)%c(k), FitExpr(i)%d(j)%e(k),
+FitExpr(i)%d(j)%x(1:DimModes,k), k = 1, FitExpr(i)%d(j)%n), FitExpr(i)%d(j)%vary,
+FitExpr(i)%d(j)%fi, FitExpr(i)%d(j)%fj</code>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>For <code>i = 1</code> to <code>SUM(FitExpr(:)%nd)</code> then
+<ol type="a">
+<li><code>InitFitFactors(i)</code>
+</li>
+</ol>
+</li>
+<li>For <code>i = 1</code> to <code>NTermFitExpr(NFitStep)</code> read
+<ol type="a">
+<li>For <code>j = 1</code> to <code>FitExpr(i)%nd</code> read
+<ol type="i">
+<li><code>FitExpr(i)%d(j)%ref</code>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><code>NFuncXTotal, NFuncEeV</code>
+</li>
+<li><code>(IndNCoefFuncX(i), indPowFuncX(i), (indCoefFuncX(j, i), indFuncX(1:DimModes, j, i), j = 1,
+indNCoefFuncX(i)), i = 1, NFuncXTotal)</code>
+</li>
+<li><code>EpsNLFit, Gamma</code>
+</li>
+</ol>
+</li>
+<li>If <code>NumXVTotal</code> not equal <code>0</code> then read
+<ol type="A">
+<li>If <code>NEngOut</code> greater than <code>0</code> then read
+<ol type="a">
+<li><code>NEngOut, EngOutF, EngOutL</code></br>
+</li>
+</ol>
+</li>
+<li>If <code>NEngOut</code> less than <code>0</code> then read
+<ol type="a">
+<li><code>NEngOut, EngOutv(1:-NEngOut)</code>
+</li>
+</ol>
+</li>
+<li>If <code>NEngOut</code> is equal to <code>0</code> then read
+<ol type="a">
+<li><code>NEngOut</code>
+</li>
+</ol>
+</li>
+<li>If <code>InterpType</code> greater than <code>0</code> but not equal to <code>5</code> then read
+<ol type="a">
+<li><code>InterpType, OrderXTotal, WeightsMax, InterpPower</code>
+</li>
+</ol>
+</li>
+<li>If <code>InterpType</code> is less than or equal to <code>0</code> or equalt to <code>5</code> then read
+<ol type="a">
+<li><code>InterpType</code>
+</li>
+</ol>
+</li>
+<li>If <code>InterpType</code> greater than <code>0</code> but not equal to <code>5</code> then read
+<ol type="a">
+<li><code>(IndNCoefOrderX(i), indPowOrderX(i),(indCoefOrderX(j, i), indOrderX(:, j, i),
+j = 1, indNCoefOrderX(i)), i = 1, OrderXTotal)</code>
+</li>
+<li>If <code>InterpType</code> equal to <code>3</code> or <code>4</code> then read
+<ol type="i">
+<li><code>NSpRay, RayCut</code>
+</li>
+<li><code>RayDir(1:DimModes, 1:NSpRay)</code>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>DimModes</code></dt>
+<dd>interger, the number of vibrational modes
+</dd>
+<dt> <code>VibType</code></dt>
+<dd>integer - indicates the treatment to use for the vibrational wave functions
+<ul>
+<li><code>= 1</code> to use the harmonic approximation
+</li>
+<li><code>= 2</code> to compute coupled anharmonic vibrational wave functions using
+a Morse expansion to represent the potential
+</li>
+</ul>
+</dd>
+<dt> <code>NumXV(i)</code></dt>
+<dd>integer, number of points in direction <code>i</code>
+that is needed to define where the matrix elements have been computed
+</dd>
+<dt> <code>XV(1:NumXV, i)</code></dt>
+<dd>real, input coordinates used to define where the matrix elements have
+been computed.  The values of XV for a direct product grid refered to as the
+<code>X</code> coordinates.
+</dd>
+<dt> <code>XtoQDef</code></dt>
+<dd>real, transformation matrix <code>T(iQ, iX)</code>
+to multiply the input coordinate vector <code>X</code>
+to obtain the defining normal mode <code>Q(Def)</code> using <code>Q = T*(X-Xe)</code>
+such that <code>Q_i</code> = 1 corresponds to the classical turning point of the lowest vibrational
+state which in the harmonic approximation has frequency <code>OmegaQDef(i)</code>
+</dd>
+<dt> <code>OmegaQDef</code></dt>
+<dd>real, harmonic frequency in wavenumbers,
+used to compute the <code>Q(Def)</code> normal mode coordinate system.
+</dd>
+<dt> <code>XEIni(i)</code></dt>
+<dd>real, value of the input coordinate <code>X(i)</code>
+at the origin of of the normal modes for the initial state
+</dd>
+<dt> <code>OmegaIni</code></dt>
+<dd>real, harmonic frequency of the initial state in wavenumbers,
+for the anharmonic calculation
+this frequency is used to construct the basis set used in the vibrational calculation.
+</dd>
+<dt> <code>XEIon</code></dt>
+<dd> real, value of the input coordinate at origin of the normal modes of the final (ion) state
+</dd>
+<dt> <code>OmegaIon</code></dt>
+<dd> real, harmonic frequency of the final (ion) state in wavenumbers
+</dd>
+<dt> <code>VMax_Ini(i)</code></dt>
+<dd>integer, the number of harmonic oscillator basis functions in mode <code>i</code>
+to use in the anharmonic calculation for the initial state vibrations.
+The full basis set is formed as a direct product basis set
+for harmonic oscillator functions in each normal mode.
+</dd>
+<dt> <code>VMax_Ion(i)</code></dt>
+<dd>integer, the number of harmonic oscillator basis functions in mode <code>i</code>
+to use in the anharmonic calculation for the ion state vibrations.
+</dd>
+<dt> <code>Nv_Ini_Out</code></dt>
+<dd>integer, number of vibrational states to compute for the electronic initial state.
+In the anharmonic Morse potential calculation these states are the <code>Nv_Ini_Out</code>
+lowest states ordered by energy.
+If <code>Nv_Ini_Out = 0</code> then write out cross sections on the X_n grid.
+If <code>Nv_Ini_Out = -1</code> then write out selected matrix elements on the X_n grid.
+</dd>
+<dt> <code>Nv_Ion_Out</code></dt>
+<dd>integer, number of vibrational states to compute for the electronic final (ion) state.
+If <code>Nv_Ini_Out = -1</code> then <code>Nv_Ion_Out</code> gives the number of matrix elements
+to write out from the list of largest magnitude matrix elements.
+</dd>
+<dt> <code>v_Ini(iMode,iState)</code></dt>
+<dd>integers, values of the vibrational quantum numbers (0, 1, 2, 3, ...)
+to condsider in the electronic initial state.  Here we use the harmonic approximation assuming
+separable motion so that the vibrational eigen state are products of one-dimensional
+harmonic oscillator functions.  In this case state <code>iState</code> contains the
+quantum state <code>v_Ini(iMode,iState)</code> from mode <code>iMode</code>. A value of
+<code>v_Ini = 0</code> implies a ground harmonic oscillator state.
+</dd>
+<dt> <code>v_Ion(1:Nv_Ion)</code></dt>
+<dd> integer, ion state quantum numbers (0, 1, 2, 3, ...).
+This is the same as <code>v_Ini</code> for the electronic final (ion) state.
+</dd>
+<dt> <code>MorsePot_Ini%n</code></dt>
+<dd>integer, the number of terms used to define the Morse expansion of the
+initial state potential.  This expansion is in terms of the <code>X</code> coordinates.  This expansion
+uses the form of the radial parts of Eq. (4) in Sankari et al., Chem. Phys. Lett. 380, 647 (2003).
+</dd>
+<dt> <code>MorsePot_Ini%beta(i)</code></dt>
+<dd>real, exponent in the Morse function for mode <code>i</code>
+in the initial state, units are the inverse of the units of
+the <code>X</code> coordinates
+</dd>
+<dt> <code>MorsePot_Ini%x0(i)</code></dt>
+<dd>real, the expansion point of the Morse function for mode <code>i</code>
+in the initial state, units are the same as the <code>X</code> coordinates
+</dd>
+<dt> <code>MorsePot_Ini%c(i)</code></dt>
+<dd>real, coefficient for the <code>i</code>th term in the expansion
+in the initial state, in units of wave numbers
+</dd>
+<dt> <code>MorsePot_Ini%p(j, i)</code></dt>
+<dd>integer, exponent for mode <code>j</code> in the <code>i</code>th term
+in the initial state
+</dd>
+<dt> <code>MorsePot_Ion%n</code></dt>
+<dd>integer, the number of terms used to define the Morse expansion of the
+ion state potential.
+</dd>
+<dt> <code>MorsePot_Ion%beta(i)</code></dt>
+<dd>real, exponent in the Morse function for mode <code>i</code>
+in the ion state, units are the inverse of the units of
+the <code>X</code> coordinates
+</dd>
+<dt> <code>MorsePot_Ion%x0(i)</code></dt>
+<dd>real, the expansion point of the Morse function for mode <code>i</code>
+in the ion state, units are the units of
+the <code>X</code> coordinates
+</dd>
+<dt> <code>MorsePot_Ion%c(i)</code></dt>
+<dd>real, coefficient for the <code>i</code>th term in the expansion
+in the ion state, units of wave numbers
+</dd>
+<dt> <code>MorsePot_Ion%p(j, i)</code></dt>
+<dd>integer, exponent for mode <code>j</code> in the <code>i</code>th term
+in the ion state
+</dd>
+<dt> <code>X_n_Vib(i)</code></dt>
+<dd>integer, number of points to use in the <code>i</code>th direction in the
+vibrational calculation
+</dd>
+<dt> <code>X_f_Vib(i)</code></dt>
+<dd>real, first point in the grid for the <code>i</code>th direction in the
+vibrational calculation
+</dd>
+<dt> <code>X_l_Vib(i)</code></dt>
+<dd>real, last point in the grid for the <code>i</code>th direction in the
+vibrational calculation.  Note that the range of the vibrational calculation
+must be larger than the range of coordinate used to compute the integrals
+using the variables <code>X_n(i)</code>, <code>X_f(i)</code>, and
+<code>X_l(i)</code>.
+</dd>
+<dt> <code>alpha</code></dt>
+<dd>real, with units that are the inverse of the units used to define <code>X</code>.
+This parameter is used to define a cutoff function that confines range of the
+harmonic oscillator functions to the range defined by <code>X_f_Vib</code> and
+<code>X_l_Vib</code>.  The dependence on <code>alpha</code> is of the form
+<code>exp(-alpha*(X-X_l_Vib))</code>
+</dd>
+<dt> <code>NumXVTotal</code></dt>
+<dd>integer, number of points where the dipole matrix elements have been computed,
+if <code>NumXVTotal</code> is equal to <code>0</code> the
+only do vibrational part of the calculation.
+If <code>NumXVTotal</code> is equal to <code>-1</code> the use a direct product grid
+and the value of <code>NumXVTotal</code> in the program is set to
+<code>NumXV(1)*...NumXV(DimModes)</code>.
+</dd>
+<dt> <code>indXV(i, j)</code></dt>
+<dd>integer, the <code>j</code>th point where the matrix elements have been computed
+is defined as <code>(XV(indXV(i, j), i), i = 1, DimModes)</code>
+</dd>
+<dt> <code>X_nType</code></dt>
+<dd>integer, indicates the type of grid
+<ul>
+<li><code>= 0</code> for explicit list
+</li>
+<li><code>= 1</code> for Gauss Quadrature
+</li>
+<li><code>= 2</code> for Simpson's rule
+</li>
+<li><code>= 3</code> for aribtrarly spaced list
+</li>
+<li><code>= 4</code> for plots along rays
+</li>
+<li><code>= 5</code> for plots along line between two points
+</li>
+<li><code>= -1</code> for full input list
+</li>
+</ul>
+</dd>
+<dt> <code>NXRays</code></dt>
+<dd>integer, number of rays along which the values of the dipole
+matrix elements should be interpolated
+</dd>
+<dt> <code>DirXRays(:,j)</code></dt>
+<dd>real, <code>j</code>th ray directiondirection from <code>X = 0</code>
+used for interpolation
+</dd>
+<dt> <code>DirXOrigin(:,k)</code></dt>
+<dd>real, starting point for an arbitrary line used for interpolation
+</dd>
+<dt> <code>DirXEnd(:,k)</code></dt>
+<dd>real, ending point for arbitrary line used for interpolations
+</dd>
+<dt> <code>X_n(i)</code></dt>
+<dd>real, number of values of the input coordinate for direction <code>i</code>
+at which the matrix elements will be
+interpolated.  If rays are being used for interpolation, then this is for the <code>i</code>th
+ray.
+</dd>
+<dt> <code>X_f(i)</code></dt>
+<dd> real, first value of the input coordinate for interpolation in direction
+or ray <code>i</code>
+</dd>
+<dt> <code>X_l</code></dt>
+<dd>real, last value of the input coordinate for interpolation in direction
+or ray <code>i</code>
+</dd>
+<dt> <code>X_nTotal</code></dt>
+<dd>integer, number of points at which to interpolate the matrix elements
+</dd>
+<dt> <code>XI_n(:,i)</code></dt>
+<dd>real, explicit list of points at which to interpolate the matrix
+elements
+</dd>
+<dt> <code>FileNames(i)</code></dt>
+<dd>character string, file which contains the matrix elements at the
+<code>i</code>th point in the list of <code>NumXVTotal</code> points
+</dd>
+<dt> <code>PhaseFix(i)</code></dt>
+<dd>real, phase correction for the matrix elements computed at the <code>i</code>th
+point
+</dd>
+<dt> <code>NumRot(i)</code></dt>
+<dd>integer, number of rotations to perform on the matrix elements.  These are in the
+same format as in the
+<a href ="SourceGetDataRecordDef_f90#RotateFormIdy"> RotateFormIdy</a>
+data record.
+</dd>
+<dt> <code>IAxis(i)</code></dt>
+<dd>an integer that specifies the axis for a rotation,
+1 for x axis,  2 for y axis, and 3 for z axis.
+</dd>
+<dt> <code>RotAngle(i)</code></dt>
+<dd>a real number that specifies
+the angle of rotation (in degrees) to perform about the axis specified by
+IAxis(i).
+</dd>
+<dt> <code> NFitStep</code></dt>
+<dd>integer, number of steps in the non-linear global fitting procedure
+using a sum of rational
+fractions.
+</dd>
+<dt> <code>NLIterMax</code></dt>
+<dd>integer, maximum number of iteration allowd in the nonlinear optimization
+</dd>
+<dt> <code>WeightsNLFlag</code></dt>
+<dd>integer, flag to indicate that different weights for different points are needed
+</dd>
+<dt> <code>WeightsIdyFlag</code></dt>
+<dd>integer, flag to indicate the number of matrix elements that
+get weights other than 1.0
+</dd>
+<dt> <code>WeightsEnergyFlag</code></dt>
+<dd>integer, Flag to indicate number of energies that get weights other than 1.0
+</dd>
+<dt> <code>WeightsNL(i)</code></dt>
+<dd>real, weight to give to the matrix elements at the <code>i</code>th point
+</dd>
+<dt> <code>WeightsIdyPoint(i)</code></dt>
+<dd>integer, indicates which matrix elements should have a weight other
+than 1.0
+</dd>
+<dt> <code>WeightsIdyVal(i)</code></dt>
+<dd>real, value of the weight for the <code>WeightsIdyPoint(i)</code>th
+matrix element
+</dd>
+<dt> <code>WeightsEnergyFlag</code></dt>
+<dd>integer, number of weights that should have weights other than 1.0
+</dd>
+<dt> <code>WeightsEnergyEVal(i)</code></dt>
+<dd>real, energy (in eV) that should have a different weight
+</dd>
+<dt> <code>WeightsEnergyVal(i)</code></dt>
+<dd>real, corresponding weight for this energy
+</dd>
+<dt> <code>NTermFitExpr(1:NFitStep)</code></dt>
+<dd>integers, number of rational fractions that will be included at each step
+</dd>
+<dt> <code>FitExpr(i)%nn</code></dt>
+<dd>integer, number of terms in the numerator of the <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%nd</code></dt>
+<dd>integer, number of terms in the denominator of the <code>i</code>th
+rational fraction
+</dd>
+<dt> <code>FitExpr(i)%n(j)%n</code></dt>
+<dd>integer, number of power series factors
+that are combined to make the <code>j</code>th
+term in the numerator for the <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%n(j)%p</code></dt>
+<dd>integer, overall power to apply to this term
+</dd>
+<dt> <code>FitExpr(i)%n(j)%c(k)</code></dt>
+<dd>real, coefficient for the
+<code>k</code>th power series factor in the <code>j</code>th term in the
+numerator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%n(j)%e(k)</code></dt>
+<dd>integer, value of the exponent on the energy of the
+<code>k</code>th factor in the <code>j</code>th term in the
+numerator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%n(j)%x(:,k)</code></dt>
+<dd>integer, values of the exponents on the coordinates of the
+<code>k</code>th factor in the <code>j</code>th term in the
+numerator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%n(j)%vary</code></dt>
+<dd>integer, the first fitting step at which to allow the
+<code>j</code>th term in the
+numerator of the <code>i</code>th rational fraction to vary, if equal to 0 then do not vary
+</dd>
+<dt> <code>FitExpr(i)%d(j)%n</code></dt>
+<dd>integer, number of power series factors
+that are combined to make the <code>j</code>th
+term in the denominator for the <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%d(j)%p</code></dt>
+<dd>integer, overall power to apply to this term
+</dd>
+<dt> <code>FitExpr(i)%d(j)%c(k)</code></dt>
+<dd>real, coefficient for the
+<code>k</code>th power series factor in the <code>j</code>th term in the
+denominator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%d(j)%e(k)</code></dt>
+<dd>integer, value of the exponent on the energy of the
+<code>k</code>th factor in the <code>j</code>th term in the
+denominator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%d(j)%x(:,k)</code></dt>
+<dd>integer, values of the exponents on the coordinates of the
+<code>k</code>th factor in the <code>j</code>th term in the
+denominator of the  <code>i</code>th rational fraction
+</dd>
+<dt> <code>FitExpr(i)%d(j)%vary</code></dt>
+<dd>integer, the first fitting step at which to allow the
+<code>j</code>th term in the
+denominator of the <code>i</code>th rational fraction to vary, if equal to 0 then do not vary.
+If <code>FitExpr(i)%d(j)%vary</code> then read in %fi and %fj and constrain the coefficient
+of this term to be the same as that in <code>FitExpr(ABS(%fi))%d(%fj)</code>.  If
+<code>%fi</code> is less than zero then constrain this parameter to have the same value
+but opposite sign to the term in <code>FitExpr(i)%d(j)%vary</code>
+</dd>
+<dt> <code>FitExpr(i)%d(j)%fi</code></dt>
+<dd>integer, the index of the rational fraction which has the term
+that the present term will be constrained by
+</dd>
+<dt> <code>FitExpr(i)%d(j)%fj</code></dt>
+<dd>integer, the index of the term
+that the present term will be constrained by
+</dd>
+<dt> <code>InitFitFactors(i)</code></dt>
+<dd>complex, initial value of the nonlinear fitting parameters,
+i.e. the parameters in the denominator of the nonlinear terms, given in the
+order that the exponents have been previously given
+</dd>
+<dt> <code>FitExpr(i)%d(j)%ref</code></dt>
+<dd>complex, reference value of the nonlinear fitting parameters,
+i.e. the parameters in the denominator of the nonlinear terms, given in the
+order that the exponents have been previously given.  These values are used in the
+regularization procedure in the nonlinear optimization.  Thus, the optimization
+will find the best values of the parameters subject to the constraint that they are
+in some sense close to the reference values.
+</dd>
+<dt> <code>NFuncXTotal</code></dt>
+<dd>integer, in additional to the rational fractions, the nonlinear fit has a
+linear part constructed
+from direct product of polynomials in the coordinate and energy,
+this is the number of polynomial terms in the
+input coordinate
+</dd>
+<dt> <code>NFuncEeV</code></dt>
+<dd>integer, number of energy polynomials in the linear part of the non-linear fit, if
+this value is negative then inverse powers of <code>E</code> are used.
+</dd>
+<dt> <code>IndNCoefFuncX(i)</code></dt>
+<dd>integer, the number of power series factors in this term of the additional
+linear power series expansion used in the non-linear fit
+</dd>
+<dt> <code>indPowFuncX(i)</code></dt>
+<dd>integer, overall exponent plus one for this term, unlike the terms in the definition
+of the non-linear fitting terms, the <code>indPowFUncX</code> are indexes in a list
+of orthogonal polynomials so that a term with index <code>1</code> corresponds to
+term with order <code>0</code>
+</dd>
+<dt> <code>indCoefFuncX(j, i)</code></dt>
+<dd>real, coefficient for this factor
+</dd>
+<dt> <code>indFuncX(1:DimModes, j, i)</code></dt>
+<dd>integer, exponent for each coordinate in this factor
+</dd>
+<dt> <code>EpsNLFit</code></dt>
+<dd>real, parameter used to truncate the sequence of nonlinear fits.  If the
+realtive value of the rms error in the matrix elements falls below this cutoff,
+then no further non-linear optimization steps are performed. Typical value is 0.006
+</dd>
+<dt> <code>Gamma</code></dt>
+<dd>real, regularization parameter, see J. Chem. Phys. 115, 899 (2001).  The larger
+the value of <code>Gamma</code>, the closer the parameters will be to the reference values.
+Typical value is 0.04.
+</dd>
+<dt> <code>NEngOut</code></dt>
+<dd>integer, number of energies at which to interpolate the energy
+<ul>
+<li><code>NEngOut</code>
+greater than zero then generate the list of energies using <code>EngOutF</code> and
+<code>EngOutL</code>
+</li>
+<li><code>NEngOut</code> less than zero then read in a list of
+<code>NEngOut</code> energies
+</li>
+<li><code>NEngOut</code> equal to zero then use the energies
+at which the original matrix were computed.
+</li>
+</ul>
+</dd>
+<dt> <code>EngOutF</code></dt>
+<dd>real, eV, first energy in the computed list of energies
+</dd>
+<dt> <code>EngOutL</code></dt>
+<dd>real , eV, last energy in the computed list of energies
+</dd>
+<dt> <code>EngOutv(1:-NEngOut)</code></dt>
+<dd>real, eV, explicit list of energies
+</dd>
+<dt> <code>InterpType</code></dt>
+<dd>integer, interpolation type for the final local interpolation
+<ul>
+<li><code>= 0</code> no final local interpolation, thus only the global
+non-linear interpolation is done
+</li>
+<li><code>= 1</code> do a polynmial interpolation
+</li>
+<li><code>= 2</code> use a cubic spline interpolation for energy and polynomial MLS on geometry
+</li>
+<li><code>= 3</code> do a polynmial interpolation along the interpolation rays
+</li>
+<li><code>= 4</code> use a cubic spline interpolation along the interpolation rays and energy and polynomial
+MLS in between rays
+</li>
+<li><code>= 5</code> use a cubic spline interpolation on the direct product grid for all dimensions
+</li>
+</ul>
+</dd>
+<dt> <code>OrderXTotal</code></dt>
+<dd>integer, order of the final polynomial interpolation using a moving
+least squares (MLS) method.  See Mol. Phys. 108, 1055 (2010).
+</dd>
+<dt> <code>WeightsMax</code></dt>
+<dd>real, maximum relative weight for the final MLS interpolations, typical
+value is 1000.
+</dd>
+<dt> <code>InterpPower</code></dt>
+<dd>real, power applied to the sum of squares in computing the weight function,
+typical value is 3.0
+</dd>
+<dt> <code>IndNCoefOrderX(i)</code></dt>
+<dd>integer, this is the number of factors in this term
+</dd>
+<dt> <code>indPowOrderX(i)</code></dt>
+<dd>integer, overall power on this term
+</dd>
+<dt> <code>indCoefOrderX(j, i)</code></dt>
+<dd>real, coefficient for this factor
+</dd>
+<dt> <code>indOrderX(1:DimModes, j, i)</code></dt>
+<dd>integer, index on the orthogonal polynomial for this
+coordinate, i.e. the exponent for this coordinate plus one
+</dd>
+<dt> <code>NSpRay</code></dt>
+<dd>integer, number of rays for the first interpolation of the geometry
+</dd>
+<dt> <code>RayCut</code></dt>
+<dd>real, cutoff to keep the spline fits from getting too close to the oprigin
+where all of the rays come together, typical value is 0.1
+</dd>
+<dt> <code>RayDir(1:DimModes,i)</code></dt>
+<dd>real, direction of this mode
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="VibAveNIInp">VibAveNIInp</h2>
+</p>
+<p>
+This data record defines the input use in the vibrational averaging calculation for more
+than one dimension using the command
+<a href ="VibAveNI"> VibAveNI</a>
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<html>
+<hr>
+<h2><a name="VibBend">VibBend</h2>
+</p>
+<p>
+If present, this data record indicates that the one dimensional vibrational averaging calculation
+is for a bending mode of a linear molecule.  This record then contains the information needed for
+the bending mode calculation.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>LambdaIni, LambdaIon</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>LambdaIni</code></dt>
+<dd>integer, value of the vibrational angular momentum in the initial state
+</dd>
+<dt> <code>LambdaIon</code></dt>
+<dd>integer, value of the vibrational angular momentum in the ion state
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="ViewOrbGrid">ViewOrbGrid</h2>
+</p>
+<p>
+This data record defines the Cartesian grid that
+<a href ="ViewOrb"> ViewOrb</a>
+uses to expand various orbitals.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>corig, ((caxis(k, i), k = 1, 3), i = 1, 2)</code>
+</li>
+<li>For <code>igrid = 1</code> to <code>3</code> read<br />
+<code>cmin(igrid), cmax(igrid), cstep(igrid)</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>corig(1:3)</code></dt>
+<dd>real vector, origin of the cartesian system (in Angstroms).
+</dd>
+<dt> <code>caxis(k, i)</code></dt>
+<dd>real, <code>caxis(1:3,1)</code> and <code>caxis(1:3,2)</code> are two
+of the vectors that define the axes of the cartesian coordinate system.
+The third vector is obtained from the cross product
+<code>c3 = c1 x c2</code>.
+</dd>
+<dt> <code>cmin(igrid)</code></dt>
+<dd>real, the lowest value of the coordinate in the direction of the
+<code>igrid</code>th defining vector (in Angstroms).
+</dd>
+<dt> <code>cmax(igrid)</code></dt>
+<dd>real, the higest value of the coordinate in the direction of the
+<code>igrid</code>th defining vector (in Angstroms).
+</dd>
+<dt> <code>cstep(igrid)</code></dt>
+<dd>real, the stepsize for the grid for the coordinate in the direction of the
+<code>igrid</code>th defining vector (in Angstroms).
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="ViewOrbGridSph">ViewOrbGridSph</h2>
+</p>
+<p>
+This data record defines the spherical polar grid that
+<a href ="ViewOrb"> ViewOrb</a>
+uses to expand various orbitals.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>corig, ((caxis(k, i), k = 1, 3), i = 1, 2)</code>
+</li>
+<li><code>rmin, rmax, rstep</code>
+</li>
+<li><code>thetamin, thetamax, thetastep</code>
+</li>
+<li><code>phimin, phimax, phistep</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>corig(1:3)</code></dt>
+<dd>real vector, origin of the cartesian system (in Angstroms).
+</dd>
+<dt> <code>caxis(k, i)</code></dt>
+<dd>real, <code>caxis(1:3,1)</code> and <code>caxis(1:3,2)</code> are two
+of the vectors that define the axes of the cartesian coordinate system.
+The third vector is obtained from the cross product
+<code>c3 = c1 x c2</code>.
+</dd>
+<dt> <code>rmin</code></dt>
+<dd>real, the lowest value of the radial coordinate (in Angstroms).
+</dd>
+<dt> <code>rmax</code></dt>
+<dd>real, the higest value of the radial coordinate (in Angstroms).
+</dd>
+<dt> <code>rstep</code></dt>
+<dd>real, the stepsize for the radial grid (in Angstroms).
+</dd>
+<dt> <code>thetamin</code></dt>
+<dd>real, the lowest value of the theta coordinate (in degrees).
+</dd>
+<dt> <code>thetamax</code></dt>
+<dd>real, the higest value of the theta coordinate (in degrees).
+</dd>
+<dt> <code>thetastep</code></dt>
+<dd>real, the stepsize for the theta grid (in degrees).
+</dd>
+<dt> <code>phimin</code></dt>
+<dd>real, the lowest value of the phi coordinate (in degrees).
+</dd>
+<dt> <code>phimax</code></dt>
+<dd>real, the higest value of the phi coordinate (in degrees).
+</dd>
+<dt> <code>phistep</code></dt>
+<dd>real, the stepsize for the phi grid (in degrees).
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="ViewOrbLVal">ViewOrbLVal</h2>
+</p>
+<p>
+If the record is present, then this is a single integer <var>l</var>. Then
+<a href ="ViewOrb"> ViewOrb</a>
+plots out the sum of the contributions with only this <var>l</var>.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<h2><a name="ViewOrbPartialWave">ViewOrbPartialWave</h2>
+</p>
+<p>
+This data record defines the radial grid that
+<a href ="ViewOrb"> ViewOrb</a>
+uses to write the partial wave expansions of orbitals.
+</p>
+<p>
+<h3>Data record format</h3>
+</p>
+<ol type="1">
+<li><code>ExpLMax, rmin, rmax, rstep</code>
+</li>
+</ol>
+
+<p>
+<h3>Data record variables</h3>
+</p>
+<dl>
+<dt> <code>ExpLMax</code></dt>
+<dd>integer, maximum partial wave L to write out, all partial waves
+with non-zero parts up to this L are written out.  The partial waves
+are defined in terms of the real harmonics with negative vallues of m corresponding
+to the sine(|m|*phi) like functions and the non-negative values of m corresponding
+to the cosine(m*phi) like functions.
+</dd>
+<dt> <code>rmin</code></dt>
+<dd>real, the lowest value of the radial coordinate (in Angstroms).
+</dd>
+<dt> <code>rmax</code></dt>
+<dd>real, the higest value of the radial coordinate (in Angstroms).
+</dd>
+<dt> <code>rstep</code></dt>
+<dd>real, the stepsize for the radial grid (in Angstroms).
+</dd>
+</dl>
+
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<hr>
+<a name="W">
+<h2><a name="WorkExp">WorkExp</h2>
+</p>
+<p>
+This data record contains the
+parameter used to divide up the grid for the different processors.
+Default value is 1.5.
+</p>
+<a href ="SourceGetDataRecordDef_f90#top"> top</a>
+<p>
+<a name="X">
+<a name="Y">
+<a name="Z">
+</p>
+</body>
+</html>

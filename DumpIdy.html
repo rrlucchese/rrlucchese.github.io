@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>DumpIdy.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Command <code>DumpIdy</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p> <code>DumpIdy</code> <var>File</var> <var>Energy</var> [<var>NumRot</var> (<var>IAxis</var>
+(<var>i</var>), <var>RotAngle</var>(<var>i</var>), <var>i</var> = 1, <var>NumRot</var>)]</p>
+</p>
+<p>
+or
+</p>
+<p>
+<p> <code>DumpIdyAll</code> <var>File</var>  [<var>NumRot</var> (<var>IAxis</var>
+(<var>i</var>), <var>RotAngle</var>(<var>i</var>), <var>i</var> = 1, <var>NumRot</var>)]</p>
+</p>
+<p>
+This command reads in the photoionization matrix elements in file <var>File</var> and
+writes them out to standard output, and optionally to a file.
+The matrix elements, as written out, are expanded in terms of the complex valued spherical harmonics.
+An optional set of rotations can also be performed before the matrix elements are written.
+This is in the same form as the rotations in
+<a href ="SourceGetDataRecordDef_f90#RotateForm"> RotateForm.</a>
+If the record
+<a href ="SourceGetDataRecordDef_f90#IPot"> IPot</a>
+is not present or if <var>Energy</var> < 0, then the raw matrix elements in atomic unis are
+written out for continuum energy <var>ABS(Energy)</var> without including the Coulomb phase.
+If
+<a href ="SourceGetDataRecordDef_f90#IPot"> IPot</a>
+is present and <var>Energy</var> > 0, then the matrix elements are scaled so that the sum of the squares
+will give the cross section in MBarn and the phases are the correct total phases.
+</p>
+<p>
+When using the <code>DumpIdyAll</code> form, the <var>Energy</var> is not read, and all energies are
+written out without the symmetry information and the dipole matrix elements are in atomic units without
+scaling to Mbarns.
+</p>
+<p>
+If the <code>DumpOut</code> file is defined using the
+<a href ="FileName"> FileName</a>
+command, then the data is also written to that file.
+</p>
+<p>
+For the <code>DumpIdy</code>  command the output format is
+</p>
+<p>
+The format of the data written on <var>File</var> when the format with  <var>Energy</var>
+present is as follows
+At the start of each file there is a one line of label of the form
+</p>
+<p>
+DumpIdy Kinetic Energy        0.120000  Photon Energy        9.700000  Scale =  0.16957984E+01  0.47572186E+01
+</p>
+<p>
+The matrix elements are then written in groups that are identified by the symmetry of the calculation,
+for example from the Butyne file <br />
+</p>
+<p>
+0.1200000000E+00    0.9700000000E+01<br />
+3<br />
+'E' 'E' 'A2'<br />
+3         3         2<br />
+16         2      -100<br />
+-1   1  0  1  1 -0.25544079E-01 -0.39310810E-01<br />
+1   1  0  1  1  0.46816200E-01 -0.24664160E-02<br />
+....<br />
+....<br />
+....<br />
+0  -1  0  0  0  0.00000000E+00  0.00000000E+00<br />
+</p>
+<ul>
+<li>
+In line 1 the kinetic energy (0.12 eV) and photon energy (9.7 eV) are given (An assumed IP of 9.58 eV was used)
+</li>
+<li>
+In line 2 the number of symmetry types in the point group of the molecule is given (3 for D3, i.e. A1, A2, and E)
+</li>
+<li>
+In line 3 the symmetry types of the continuum electron (E), the ion state (E) and total state (continuum plus ion
+TARGET, A2) are given
+</li>
+<li>
+In line 4 the same information using a numerical representation is given (3 for E, 3 for E, and 2 for A2)
+</li>
+<li>
+In line 5 are the maximum continuum l, (16), the dimensionality of the target state representation
+(nrdimTarg=2 for E), and an unused integer (-100)
+</li>
+<li>
+In lines 6, 7, 8, ..., are the complex valued dipole matrix elements.  These are given for the electron angular
+state and dipole operators written in terms of the usual complex valued spherical harmonics.  Each line has the form
+m, l, mu, ip, it, TR, TI
+</li>
+</ul>
+
+<p>
+where<br />
+</p>
+<ul>
+<li>
+l,m describe the outgoing photoelectron state, when l=-1, this signals that there are no more matrix elements
+of this symmetry type.
+</li>
+<li>
+mu is the dipoleoperator (+1,0,-1)
+</li>
+<li>
+ip = 1 for length form and = 2 for the velocity form
+</li>
+<li>
+it = 1, 2, .., nrdimTarg, is which target state is being ionized, e.g. for an E state it=1 would be the Ex state,
+and it=2 would be the Ey state.
+</li>
+<li>
+(TR,TI) are the real and imaginary parts of the dipole matrix element.
+</li>
+</ul>
+
+<p>
+When <var>IPot</var> is present, the matrix elements are normalized so that for form each,
+length or velocity, i.e. a given VALUE of ip,
+the sum of the square of all matrix elements
+divided by three gives the total cross section in Mbarns.
+</p>
+<p>
+For the <code>DumpIdyAll</code> form, the format is
+</p>
+<p>
+0.1200000000E+00  -1   1  0  1  1 -0.25544079E-01 -0.39310810E-01<br />
+0.1200000000E+00   1   1  0  1  1  0.46816200E-01 -0.24664160E-02<br />
+....<br />
+....<br />
+....<br />
+</p>
+<p>
+where the first number in each row is the photoelectron kinetic energy in eV,
+with the other numbers as defined above.
+So that each line  has the form
+eKE, m, l, mu, ip, it, TR, TI, where eKE is the photoelectron matrix element and (TR,TI) are the
+the real and imaginary parts of the dipole matrix elements in atomic units including the Coulomb phase.
+These matrix are not scaled so that the sum of the squares gives the total cross section in Mbarn.
+</p>
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#IPot"> IPot,</a>
+the ionization potential in eV.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#NoCoulPhase"> NoCoulPhase,</a>
+flag to suppress the Coulomb phase on the dumped matrix elements
+</li>
+</ul>
+
+</body>
+</html>

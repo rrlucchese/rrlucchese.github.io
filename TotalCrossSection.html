@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>TotalCrossSection.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>TotalCrossSection</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>TotalCrossSection</code>
+</p>
+
+<p>
+This command computes the total and partial cross sections and eigenphase sums for
+electron scattering using the internal data structure for the T-matrix elements.
+If the internal data structure is not present, then the T-matrix elements are taken from
+the scratch file used for the output from <code>Scat</code>.
+Note that the internal data structure can be created from previously computed matrix elements
+stored in an external file by using the
+<a href ="MatrixElementsCollect"> MatrixElementsCollect and MatrixElementsCombine</a>
+commands.
+If the <code>PlotData</code> file has been defined then the data is also written to that file.
+If <code>LMaxK</code> is less than the value used to compute the scattering matrices, then
+the scattering matrices will be truncated down to <code>LMaxK</code> in the eigenphase sum
+and cross section caluclations
+</p>
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used it the text written to <code>PlotData</code>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LogLogInterp"> LogLogInterp,</a>
+flag to indicate if the missing cross sections should
+obtained using log-log interpolation.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test01_inp"> test01</a>
+</li>
+</ul>
+
+</body>
+</html>

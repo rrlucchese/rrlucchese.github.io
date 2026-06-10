@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>ExpOrb.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>ExpOrb</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>ExpOrb</code> </p>
+</p>
+<p>
+This comand creates the radial and angular grids and expands the molecular orbitals.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#EMax"> EMax,</a>
+the maximum value of the electron kinetic energy (in eV)
+to be considered.
+</li>
+</ul>
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RMax"> RMax,</a>
+maximum value of <ver>r</var> (in Angstroms) in the radial grid.
+The default value is the distance of the atom furthest away from the center plus 6 Angstroms.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#HFacGauss"> HFacGauss,</a>
+a real number that is used to generate the radial grid.  The higher the value the
+more dense the grid will be around the nuclei.
+Default value is 10.0
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#HFacWave"> HFacWave,</a>
+a real number that is used to generate the radial grid.  The higher the value the
+more dense the grid will be between the nuclei and at larger R.
+Default value is 10.0
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#MinExpFac"> MinExpFac,</a>
+a real number that controls the effective exponent used to generate the grid near the nuclei.
+Default value is 300.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#MaxStep"> MaxStep,</a>
+a real number that controls the maximum step size in the inner region when the
+<a href ="SourceGetDataRecordDef_f90#AsyPol"> AsyPol</a>
+data record is present.
+Default value is 0.02.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxI"> LMaxI,</a>
+the effective maximum <var>l</var> used in numerical integrations.
+Default value is 2 times LMax as read in using
+<a href ="GetBlms"> GetBlms.</a>
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ExpOrbSel"> ExpOrbSel,</a>
+optional, contains a range of orbital groups for the program
+<a href ="Source_ExpOrb_for"> ExpOrb</a>
+to expand. If not present, then all orbital groups
+that have been created by
+<a href ="Convert"> <code>Convert</code></a>
+are expanded.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#WorkExp"> WorkExp,</a>
+parameter used to divide up the grid for the different processors.
+Default value is 1.5.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#GridFac"> GridFac,</a>
+integer parameter that controls the grid density.  Default value is 1.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#PCutRd"> PCutRd,</a>
+a cutoff parameter that determines the extent of the radial grid for high <var>l</var>.
+Default value is 1.0e-8.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test01_inp"> test01</a>
+</li>
+</ul>
+</body>
+</html>

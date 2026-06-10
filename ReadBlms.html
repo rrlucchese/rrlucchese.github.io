@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>ReadBlms.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Command <code>ReadBlms</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p><code>ReadBlms</code> <var>File</var></p>
+</p>
+<p>
+Where <var>File</var> is file where the data is to be read from.
+This data is created using using the
+<a href ="SaveBlms"> SaveBlms</a>
+command.  Note that in addition to the Blms, the information that is obtained from the
+<a href ="Convert"> Convert</a>
+command is read in, so that the geometry, basis set, and molecular
+orbital expansion coefficients are also read in.  Thus there is no need
+to run the
+<a href ="Convert"> Convert</a>
+command.  This was done since the Blms depend on geometry for high partial wave
+and this guarantees that the Blms and geometry are consistent.
+</p>
+</body>
+</html>

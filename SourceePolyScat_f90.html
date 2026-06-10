@@ -1,0 +1,317 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>Commands</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Commands Defined</h1>
+</p>
+<dl>
+<dt>
+<a href ="CalcInt"> CalcInt</a>
+</dt>
+<dd>
+Compute overlap integrals, i.e. compute matrix elements
+</dd>
+<dt>
+<a href ="CatFiles"> CatFiles</a>
+</dt>
+<dd>
+Combine list of files
+</dd>
+<dt>
+<a href ="Convert"> Convert</a>
+</dt>
+<dd>
+Get orbital information from a Quantum Chemistry output.
+</dd>
+<dt>
+<a href ="DipoleOp"> DipoleOp</a>
+</dt>
+<dd>
+Compute the dipole operator onto an orbital.
+</dd>
+<dt>
+<a href ="DumpBasis"> DumpBasis</a>
+</dt>
+<dd>
+Dump the raw form of the basis set
+</dd>
+<dt>
+<a href ="DumpDataRecords"> DumpDataRecords</a>
+</dt>
+<dd>
+Print out the current data records.
+</dd>
+<dt>
+<a href ="DumpIdy"> DumpIdy, DumpIdyAll</a>
+</dt>
+<dd>
+Dump photoionization matrix elements (dynamical coefficients) in their raw form.
+</dd>
+<dt>
+<a href ="DumpMesa"> DumpMesa</a>
+</dt>
+<dd>
+Dump geometry, basis set, and orbitals for as input into the Mesa quantum chemistry code
+</dd>
+<dt>
+<a href ="DumpOrb"> DumpOrb</a>
+</dt>
+<dd>
+Dump the LCAO expansion coeffcieints for a given orbital.
+</dd>
+<dt>
+<a href ="DumpRecords"> DumpRecords</a>
+</dt>
+<dd>
+Print out all of the input records.
+</dd>
+<dt>
+<a href ="EDCS"> EDCS</a>
+</dt>
+<dd>
+Compute the differential cross section for elastic scattering (no dipole correction)
+</dd>
+<dt>
+<a href ="EngToler"> EngToler</a>
+</dt>
+<dd>
+Change tolerance used to identify identical energies (default value is 1.0e-6).
+</dd>
+<dt>
+<a href ="Exit"> Exit</a>
+</dt>
+<dd>
+Exit ePolyScat.
+</dd>
+<dt>
+<a href ="ExpOrb"> ExpOrb</a>
+</dt>
+<dd>
+Generate grids and expand orbitals.
+</dd>
+<dt>
+<a href ="FileName"> FileName</a>
+</dt>
+<dd>
+Specify files on the master node for various output data.
+</dd>
+<dt>
+<a href ="FindQ"> FindQ</a>
+</dt>
+<dd>
+Determine normal coordinates for the specified geometry.
+</dd>
+<dt>
+<a href ="GenFormPhIon"> GenFormPhIon</a>
+</dt>
+<dd>
+Generate potential formulas for photoioniztion.
+</dd>
+<dt>
+<a href ="GenFormScat"> GenFormScat</a>
+</dt>
+<dd>
+Generate potential formulas for scattering
+</dd>
+<dt>
+<a href ="GeomNormMode"> GeomNormMode, GeomNormModeN</a>
+</dt>
+<dd>
+Generate geometries for different values of the normal modes.
+</dd>
+<dt>
+<a href ="GetBlms"> GetBlms</a>
+</dt>
+<dd>
+Compute or find the correct <var>b<sub>lm</sub></var>s.
+</dd>
+<dt>
+<a href ="GetCro"> GetCro</a>
+</dt>
+<dd>
+Compute photoionization cross sections from output of scatstab or from a file of dynamical
+coefficients.
+</dd>
+<dt>
+<a href ="GetDPot"> GetDPot,GetDPotPos</a>
+</dt>
+<dd>
+Compute adiabatic potential for resonance search.
+</dd>
+<dt>
+<a href ="GetPot"> GetPot</a>
+</dt>
+<dd>
+Calculate electron density, static potential, and <var>V</var><sub>(CP)</sub> potential.
+</dd>
+<dt>
+<a href ="LFTimeDelay"> LFTimeDelay</a>
+</dt>
+<dd>
+Compute the lab frame photoionization amplitudes and the resulting time delays averaged
+over Euler angles.
+</dd>
+<dt>
+<a href ="MatrixElementsCollect"> MatrixElementsCollect MatrixElementsCombine</a>
+</dt>
+<dd>
+Reads in scattering matrix elements from external files and puts into an internal data structure
+</dd>
+<dt>
+<a href ="MFDCS"> MFDCS</a>
+</dt>
+<dd>
+Compute the differential cross section for elastic scattering in the molecular frame
+</dd>
+<dt>
+<a href ="MFTimeDelay"> MFTimeDelay</a>
+</dt>
+<dd>
+Compute the molecular frame photoionization amplitudes and the resulting time delays using
+PhIon or from files of dynamical coefficients.
+</dd>
+<dt>
+<a href ="OrientCro"> OrientCro</a>
+</dt>
+<dd>
+Compute photoionization cross sections for an oriented, i. e. fixed in space molecule
+from output of PhIon or from a file of dynamical
+coefficients.
+</dd>
+<dt>
+<a href ="OrientNCro"> OrientNCro</a>
+</dt>
+<dd>
+Compute photoionization cross sections for an oriented, i. e. fixed in space molecule
+from output of PhIon or from a file of dynamical
+coefficients.  This version is for the full <var>N</var> photon RFPAD
+</dd>
+<dt>
+<a href ="PhIon"> PhIon, PhIonN</a>
+</dt>
+<dd>
+Calculate photionization dipole matrix elements.
+</dd>
+<dt>
+<a href ="PhIonPlaneWv"> PhIonPlaneWv, PhIonPlaneWvN</a>
+</dt>
+<dd>
+Calculate photionization dipole matrix elements assuming plane waves or Coulomb waves.
+</dd>
+<dt>
+<a href ="PrintFlag"> PrintFlag</a>
+</dt>
+<dd>
+Control the amount of output.
+</dd>
+<dt>
+<a href ="ReadBlms"> ReadBlms</a>
+</dt>
+<dd>
+Read <var>b<sub>lm</sub></var> and geometry data from a file.
+</dd>
+<dt>
+<a href ="ResSearch"> ResSearch</a>
+</dt>
+<dd>
+Search the complex plane to find poles of the <var>S</var> matrix, which
+correspond to scattering resonances.
+</dd>
+<dt>
+<a href ="ResWvFun"> ResWvFun</a>
+</dt>
+<dd>
+Compute wave function at resonance energies found using the ResSearch command
+</dd>
+<dt>
+<a href ="RmDataRecord"> RmDataRecord</a>
+</dt>
+<dd>
+remove one data record from the data file.
+</dd>
+<dt>
+<a href ="RotOrientAsym"> RotOrientAsym</a>
+</dt>
+<dd>
+Compute photoionization cross section for oriented non linear molecules for rotation specific transitions.
+It uses output from dynamical coefficients.
+</dd>
+<dt>
+<a href ="SaveBlms"> SaveBlms</a>
+</dt>
+<dd>
+Save <var>b<sub>lm</sub></var> and geometry data to a file.
+</dd>
+<dt>
+<a href ="SaveTMats"> SaveTMats</a>
+</dt>
+<dd>
+Save T-Matrix or K-matrix elements on the internal data structure to a file
+using the same format as the Scat command
+</dd>
+<dt>
+<a href ="Scat"> Scat, ScatN</a>
+</dt>
+<dd>
+do electron scattering calculation
+</dd>
+<dt>
+<a href ="ScatPos"> ScatPos, ScatPosN</a>
+</dt>
+<dd>
+do positron scattering calculation
+</dd>
+<dt>
+<a href ="SchmidtOrth"> SchmidtOrth</a>
+</dt>
+<dd>
+Perform Schmidt orthogonalization on orbitals that have been already expanded in
+<a href ="Source_ExpOrb_for"> ExpOrb</a>
+</dd>
+<dt>
+<a href ="SymNormMode"> SymNormMode</a>
+</dt>
+<dd>
+Compute symmetry adapted normal modes.
+</dd>
+<dt>
+<a href ="TotalCrossSection"> TotalCrossSection</a>
+</dt>
+<dd>
+Compute the total and partial cross secions.
+</dd>
+<dt>
+<a href ="VibAve"> VibAve</a>
+</dt>
+<dd>
+Average matrix elements over a vibration
+</dd>
+<dt>
+<a href ="VibAveN"> VibAveN</a>
+</dt>
+<dd>
+Average matrix elements over vibrations of more than one dimension
+</dd>
+<dt>
+<a href ="VibAveNI"> VibAveNI</a>
+</dt>
+<dd>
+Average matrix elements over vibrations of more than one dimension
+fitting each matrix element seperately
+</dd>
+<dt>
+<a href ="ViewOrb"> ViewOrb</a>
+</dt>
+<dd>
+Write out orbital or resonance wave function
+</dd>
+</dl>
+
+</body>
+</html>

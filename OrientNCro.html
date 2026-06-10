@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>OrientNCro.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>OrientNCro</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>OrientNCro</code> <var>Energy</var> <var>File-1</var> <var>File-2</var> ...</p>
+</p>
+<p>
+This command computes the differential cross section for an oriented, i.e. fixed in space, molecule
+from the dynamical coefficients. This version is for a <var>N</var> photon RFPAD.
+The value of <var>Energy</var> (in eV) selects which photoelectron
+kinetic energy to consider.
+</p>
+<p>
+If the variables <var>File-n</var> are present, then the dynamical coefficients in
+those files are processed.  Otherwise, the program uses the automatically generated
+scratch file as described in the definition of the command
+<a href ="PhIon"> PhIon.</a>
+</p>
+<p>
+If the <code>OrientData</code> file has been defined then the data is also written to that file.
+</p>
+<p>
+If the <code>OrientGeom</code> file has been defined then the geometry data is written to that file
+if that data is available
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#IPot"> IPot,</a>
+the ionization potential in eV.
+</li>
+</ul>
+
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used in the text written to <code>PlotData</code>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#TargCompSel"> TargCompSel,</a>
+for a degenerate target state, do only one of the components.  The default
+is to sum all components.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#OrientNSymPhi"> OrientNSymPhi</a>
+this gives the angle in degrees of a reflection plane of symmetry
+containing the <var>z</var> axis, that should be used as the
+zero of the azimuthal angles in the molecular frame.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RotateFormIdy"> RotateFormIdy,</a>
+Formula for rotation of photoionization matrix elements before computing cross section.
+Yields the same results as using the corresponding
+<a href ="SourceGetDataRecordDef_f90#RotateForm"> RotateForm</a>
+before computing the cross sections.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+</ul>
+</body>
+</html>

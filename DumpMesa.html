@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>DumpMesa.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+<p>
+<h1>Command <code>DumpMesa</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p> <code>DumpMesa</code>  <var>File(s)</var>
+</p>
+<p>
+This command writes out the geometry, basis set, and orbitals to file <var>File</var>
+in a form of input to the Mesa Quantum Chemsitry. If more than one file is present then
+separate data and put onto different files using the order, Geometry, Bound State Basis,
+Orbital Expansion Coeficients, Geometry with repeated centers for expanded basis definition
+</p>
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#AddCenterMesa"> AddCenterMesa,</a>
+gives the location of an additional center for DumpMesa
+</li>
+</ul>
+
+</body>
+</html>

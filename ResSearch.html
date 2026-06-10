@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>ResSearch.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>ResSearch</code></h1>
+</p>
+<p>
+<h2>Comand format</h2>
+</p>
+<p>
+<p><code>ResSearch</code></p>
+</p>
+<p>
+This command searches for resonances using the adiabatic potential computed using
+<a href ="GetDPot"> GetDPot</a>
+command.
+If the command
+<a href ="FileName"> FileName</a>
+has been used to define the <code>PlotData</code> file,
+then the positions of the poles of the <var>S</var> matrix are written there.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#ResSearchEng"> ResSearchEng,</a>
+defines the region of the search in the complex plane.
+</li>
+</ul>
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#Label"> Label,</a>
+used it the text written to <code>PlotData</code>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#RungeKuttaFac"> RungeKuttaFac</a>
+this integer controls the step size used in the differential equation integrator.
+Higher values yields smaller step sizes.
+Default value is 4.
+<li>
+<a href ="SourceGetDataRecordDef_f90#ResSearchType"> ResSearchType</a>
+This integer controls how the resonance search is performed.
+Default value is 0.
+</li>
+</ul>
+
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test10_inp"> test10</a>
+</li>
+<li>
+<a href ="Tests_test30_inp"> test30</a>
+</li>
+</ul>
+</body>
+</html>

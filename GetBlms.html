@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<title>GetBlms.html</title>
+</head>
+
+<body link="navy" vlink="navy" bgcolor="FFFFCC">
+
+
+<p>
+<h1>Command <code>GetBlms</code></h1>
+</p>
+<p>
+<h2>Command format</h2>
+</p>
+<p>
+<p><code>GetBlms</code></p>
+</p>
+<p>
+Determines the point group and symmetry adapted harmonics for the molecule.
+</p>
+<p>
+<h2>Data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMax"> LMax,</a>
+maximum l to be used for wave functions
+</li>
+</ul>
+
+<p>
+<h2>Optional data records used</h2>
+</p>
+<ul>
+<li>
+<a href ="SourceGetDataRecordDef_f90#AtomSym"> AtomSym,</a>
+This data record contains a string that indicates which symmetry to use for an atom.
+Two possible values are 'Ih' and 'Oh'. The default value is 'Ih'
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#AbSym"> AbSym,</a>
+If this data record is present, then the symmetry used will be the largest abelian
+subgroup
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#LMaxA"> LMaxA,</a>
+maximum l in the asymtotic region.
+Default value is (RAMax+2 Angs)*sqrt(2*Max(EMax, 27.2 eV)) converted into atomic units
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#MMax"> MMax</a>
+maximum m to include around each nucleus at high l.  A value of
+-1 leads to no m truncation.  Default value is 3.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#MMaxAbFlag"> MMaxAbFlag,</a>
+A parameter that controls the <var>m</var> values on the abelian subgroup grid.
+Default value is 1 to include all values of <var>m</var>.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#NoSym"> NoSym,</a>
+If this record is present, then the calculation is done with no symmetry, using the C1
+point group
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#PCutM"> PCutM,</a>
+a cutoff parameter that determines the extent of the radial grid for high <var>l</var>.
+Default value is 1.0e-8.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#PrintBlm"> PrintBlm,</a>
+if this data record is present then print out the Blms up to this l.
+</li>
+<li>
+<a href ="SourceGetDataRecordDef_f90#SymToler"> SymToler,</a>
+tolernace in the atomic position used to determine the symmetry operations.
+Default value is 1.0e-05
+</li>
+</ul>
+
+<p>
+Most of these point groups are covered in "On the Symmetries of Spherical
+Harmonics", S. L. Altmann, Proceedings of the Cambridge Philosophical
+Society, Volume 53, Part2, pp. 343-367 (1957).
+</p>
+<p>
+<h2>Examples of use</h2>
+</p>
+<ul>
+<li>
+<a href ="Tests_test01_inp"> test01</a>
+</li>
+</ul>
+</body>
+</html>
